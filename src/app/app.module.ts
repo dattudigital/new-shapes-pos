@@ -13,6 +13,7 @@ import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { TimeClockComponent } from './time-clock/time-clock.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { TimeClockComponent } from './time-clock/time-clock.component';
     BrowserAnimationsModule,
     CalendarModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard , MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
