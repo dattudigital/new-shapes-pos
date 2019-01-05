@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-
+import { SchedulerComponent } from './scheduler/scheduler.component'
+import { AuthGuard } from '../common-session/session.check';
 export const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    children: [      
+    children: [
       {
         path: 'sale',
         loadChildren: './sale/sale.module#saleModule'
@@ -26,14 +27,19 @@ export const routes: Routes = [
       {
         path: 'manager',
         loadChildren: './manager/manager.module#managerModule'
+      },
+      {
+        path: 'scheduler',
+        component: SchedulerComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes,{ useHash: true })],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule { }

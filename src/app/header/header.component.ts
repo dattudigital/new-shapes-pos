@@ -118,10 +118,11 @@ export class HeaderComponent implements OnInit {
 
   redirectToSchedule() {
     this.removeActiveClass();
-    this.router.navigate(['schedule'])
     $("#__schedule").click(function () {
       $("#__schedule").addClass("active");
     });
+    $('#secondaryLoginModal').modal('show')
+    this.redirect = "schedule";
   }
 
   redirectToAppointment() {
@@ -192,14 +193,15 @@ export class HeaderComponent implements OnInit {
           if (this.redirect == 'setup') {
             sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
             this.router.navigate(['setup'])
-          }
-          if (this.redirect == 'inventory') {
+          } else if (this.redirect == 'inventory') {
             sessionStorage.setItem('inventory', JSON.stringify(loginData.json()));
-            this.router.navigate(['inventory']) 
-          }
-          if (this.redirect == 'manager') {
+            this.router.navigate(['inventory'])
+          } else if (this.redirect == 'manager') {
             sessionStorage.setItem('manager', JSON.stringify(loginData.json()));
             this.router.navigate(['manager'])
+          } else if (this.redirect == 'schedule') {
+            sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
+            this.router.navigate(['scheduler'])
           }
           this.redirect = "";
         }
