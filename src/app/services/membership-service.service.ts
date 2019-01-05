@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Membership } from '../model/membership.model';
+// import { Membership } from '../model/membership.model';
 import { Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 @Injectable({
