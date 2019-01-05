@@ -12,6 +12,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component'
 import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
+import { TimeClockComponent } from './time-clock/time-clock.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CalendarModule } from 'primeng/calendar';
     LoginComponent,
     HeaderComponent,
     SchedulerComponent,
-    FooterComponent
+    FooterComponent,
+    TimeClockComponent
   ],
   imports: [
     BrowserModule,
