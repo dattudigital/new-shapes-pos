@@ -1,1 +1,74 @@
-<p>Scheduler</p>
+<div class="tab-schedule1">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="input" class="col-md-5 control-label">Start Date</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <!-- <p-calendar [(ngModel)]="date1" [(ngModel)]="shedule.startdate" name="shedule.startdate" [showIcon]="true"
+                        (ngModelChange)="getStartDate($event)" dateFormat="yy-mm-dd"></p-calendar> -->
+                    <p-calendar [(ngModel)]="date1" [showIcon]="true"></p-calendar>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="input" class="col-md-5 control-label">End Date</label>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <!-- <p-calendar [(ngModel)]="date2" [(ngModel)]="shedule.enddate" name="shedule.enddate" [showIcon]="true"
+                        (ngModelChange)="getEndDate($event)" dateFormat="yy-mm-dd"></p-calendar> -->
+                    <p-calendar [(ngModel)]="date2" [showIcon]="true"></p-calendar>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="input" class="col-md-3 control-label">Staff</label>
+            <div class="col-md-9">
+                <select name="shedule.emp_id" class="form-control" (ngModelChange)="setStaff($event)" [(ngModel)]="shedule.employee_id">
+                    <option *ngFor="let data1 of this.empData" [ngValue]="data1.employee_id">{{data1.employee_firstname}}</option>
+                </select>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="input" class="col-md-3 control-label">Locations</label>
+            <div class="col-md-9">
+                <select name="shedule.branchid" class="form-control" (ngModelChange)="setBranch($event)" [(ngModel)]="shedule.branch_id">
+                    <option *ngFor="let data1 of this.locationData" [ngValue]="data1.branch_id">{{data1.branch_name}}</option>
+                </select>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="input" class="col-md-10 control-label">Include Inactive Staff Members</label>
+            <div class="col-md-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="generate-cs" style="padding:0;">
+            <button type="submit" class="btn btn-warning float-right" value="Save">Generate</button>
+            <a *ngIf="showXLandPdf" (click)="pdfDownload();" title="Export to PDF">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+
+            <a *ngIf="showXLandPdf" (click)="xlDownload();" title="Export to Excel">
+                <i class="far fa-file-excel"></i>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

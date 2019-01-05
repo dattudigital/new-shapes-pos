@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SchedulerComponent implements OnInit {
+    shedule: any = {
+        'startdate': '',
+        'enddate': '',
+        'branch_id': '',
+        'employee_id': '',
+        'employee_firstname': ''
+      }
+    public date1: any;
 
     constructor() { }
 

@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component'
 import { SchedulerComponent } from './scheduler/scheduler.component'
 import { AuthGuard } from '../common-session/session.check';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AuthGuard } from '../common-session/session.check';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    CalendarModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
