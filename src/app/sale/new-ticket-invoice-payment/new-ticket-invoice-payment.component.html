@@ -1,0 +1,155 @@
+<div >
+  
+</div>
+<div class="pay-amount">
+  <div class="col-md-4 col-sm-4 col-xs-12 pay-amount-left">
+    <h3 class="pay-amount-title">Payment Calculator</h3>
+    <div class="calculator">
+      <div class="calc-row">
+        <div class="screen">{{operand}}</div>
+      </div>
+      <div class="calc-row">
+        <div class="button" (click)="onClickClear()">C</div>
+        <div class="button" (click)="removeLast()">CE</div>
+        <div class="button backspace">back</div>
+        <div class="button plus-minus">+/-</div>
+        <div class="button" (click)="calculate('%')">%</div>
+      </div>
+      <div class="calc-row">
+        <div class="button" (click)="addToCalculation(7)">7</div>
+        <div class="button" (click)="addToCalculation(8)">8</div>
+        <div class="button" (click)="addToCalculation(9)">9</div>
+        <div class="button divice" (click)="calculate('/')">/</div>
+        <div class="button root" (click)="onClickMathFunction('√')">sqrt</div>
+      </div>
+
+      <div class="calc-row">
+        <div class="button" (click)="addToCalculation(4)">4</div>
+        <div class="button" (click)="addToCalculation(5)">5</div>
+        <div class="button" (click)="addToCalculation(6)">6</div>
+        <div class="button multiply" (click)="calculate('*')">*</div>
+        <div class="button inverse">1/x</div>
+      </div>
+
+      <div class="calc-row">
+        <div class="button" (click)="addToCalculation(1)">1</div>
+        <div class="button" (click)="addToCalculation(2)">2</div>
+        <div class="button" (click)="addToCalculation(3)">3</div>
+        <div class="button" (click)="calculate('-')">-</div>
+        <div class="button pi">pi</div>
+      </div>
+      <div class="calc-row">
+        <div class="button zero" (click)="addToCalculation(0)">0</div>
+        <div class="button decimal" (click)="addToCalculation('.')">.</div>
+        <div class="button" (click)="calculate('+')">+</div>
+        <div class="button equal" (click)="getTotal()">=</div>
+      </div>
+    </div>
+  </div>
+  <!---pay-amount-->
+
+  <div class="col-md-4 col-sm-4 col-xs-12 pay-amount-center">
+    <h3 class="pay-amount-title">Payment Methods</h3>
+    <div class="payment-methods">
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>Cash</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>Credit Card</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>American Express</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>Gift Card</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>Check</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 Payment-methods-left">
+          <a>SVS 600649</a>
+        </div>
+        <div class="col-md-6 Payment-methods-right">
+          <input type="text" maxlength="50" name="text" value="" placeholder="$0.00">
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!---select-stylist-left-->
+
+  <div class="col-md-4 col-sm-4 col-xs-12 pay-amount-right">
+    <h3 class="pay-amount-title">Payment Receipt</h3>
+    <div class="Payment-receipt">
+      <h3>(4) David Jones</h3>
+      <div class="clear"></div>
+    </div>
+    <!--Payment Receipt-->
+
+    <div class="sales-info">
+      <h3>Sales Info</h3>
+
+      <table width="100%">
+        <tr>
+          <td>Net Service</td>
+          <td>$19.95</td>
+        </tr>
+        <tr>
+          <td>Net Product</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>Subtotal</td>
+          <td>$19.95</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>$19.95</td>
+        </tr>
+        <tr>
+          <td>Paid</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>Tip Collected</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>Amount Due</td>
+          <td>$19.95</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <!---select-stylist-right-->
+
+  <div class="clear"></div>
+
+</div>

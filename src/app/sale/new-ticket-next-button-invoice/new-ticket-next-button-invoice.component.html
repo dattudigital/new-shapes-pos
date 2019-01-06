@@ -1,0 +1,162 @@
+<div >
+  
+</div>
+<div class="service-cat">
+  <div class="Service-categorys">
+    <div class="col-md-4 col-sm-6 col-xs-12 service-cat-section-1">
+      <h3>Tools</h3>
+      <div class="service-cat-2">
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons"  >
+          <a (click)="serviceClick()" [ngStyle]="{'background-color':servicesColor,'color':servicetextColor}">Services</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons1">
+          <a (click)="giftcardClick()" [ngStyle]="{'background-color':giftcardColor,'color':gifttextColor}">Gift Cards</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons">
+          <a (click)="productClick()"  [ngStyle]="{'background-color':productsColor,'color':producttextColor}">Products</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons1">
+          <a>Discounts</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons">
+          <a (click)="packagesClick()" [ngStyle]="{'background-color':packagesColor,'color':packagetextColor}">Packages</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons1">
+          <a (click)="promotionsClick()" [ngStyle]="{'background-color':promotionsColor,'color':promotionstextColor}">Promotions</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons service-buttons-last-child">
+          <a (click)="membershipClick()" [ngStyle]="{'background-color':memberColor,'color':memtextColor}">Membership</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 service-buttons1 service-buttons-last-child">
+          <a>Refund</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="empty-space1"></div>
+      <div class="service-cat-3-button4">
+        <a>Transaction History</a>
+      </div>
+    </div>
+    <!--Tools end-->
+    <div class="col-md-4 col-sm-6 col-xs-12 service-cat-section-2">
+      <h3>{{titleName}} Category</h3>
+      <div class="service-cat-3">
+        <span *ngIf="edited">
+          <span *ngFor="let c of common | paginate: { itemsPerPage: 4, currentPage: p }; let i = index">
+            <div class="service-cat-3-button{{i%2}}">
+              <a (click)="showTable(c)">{{c.name}}</a>
+            </div>
+          </span>
+        </span>
+        <div>
+          <table *ngIf="!edited" width="100%">
+            <tr>
+              <th width="200">Code</th>
+              <th width="200">Type of service</th>
+              <th width="200">Price</th>
+              <th width="200">Quantity</th>
+              <th width="200"></th>
+            </tr>
+            <tr *ngFor="let commonValue of commonValues">
+              <td>{{commonValue.code}}</td>
+              <td>{{commonValue.name}}</td>
+              <td>{{commonValue.price}}</td>
+              <td>
+                <input type="text" maxlength="50" name="valueselect" [(ngModel)]="commonValue.selectedVal" value="">
+              </td>
+              <td>
+                <a>
+                  <i class="far fa-arrow-alt-circle-right" (click)="addToBilling(commonValue.name,commonValue.price,commonValue.selectedVal)"></i>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div *ngIf="edited">
+          <a>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="empty-space"></div>
+      <div class="service-cat-4">
+        <div class="service-cat-3-button3">
+          <a>Suggested Services</a>
+        </div>
+        <div class="service-cat-3-button3">
+          <a>Suggested Membership</a>
+        </div>
+        <div class="service-cat-3-button3">
+          <a>Suggested Promotions</a>
+        </div>
+      </div>
+    </div>
+    <!--Service Category end-->
+
+
+    <div class="col-md-4 col-sm-6 col-xs-12 service-cat-section-3">
+      <h3>Vimal Patel</h3>
+      <div class="service-cat-5">
+        <div class="service-cat-5-box" *ngFor="let s of selectResult; let i = index">
+          <div class="service-cat-5-box-left">
+            <h4>{{s.name}}</h4>
+            <h5>Commission: STYLIST</h5>
+          </div>
+          <div class="service-cat-5-box-right">
+            <span (click)="removeItem(s,i)" class="glyphicon glyphicon-remove-circle"></span>
+          </div>
+          <div class="service-cat-5-box-right">
+            <h4>${{s.price}}</h4>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="service-cat-5-box-total">
+          <table>
+            <tr>
+              <td class="service-cat-5-box-total-left">Subtotal</td>
+              <td class="service-cat-5-box-total-right">${{display}}</td>
+            </tr>
+            <tr>
+              <td class="service-cat-5-box-total-left">Tax</td>
+              <td class="service-cat-5-box-total-right">$0.00</td>
+            </tr>
+            <tr>
+              <td class="service-cat-5-box-total-left">Total</td>
+              <td class="service-cat-5-box-total-right">$22.00</td>
+            </tr>
+            <tr>
+              <td class="service-cat-5-box-total-left">Amount Due</td>
+              <td class="service-cat-5-box-total-right">$0.00</td>
+            </tr>
+          </table>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--service-cat-5 end-->
+      <div class="service-payment-action">
+        <div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-12 service-payment-action">
+          <a>
+            <i class="fas fa-trash"></i>
+            <br>Remove</a>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 service-payment-action">
+          <a>
+            <i class="fas fa-step-backward"></i>
+            <br>Hold</a>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 service-payment-action">
+          <a (click)="redirectToInvoicePayment()" >
+            <i class="fas fa-dollar-sign" ></i>
+            <br>Pay Now</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <!--Vimal Patel-->
+    <div class="clear"></div>
+  </div>
+
+  <div class="clear"></div>
+</div>

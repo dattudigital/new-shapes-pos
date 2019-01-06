@@ -1,3 +1,559 @@
-<p>
-  new-ticket works!
-</p>
+<div >
+  
+</div>
+
+<div class="modal fade" id="membershipInfo" data-backdrop="static">
+  <div class="modal-dialog"  >
+    <div class="customer-info">
+      <h2>Membership / Package</h2>
+      <div class="membership-table">
+        <table width="100%">
+          <tr>
+            <th width="10%">Purchase Date</th>
+            <th width="10%">Client Name</th>
+            <th width="10%">Membership type</th>
+            <th width="10%">Status</th>
+            <th width="10%">Starting Date </th>
+            <th width="10%">Ending Date</th>
+            <th width="10%">Last Arrival Date</th>
+            <th width="10%"># of Arrival</th>
+            <th width="10%">Price</th>
+          </tr>
+          <tr>
+            <td>02/03/2018</td>
+            <td>Vimal Patel</td>
+            <td>Brow +Lip Membership</td>
+            <td>Active</td>
+            <td>05/03/2018</td>
+            <td>25/03/2018</td>
+            <td>10/03/2018</td>
+            <td>2</td>
+            <td>$10.00</td>
+          </tr>
+          <tr>
+            <td>15/03/2018</td>
+            <td>Patel</td>
+            <td>Brow Membership</td>
+            <td>Inactive</td>
+            <td>16/03/2018</td>
+            <td>18/03/2018</td>
+            <td>17/03/2018</td>
+            <td>3</td>
+            <td>$15.00</td>
+          </tr>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <button type="submit" style="margin-left: 580px;margin-top: -300px;height: 49px;width: 108px;font-size: 25px;" data-dismiss="modal"
+        class="btn btn-primary">Close</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="visitInfo"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="visit">
+      <div class="customer-info">
+        <h2>Visits</h2>
+      </div>
+      <div class="visit1">
+        <table width="100%">
+          <tr>
+            <th width="10%">Date of first visit</th>
+            <th width="10%">Last visit Date</th>
+            <th width="10%">No.of visits</th>
+          </tr>
+          <tr *ngFor="let visit of visits">
+            <td>{{visit.firstvisit | date: 'dd/MM/yyyy'}}</td>
+            <td>{{visit.lastvisit | date: 'dd/MM/yyyy'}}</td>
+            <td>{{visit.count | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+        </table>
+        <br/>
+        <br/>
+      </div>
+      <button type="submit" style="margin-left: 580px;margin-top: -300px;height: 49px;width: 108px;font-size: 25px;" data-dismiss="modal"
+        class="btn btn-primary">Close</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="addCustomerModelPopup"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="customer-info">
+        <h2>Add New Customer</h2>
+      </div>
+      <div class="modal-body">
+        <div class="add-client">
+          <div class="client-form">
+            <div class="check-box-client">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">Swipe ID to store Address</label>
+              </div>
+            </div>
+            <div class=" col-md-6 col-sm-6 col-xs-12 client-form-left container" novalidate>
+              <form>
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" maxlength="50" name="fname" (keypress)="omit_special_char($event)" class="form-control" [(ngModel)]="firstName" ngModel required #fname="ngModel" placeholder="First Name">
+                  <div *ngIf="fname.errors?.required && submitted" style="color:red">First Name is required </div>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" maxlength="50" class="form-control"  (keypress)="omit_special_char($event)" name="lname" [(ngModel)]="lastName" ngModel required #lname="ngModel" placeholder="Last Name">
+                  <div *ngIf="lname.errors?.required && submitted" style="color:red">Last Name is required </div>
+                </div>
+                <div class="form-group">
+                  <label>Birthday</label>
+                  <input type="date" class="form-control" name="DOB" [(ngModel)]="DOB" required placeholder="Birthday">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect2">Gender</label>
+                  <select [(ngModel)]="gender" name="firstName" class="form-control">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="text" maxlength="50" (keypress)="omit_special_charWithoutNum($event)" class="form-control" [(ngModel)]="mobileNo" name="mobile" placeholder="Home or Mobile" ngModel required
+                    #mobile="ngModel">
+                  <div *ngIf="mobile.errors?.required && submitted" style="color:red">Phone Number is required </div>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" [(ngModel)]="MailId" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" name="Mail" class="form-control" placeholder="name@example.com" ngmodel required
+                    #Mail="ngModel">
+                    <div style="color:red" *ngIf="Mail.errors?.pattern">Email must be a valid email address</div>
+                  <div *ngIf="Mail.errors?.required && submitted" style="color:red">Email is required </div>
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+              </form>
+            </div>
+            <!----------------Form left side end---------------------------->
+            <div class="col-md-6 col-sm-6 col-xs-12 client-form-right">
+              <form>
+                <div class="form-group">
+                  <label>Country</label>
+                  <select class="form-control">
+                    <option>Select Country</option>
+                    <option>Afghanistan</option>
+                    <option>Albania</option>
+                    <option>Algeria</option>
+                    <option>Andorra</option>
+                    <option>Angola</option>
+                    <option>Anguilla</option>
+                    <option>Antigua & Barbuda</option>
+                    <option>Argentina</option>
+                    <option>Armenia</option>
+                    <option>Australia</option>
+                    <option>Austria</option>
+                    <option>Azerbaijan</option>
+                    <option>Bahamas</option>
+                    <option>Bahrain</option>
+                    <option>Bangladesh</option>
+                    <option>Barbados</option>
+                    <option>Belarus</option>
+                    <option>Belgium</option>
+                    <option>Belize</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>State</label>
+                  <select class="form-control">
+                    <option>Select State</option>
+                    <option>Afghanistan</option>
+                    <option>Albania</option>
+                    <option>Algeria</option>
+                    <option>Andorra</option>
+                    <option>Angola</option>
+                    <option>Anguilla</option>
+                    <option>Antigua & Barbuda</option>
+                    <option>Argentina</option>
+                    <option>Armenia</option>
+                    <option>Australia</option>
+                    <option>Austria</option>
+                    <option>Azerbaijan</option>
+                    <option>Bahamas</option>
+                    <option>Bahrain</option>
+                    <option>Bangladesh</option>
+                    <option>Barbados</option>
+                    <option>Belarus</option>
+                    <option>Belgium</option>
+                    <option>Belize</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>City</label>
+                  <select class="form-control">
+                    <option>Select State</option>
+                    <option>Afghanistan</option>
+                    <option>Albania</option>
+                    <option>Algeria</option>
+                    <option>Andorra</option>
+                    <option>Angola</option>
+                    <option>Anguilla</option>
+                    <option>Antigua & Barbuda</option>
+                    <option>Argentina</option>
+                    <option>Armenia</option>
+                    <option>Australia</option>
+                    <option>Austria</option>
+                    <option>Azerbaijan</option>
+                    <option>Bahamas</option>
+                    <option>Bahrain</option>
+                    <option>Bangladesh</option>
+                    <option>Barbados</option>
+                    <option>Belarus</option>
+                    <option>Belgium</option>
+                    <option>Belize</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Postal Code</label>
+                  <input type="text" maxlength="50" class="form-control" placeholder="enter your Postal Code">
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" checked>
+                  <label class="form-check-label">Subscribe to email notification</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" checked>
+                  <label class="form-check-label">Subscribe to our promotions</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Prefers not to provide email</label>
+                </div>
+              </form>
+              <div class="new-customer-footer">
+                <div class="col-md-4 col-sm-6 col-xs-12 ncf-left">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Membership Card No</label>
+                    <input type="text" maxlength="50" class="form-control" placeholder="enter Membership Card No">
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12 ncf-right">
+                  <ul>
+                    <li (click)="resetCustomer()">
+                      <a data-dismiss="modal">
+                        <i class="fas fa-times"></i>
+                        <br>Cancel</a>
+                    </li>
+                    <li (click)="saveCustomer()">
+                      <a>
+                        <i class="fas fa-check"></i>
+                        <br>Save</a>
+                    </li>
+                    <li>
+                      <a>
+                        <i class="fas fa-save"></i>
+                        <br>Save & Use</a>
+                    </li>
+                  </ul>
+                 
+                </div>
+                <div *ngIf="sucussfull">
+                  <h3 style="color: green">Customer Saved Sucussfully.</h3>
+                </div>
+              </div>
+            </div>
+            <!----------------Form right side end---------------------------->
+            <div class="clear"></div>
+          </div>
+          <!--Client Profile-->
+          <div class="clear"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="costomerInfo"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="customer-info1">
+      <div class="customer-info">
+        <h2>Customer Info</h2>
+      </div>
+      <div class="customer-info-form">
+        <form>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">First Name</label>
+            <div class="col-md-10">
+              <input class="form-control" type="text" [(ngModel)]="custFirstName" name="custFirstName" value="" id="example-text-input1">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">Last Name</label>
+            <div class="col-md-10">
+              <input class="form-control" type="text" value="" [(ngModel)]="custLastName" name="custLastName" id="example-text-input2">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">Gender</label>
+            <div class="col-md-10">
+              <select class="form-control" [(ngModel)]="custGender" name="custGender" id="exampleSelect1">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-tel-input" class="col-md-2 col-form-label">Phone Number</label>
+            <div class="col-md-10">
+              <input class="form-control" [(ngModel)]="custNo" name="custNo" type="tel" value="" id="example-tel-input">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
+            <div class="col-md-10">
+              <input class="form-control" [(ngModel)]="custEmail" name="custEmail" type="email" value="" id="example-email-input" placeholder="example@example.com">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">Customer Status</label>
+            <div class="col-md-10">
+              <input class="form-control" [(ngModel)]="custStatus" name="custStatus" type="text" value="" id="example-text-input3">
+            </div>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input"> Subscribe to send email notifications
+            </label>
+          </div>
+          <button type="submit" data-dismiss="modal" class="btn btn-primary">Close</button>
+        </form>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="_allInfo"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="all-services">
+      <div class="customer-info">
+        <h2>ALL</h2>
+      </div>
+      <div class="all-service-table">
+        <table width="100%">
+          <tr>
+            <th width="200">Service Date</th>
+            <th width="200">Location</th>
+            <th width="200">Item Name</th>
+            <th width="200">Quantity</th>
+            <th width="200">Price</th>
+            <th width="200">Employee</th>
+            <th width="200">Total Price</th>
+          </tr>
+          <tr *ngFor="let all of alls">
+            <td>{{all.order_created_date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{all.branch_name}}</td>
+            <td>{{all.products[0].product}}</td>
+            <td>2</td>
+            <td>{{all.order_amount}}</td>
+            <td>{{all.employee_name}}</td>
+            <td>{{all.order_amount}}</td>
+          </tr>
+
+          <tr>
+            <td>02/02/2018</td>
+            <td>Bur Bank</td>
+            <td>Eye brow threading</td>
+            <td>1</td>
+            <td>$11.00</td>
+            <td>Reema</td>
+            <td>$11.00</td>
+          </tr>
+        </table>
+
+      </div>
+      <button type="submit" style="margin-left: 580px;margin-top: -300px;height: 49px;width: 108px;font-size: 25px;" data-dismiss="modal"
+        class="btn btn-primary">Close</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="serviceInfo"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="service-purchase">
+      <div class="customer-info">
+        <h2>Service Purchase History</h2>
+      </div>
+      <div class="sp-table">
+        <table width="100%">
+          <tbody>
+            <tr>
+              <th width="10%">Last Visit Date</th>
+              <th width="10%">Visit Location</th>
+              <th width="10%">Type Of Service</th>
+              <th width="10%">Employee</th>
+              <th width="10%">Total Price</th>
+            </tr>
+            <tr *ngFor="let service of services">
+              <td>{{service.order_created_date | date: 'dd/MM/yyyy'}}</td>
+              <td>{{service.branch_name}}</td>
+              <td>{{service.services[0].service}}</td>
+              <td>{{service.employee_name}}</td>
+              <td>{{service.order_amount}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <button type="submit" style="margin-left: 580px;margin-top: -300px;height: 49px;width: 108px;font-size: 25px;" data-dismiss="modal"
+        class="btn btn-primary">Close</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="productsInfo"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="membership-package">
+      <div class="customer-info">
+        <h2>Product Purchase History</h2>
+      </div>
+      <div class="membership-table">
+        <table width="100%">
+          <tr>
+            <th width="10%">Last Visit Date</th>
+            <th width="10%">Visit Location</th>
+            <th width="10%">Item Name</th>
+            <th width="10%">Quantity</th>
+            <th width="10%">Employee</th>
+            <th width="10%">Total Price</th>
+          </tr>
+          <tr *ngFor="let product of products">
+            <td>{{product.order_created_date | date:'dd/MM/yyyy'}}</td>
+            <td>{{product.branch_name}}</td>
+            <td>{{product.products[0].product}}</td>
+            <td>1</td>
+            <td>{{product.employee_name}}</td>
+            <td>{{product.order_amount}}</td>
+          </tr>
+        </table>
+        <div class="clear"></div>
+      </div>
+      <button type="submit" style="margin-left: 580px;margin-top: -300px;height: 49px;width: 108px;font-size: 25px;" data-dismiss="modal"
+        class="btn btn-primary">Close</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<body>
+  <div class="select-customer">
+    <h1 class="select-customer-title"></h1>
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12 select-customer-left" style="margin-top: -29px">
+      <div class="scl-search">
+        <span>Customer Search:</span>
+        <input [(ngModel)]="selectedValue" (ngModelChange)='customerSearch($event)' typeaheadOptionField="name" class="form-control">
+      </div>
+      <div class="sul-show-result">
+        <br>
+        <br>
+        <button class="btn btn-primary submit-button" *ngFor="let item of states " (click)="onSelect(item)">
+          <span>
+            <a href="#"></a>{{item.firstname}}</span>
+        </button>
+        <div class="no-search" *ngIf="states == null">
+         <h3>No records Found</h3>
+        </div>
+
+      </div>
+      <div class="sur-footer-left">
+        <ul>
+          <li data-toggle="modal" data-target="#addCustomerModelPopup">
+            <a>
+              <i class="fas fa-plus"></i>
+              <br>Add New Customer</a>
+          </li>
+          <li (click)="lastSearch(item)">
+            <a>
+              <i class="fas fa-search"></i>
+              <br>Last Search</a>
+          </li>
+          <li data-toggle="modal" data-target="#costomerInfo">
+            <a>
+              <i class="fas fa-user"></i>
+              <br>Customer Info</a>       
+          </li>
+          <li data-toggle="modal" data-target="#moreModal"   data-backdrop="static">
+            <a>
+              <i class="far fa-lightbulb"></i>
+              <br>More</a>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 select-customer-right">
+      <div class="sur-info" data-toggle="modal" data-target="#costomerInfo">
+        <h3>Customer Info</h3>
+        <div class="custmerTabInfo" *ngIf="custFirstName">
+            <h3>First Name: {{custFirstName}}</h3>
+            <h3>Last Name: {{custLastName}}</h3>
+        </div>
+      </div>
+      <div class="sur-membership" data-toggle="modal" (click)="membershipInfo()" data-target="#membershipInfo">
+        <h3>Membership / Package</h3>
+      </div>
+      <div class="sur-visits " data-toggle="modal" (click)="visitInfo()" data-target="#visitInfo">
+        <h3>Visits</h3>
+      </div>
+      <div class="sur-history">
+        <h3>Transactions History</h3>
+        <div class="col-md-4">
+          <a class="btn btn-default" (click)="allInfo()" data-toggle="modal" data-target="#_allInfo" role="button">All</a>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-default" (click)="serviceInfo()" data-toggle="modal" data-target="#serviceInfo" role="button">Service</a>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-default" (click)="productInfo()" data-toggle="modal" data-target="#productsInfo" role="button">Products</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!--Transactions History end-->
+      <div class="sur-footer-right">
+        <div class="col-md-8 col-md-offset-4">
+          <ul>
+            <li>
+              <a (click)="backToDashboard()">
+                <i class="fas fa-arrow-left"></i>
+                <br>Back</a>
+            </li>
+            <li>
+              <a>
+                <i class="fas fa-times"></i>
+                <br>Cancel</a>
+            </li>
+            <li (click)="nextClick()">
+              <a>
+                <i class="fas fa-arrow-right"></i>
+                <br>Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <br/>
+
+  </div>
+  <router-outlet></router-outlet>
+</body>
+
