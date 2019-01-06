@@ -1,0 +1,175 @@
+<div >
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="promation-1">
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <h3 style="font-weight:300;">Create New Inventory Ticket</h3>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 ">
+    <div class="dropdown pull-right">
+      <button aria-expanded="true" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1"
+        type="button"> Tools
+
+      </button>
+      <ul aria-labelledby="dropdownMenu1" class="dropdown-menu menu-tools" id="menu-tools">
+        <li>
+          <a data-page="tools" href="#">Upload Physical Inventory </a>
+        </li>
+        <li>
+          <a data-page="cancelation" href="#" [routerLink]="" (click)="newInventory()"> Create New Inventory Ticket</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="new-inventory">
+  <div class="container">
+    <div class="row">
+      <h3 style="display:inline-block">Select Type of Ticket:</h3>
+      <input type="radio" name="optradio" (click)="Transfer()">Inventort Tranfer
+      <input type="radio" name="optradio" (click)="Incoming()">Incoming Inventory
+    </div>
+  </div>
+</div>
+<br>
+<div *ngIf="inventoryTranfer">
+  <div class="tranfer">
+    <div class="container">
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Branch:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select name="location.branchid" class="form-control" (ngModelChange)="setBranch($event)" [(ngModel)]="inventory.destination">
+              <option *ngFor="let data1 of this.locationData" [ngValue]="data1.branch_id">{{data1.branch_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Products:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select name="product" class="form-control" (ngModelChange)="selectProduct($event)" [(ngModel)]="inventory.productId">
+              <option *ngFor="let item of this.productData" [ngValue]="item.product_id">{{item.product_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Quantity:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input type="text" name="zip" maxlength="50" class="form-control" [(ngModel)]="inventory.itemQuty" (ngModelChange)="dispalyAmount(inventory.itemQuty)">
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Amount:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input type="text" name="zip" maxlength="50" class="form-control" [(ngModel)]="amount">
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">status:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select name="state" class="form-control" [(ngModel)]="inventory.poStatus">
+              <option value="" selected="">Select</option>
+              <option value="1">Logged</option>
+              <option value="2">Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-default" (click)="submitInventoryTicket()">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="inventoryIncoming">
+  <div class="incoming">
+    <div class="container">
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Supplier:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select class="form-control" name="supplier" [(ngModel)]="inventory.source">
+              <option *ngFor="let data1 of this.supplierData" [ngValue]="data1.supplier_id">{{data1.supplier_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Products:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select name="product" class="form-control" (ngModelChange)="selectProduct($event)" [(ngModel)]="inventory.productId">
+              <option *ngFor="let item of this.productData" [ngValue]="item.product_id">{{item.product_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Quantity:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input type="text" name="zip" maxlength="50" class="form-control" [(ngModel)]="inventory.itemQuty" (ngModelChange)="dispalyAmount(inventory.itemQuty)">
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">Amount:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input type="text" name="zip" maxlength="50" class="form-control" [(ngModel)]="amount">
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <label class="col-sm-4 col-form-label required">status:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <select name="state" class="form-control" [(ngModel)]="inventory.poStatus">
+              <option value="" selected="">Select</option>
+              <option value="1">Logged</option>
+              <option value="2">Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-default" (click)="submitInventoryTicket()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

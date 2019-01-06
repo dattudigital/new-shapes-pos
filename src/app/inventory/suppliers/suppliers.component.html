@@ -1,0 +1,231 @@
+<div >
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="staff-members-2">
+  <div class="row">
+    <div class="col-md-8 col-sm-8">
+      <h4 style="font-weight:600;"></h4>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <button type="button" class="btn btn-outline-success pull-right" (click)="newSupplier()">
+        <h4 class="margin0">
+          <i class="fas fa-plus-circle"></i> &nbsp; Add New</h4>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="promation-2">
+  <div class="row">
+    <div class="col-md-12" style="background: #f1f1f1;">
+      <div class="form-group">
+        <label for="input" class="col-md-2 control-label">Suppliers:</label>
+        <div class="col-md-3">
+          <select class="form-control" name="supplier" (ngModelChange)="setSuppliers($event)" [(ngModel)]="supplier.supplier_id">
+            <option value="0" disabled selected>Select</option>
+            <option *ngFor="let data1 of this.supplierData" [ngValue]="data1.supplier_id">{{data1.supplier_name}}</option>
+          </select>
+        </div>
+        <div class="col-md-5">
+          <div class="form-check pull-right">
+
+            <input class="form-check-input" type="checkbox" value="y" id="inlineFormCheck1" [(ngModel)]="inactiveSupplier" (click)="inactiveCheckbox()">
+            <label class="form-check-label" for="inlineFormCheck">
+              Show Inactive Suppliers &nbsp;&nbsp;
+            </label>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="tableShow" [style.visibility]="editStyle">
+  <div class="promation-2">
+    <div class="row">
+      <div class="col-md-12" style="background: #f1f1f1;">
+        <div class="form-group">
+          <label for="input" class="col-md-2 control-label">Suppliers:</label>
+          <div class="col-md-3">
+            <input type="text" name="name" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_name">
+          </div>
+          <div class="col-md-5">
+            <div class="form-check pull-right">
+              <label>SupplierId:{{supplier.supplier_id}}</label>
+              <br>
+              <input class="form-check-input" type="checkbox" id="inlineFormCheck1" [(ngModel)]="supplier.supplier_status">
+              <label class="form-check-label" for="inlineFormCheck">
+                Show Inactive Suppliers &nbsp;&nbsp;
+              </label>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="container">
+        <div class="col-sm-6">
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Address:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <textarea class="form-control" maxlength="1000" rows="2" name="address" [(ngModel)]="supplier.supplier_address"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">City:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="city" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_city">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">State/prov:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <select name="state" class="form-control" [(ngModel)]="supplier.supplier_state">
+                  <option value="" selected="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Zip/Postal:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="zip" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_zip">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Tax Rate:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="taxRate" maxlength="50" class="form-control" placeholder="0.00" [(ngModel)]="supplier.supplier_taxrate">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Payment Terms:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <select name="payment" class="form-control" [(ngModel)]="supplier.supplier_paymentterms">
+                  <option value="" selected="">V</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Payment Terms:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="terms" maxlength="50" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Suppliers Notes:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <textarea class="form-control" maxlength="1000" rows="2" name="notes" [(ngModel)]="supplier.supplier_notes"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-primary" (click)="updateSupplier(supplier)">Update</button>
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-warning" (click)="cancleSupplier()">Cancel</button>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Contact Name:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="contactName" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_contact_name">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Contact Title:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="contactTitle" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_title">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">phone:</label>
+            <div class="col-sm-3">
+              <div class="input-group">
+                <input type="text" name="phone" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_phone">
+              </div>
+            </div>
+            <label class="col-sm-2 col-form-label required">Ext:</label>
+            <div class="col-sm-3">
+              <div class="input-group">
+                <input type="text" name="ext" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_ext">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Fax:</label>
+            <div class="col-sm-3">
+              <div class="input-group">
+                <input type="text" name="fax" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_fax">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Home Page:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="home" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_homepage">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-4 col-form-label required">Email:</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <input type="text" name="email" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_email">
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label class="col-sm-8 col-form-label required">Rewards points Earned(per $1.00 spent):</label>
+            <div class="col-sm-2">
+              <div class="input-group">
+                <input type="text" name="email" maxlength="50" class="form-control" [(ngModel)]="supplier.supplier_rewardpoints">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

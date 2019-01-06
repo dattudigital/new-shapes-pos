@@ -15,7 +15,23 @@ export class InvSidebarComponent implements OnInit {
   }
 
   redirectToPurchaseOrder() {
-    this.router.navigate(['inventory/purchase'])
+    this.router.navigate(['inventory/purchase-order'])
   }
 
+  redirectToSupplier() {
+    this.router.navigate(['inventory/suppliers'])
+  }
+
+  redirectToInventory() {
+    this.router.navigate(['inventory/inventory-tickets']);
+  }
+
+  redirectToUpdate() {
+    this.router.navigate(['inventory/physical-inventory']);
+  }
+
+  redirectToReportsInventory() {
+    this.router.navigate(['inventory/reports']);
+  }
+  
 }
