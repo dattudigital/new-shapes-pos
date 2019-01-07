@@ -44,11 +44,11 @@ export class PurchaseOrderSupplierComponent implements OnInit {
   retrieveData() {
     this.retrievedObject = JSON.parse(localStorage.getItem('supplierdata'));
     console.log(this.retrievedObject);
-    console.log(this.retrievedObject[0].supplier_name);
-    this.supplierId = this.retrievedObject[0].supplier_id;
-    this.supplierName = this.retrievedObject[0].supplier_name;
-    this.paymentTerms = this.retrievedObject[0].supplier_paymentterms;
-    this.supplierAddress = this.retrievedObject[0].supplier_address;
+    console.log(this.retrievedObject.result[0].supplier_name);
+    this.supplierId = this.retrievedObject.result[0].supplier_id;
+    this.supplierName = this.retrievedObject.result[0].supplier_name;
+    this.paymentTerms = this.retrievedObject.result[0].supplier_paymentterms;
+    this.supplierAddress = this.retrievedObject.result[0].supplier_address;
 
   }
   poDeliveryDate() {

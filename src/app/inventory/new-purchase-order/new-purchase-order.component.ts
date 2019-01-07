@@ -29,7 +29,7 @@ export class NewPurchaseOrderComponent implements OnInit {
     this._location.back();
   }
   orderSupplier(){
-    this.router.navigate(['purchase-supplier']);
+    this.router.navigate(['inventory/purchase-order-supplier']);
  
   }
   purchaseSuppliers(supplier_id:any){
