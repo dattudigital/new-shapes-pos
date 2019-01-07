@@ -12,6 +12,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component'
 import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
 import { TimeClockComponent } from './time-clock/time-clock.component';
 import { MessageService } from 'primeng/api';
 
@@ -32,7 +33,8 @@ import { MessageService } from 'primeng/api';
     AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
-    CalendarModule
+    CalendarModule,
+    TableModule
   ],
   providers: [AuthGuard , MessageService],
   bootstrap: [AppComponent],
