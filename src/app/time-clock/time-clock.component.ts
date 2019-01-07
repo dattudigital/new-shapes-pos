@@ -7,7 +7,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  templateUrl: './time-clock.component.html'
+  templateUrl: './time-clock.component.html' ,
+  styleUrls: ['./time-clocks.component.css']
 })
 export class TimeClockComponent {
 
@@ -19,6 +20,7 @@ export class TimeClockComponent {
   buttonColorTimeOut: string = '#345465';
   buttonColorBreakIn: string = '#345465';
   buttonColorBreakOut: string = '#345465';
+  printAppModelText: any;
   totalHours;
   totalMin;
   finalHours;
@@ -85,7 +87,7 @@ export class TimeClockComponent {
     if (!this.data.check_out_time) {
       this.disable_time_out = false;
     }
- 
+
   }
 
   getTimeAndDate() {
@@ -210,5 +212,9 @@ export class TimeClockComponent {
       this.commonBreakInCode()
       return true;
     }
+  }
+
+  printCommonApp(val) {
+    this.printAppModelText = val;
   }
 }
