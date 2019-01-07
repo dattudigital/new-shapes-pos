@@ -8,11 +8,8 @@ import { AppRoutingModule } from './app.routing'
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component'
-import { SchedulerComponent } from './scheduler/scheduler.component'
 import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/calendar';
-import { TableModule } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 
 @NgModule({
@@ -20,7 +17,6 @@ import { MessageService } from 'primeng/api';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    SchedulerComponent,
     FooterComponent  ],
   imports: [
     BrowserModule,
@@ -29,9 +25,7 @@ import { MessageService } from 'primeng/api';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule,
-    CalendarModule,
-    TableModule
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard , MessageService],
   bootstrap: [AppComponent],
