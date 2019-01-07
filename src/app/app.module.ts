@@ -12,6 +12,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component'
 import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CalendarModule } from 'primeng/calendar';
     AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
-    CalendarModule
+    CalendarModule,
+    TableModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

@@ -10995,3 +10995,16 @@ font-size: 30px;
 i.far.fa-file-excel{
     font-size: 30px;
 }
+.ui-calendar .ui-calendar-button {
+  height: 100%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 2em;
+  border-left: 0 none;
+  position: absolute;
+}
+.tab-schedule1 {
+  background: #f2f2f2;
+  padding: 30px;
+  border: 2px solid #f2f2f2;
+}

@@ -18,19 +18,19 @@ export class SheduleServiceService {
     return this.http.get(environment.host + 'branches');
   }
   getStaffByLocation(id: number) {
-    return this.http.get(environment.host + 'branch-emp/'+ id );
+    return this.http.get(environment.host + 'branch-emp/' + id);
   }
   getBranchDetail(id: number) {
-    return this.http.get(environment.host + 'branches/'+ id );
+    return this.http.get(environment.host + 'branches/' + id);
   }
-  getStaffAppointments(id1: number,id2:number) {
-    return this.http.get(environment.host + 'emp-branch-appt/'+ id1+'/'+id2);
+  getStaffAppointments(id1: number, id2: number) {
+    return this.http.get(environment.host + 'emp-branch-appt/' + id1 + '/' + id2);
   }
-  getEmpAppointments(startdate: any, enddate: any, emp_id: number, branchid: number) {
-    return this.http.get(environment.host + 'orders/appointment?startdate=' + startdate + '&enddate=' + enddate + '&emp_id=' + emp_id + '&branchid=' + branchid);
+  getEmpAppointments(url: any) {
+    return this.http.get(environment.host + 'orders/appointment?' + url);
     // http://ec2-54-88-194-105.compute-1.amazonaws.com:3001/orders/appointment?startdate=2018-01-01&enddate=2018-11-11&emp_id=1&branchid=1
   }
-  getCategroys(){
+  getCategroys() {
     return this.http.get(environment.host + 'categorys');
   }
 
