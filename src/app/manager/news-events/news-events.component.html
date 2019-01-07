@@ -1,59 +1,68 @@
-<div >
-	
-
-
-	<div class="news-updates">
-		<div class="row">
-			<div class="col-sm-6">
-				<h3 class="margin-10" style="font-weight:600;">News & Events</h3>
-			</div>
-			<div class="col-sm-6">
-				<button type="button" class="btn backBtn pull-right" (click)="backToMembership();">Back</button>
-			</div>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="container">
+			<h3>News & Events</h3>
 		</div>
+	</div>
+	<div class="col-sm-6">
+		<button type="button" class="btn backBtn pull-right" (click)="backToManager();">Back</button>
+	</div>
+</div>
 
-		<div class="news-updates1">
-			<h3>Update News and Events</h3>
-			<div class="form-group">
-				<label for="input" class="col-md-4 control-label">Top Message</label>
-				<div class="col-md-8">
-					<textarea class="form-control" id="newsFormControlTextarea1" [(ngModel)]="messageData.top_msg" rows="3"></textarea>
-				</div>
-				<div class="clear"></div>
+<div class="news-updates1">
+	<div class="container">
+		<h4>Update News and Events</h4>
+		<div class="form-group">
+			<label for="input" class="col-md-4 control-label">Top Message</label>
+			<div class="col-md-8">
+				<textarea class="form-control" id="newsFormControlTextarea1" [(ngModel)]="messageData.top_msg" rows="3"></textarea>
 			</div>
-			<button type="button" class="btn btn-light pull-right" (click)="updateMessage(messageData);updateSuccess()">
-				<b>Update</b>
-			</button>
 			<div class="clear"></div>
 		</div>
-		<p-growl [(value)]="msgs"></p-growl>
-		<div class="news-updates1">
-			<h3>Add New News Or Event</h3>
+		<button type="button" class="btn btn-light pull-right" (click)="updateNewsAndEventsMessage()">
+			<b>Update</b>
+		</button>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="news-updates1">
+	<div class="container">
+		<h4>Add New News Or Event</h4>
+		<form [formGroup]="eventsForm">
 			<div class="form-group">
 				<label for="input" class="col-md-4 control-label">News / Event Name 1:</label>
 				<div class="col-md-8">
-					<!-- <input type="text" name="news" class="form-control" [(ngModel)]="eventName"  ngModel required #news="ngModel">
-					<div *ngIf="news.errors?.required && submitted" style="color:red">Event Name is required </div> -->
-					<input type="text" name="news" class="form-control" [(ngModel)]="eventName" ngModel required #news="ngModel" placeholder="Event Name">
-					<div *ngIf="news.errors?.required  && (news.dirty ||news.touched )" style="color:red">Event Name is required </div>
+					<input type="text" maxlength="50" class="form-control" formControlName="eventName" [(ngModel)]="newsAndEventData.event_name"
+					 placeholder="Event Name" [ngClass]="{ 'is-invalid': submitted && f.eventName.errors }">
+					<div *ngIf="submitted && f.eventName.errors" class="invalid-feedback">
+						<div *ngIf="f.eventName.errors.required" style="color:red">Event Number is required</div>
+					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
+
 			<div class="form-group">
-				<label for="input" claEYTss="col-md-4 control-label">Description 1</label>
+				<label for="input" class="col-md-4 control-label">Description 1</label>
 				<div class="col-md-8">
-					<textarea class="form-control" id="newsFormControlTextarea2 " [(ngModel)]="eventDescription" rows="3"></textarea>
+					<textarea class="form-control" [(ngModel)]="newsAndEventData.event_desc" rows="3" [(ngModel)]="showMoreControls"
+					 [ngModelOptions]="{standalone: true}"></textarea>
 				</div>
 				<div class="clear"></div>
 			</div>
+
 			<div class="form-group">
 				<label for="input" class="col-md-4 control-label">Link</label>
 				<div class="col-md-8">
-					<input type="url" name="link" class="form-control" [(ngModel)]="eventLink" placeholder="event link" ngModel required #link="ngModel">
-					<div *ngIf="link.errors?.required && submitted" style="color:red">Event Name is required </div>
+					<input type="type" class="form-control" formControlName="eventLink" [(ngModel)]="newsAndEventData.event_link"
+					 placeholder="event link" [ngClass]="{ 'is-invalid': submitted && f.eventLink.errors }">
+					<div *ngIf="submitted && f.eventLink.errors" class="invalid-feedback">
+						<div *ngIf="f.eventLink.errors.required" style="color:red">Event Link is required</div>
+					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
+
 			<div class="form-group">
 				<label for="input" class="col-md-4 control-label">Active Between</label>
 				<div class="col-md-8">
@@ -62,8 +71,11 @@
 							<label for="input" class="col-md-5 control-label">Start Date</label>
 							<div class="col-md-7">
 								<div class="input-group">
-									<p-calendar [(ngModel)]="eventStartDate" name="eventStartdate" [showIcon]="true" (ngModelChange)="getEventStartDate($event)"
-									 dateFormat="yy-mm-dd"></p-calendar>
+									<p-calendar [(ngModel)]="date1" formControlName="StartDate" [showIcon]="true" [(ngModel)]="newsAndEventData.event_startdate"
+									 (ngModelChange)="getEventStartDate()" dateFormat="yy-mm-dd" [ngClass]="{ 'is-invalid': submitted && f.StartDate.errors }"></p-calendar>
+									<div *ngIf="submitted && f.StartDate.errors" class="invalid-feedback">
+										<div *ngIf="f.StartDate.errors.required" style="color:red">Event startdate is required</div>
+									</div>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -74,7 +86,12 @@
 							<label for="input" class="col-md-5 control-label">End Date</label>
 							<div class="col-md-7">
 								<div class="input-group">
-									<p-calendar [(ngModel)]="eventEndDate" name="eventEnddate" [showIcon]="true" (ngModelChange)="getEventEndDate($event)" dateFormat="yy-mm-dd"></p-calendar>
+									<p-calendar [(ngModel)]="date2" formControlName="EndDate" [showIcon]="true" [(ngModel)]="newsAndEventData.event_enddate"
+									 (ngModelChange)="getEventEndDate()" dateFormat="yy-mm-dd" [ngClass]="{ 'is-invalid': submitted && f.EndDate.errors }"></p-calendar>
+									<div *ngIf="submitted && f.EndDate.errors" class="invalid-feedback">
+										<div *ngIf="f.EndDate.errors.required" style="color:red">Event Enddate is required</div>
+									</div>
+
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -83,11 +100,10 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<button type="button" class="btn btn-light pull-right" (click)="addEventNews();showSuccess()">
+			<button type="button" class="btn btn-light pull-right" (click)="addEventAndNews()">
 				<b>Add Event / News</b>
 			</button>
 			<div class="clear"></div>
-		</div>
+		</form>
 	</div>
 </div>
-
