@@ -1,0 +1,93 @@
+<div >
+	
+
+
+	<div class="news-updates">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="margin-10" style="font-weight:600;">News & Events</h3>
+			</div>
+			<div class="col-sm-6">
+				<button type="button" class="btn backBtn pull-right" (click)="backToMembership();">Back</button>
+			</div>
+		</div>
+
+		<div class="news-updates1">
+			<h3>Update News and Events</h3>
+			<div class="form-group">
+				<label for="input" class="col-md-4 control-label">Top Message</label>
+				<div class="col-md-8">
+					<textarea class="form-control" id="newsFormControlTextarea1" [(ngModel)]="messageData.top_msg" rows="3"></textarea>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<button type="button" class="btn btn-light pull-right" (click)="updateMessage(messageData);updateSuccess()">
+				<b>Update</b>
+			</button>
+			<div class="clear"></div>
+		</div>
+		<p-growl [(value)]="msgs"></p-growl>
+		<div class="news-updates1">
+			<h3>Add New News Or Event</h3>
+			<div class="form-group">
+				<label for="input" class="col-md-4 control-label">News / Event Name 1:</label>
+				<div class="col-md-8">
+					<!-- <input type="text" name="news" class="form-control" [(ngModel)]="eventName"  ngModel required #news="ngModel">
+					<div *ngIf="news.errors?.required && submitted" style="color:red">Event Name is required </div> -->
+					<input type="text" name="news" class="form-control" [(ngModel)]="eventName" ngModel required #news="ngModel" placeholder="Event Name">
+					<div *ngIf="news.errors?.required  && (news.dirty ||news.touched )" style="color:red">Event Name is required </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="form-group">
+				<label for="input" claEYTss="col-md-4 control-label">Description 1</label>
+				<div class="col-md-8">
+					<textarea class="form-control" id="newsFormControlTextarea2 " [(ngModel)]="eventDescription" rows="3"></textarea>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="form-group">
+				<label for="input" class="col-md-4 control-label">Link</label>
+				<div class="col-md-8">
+					<input type="url" name="link" class="form-control" [(ngModel)]="eventLink" placeholder="event link" ngModel required #link="ngModel">
+					<div *ngIf="link.errors?.required && submitted" style="color:red">Event Name is required </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="form-group">
+				<label for="input" class="col-md-4 control-label">Active Between</label>
+				<div class="col-md-8">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group">
+							<label for="input" class="col-md-5 control-label">Start Date</label>
+							<div class="col-md-7">
+								<div class="input-group">
+									<p-calendar [(ngModel)]="eventStartDate" name="eventStartdate" [showIcon]="true" (ngModelChange)="getEventStartDate($event)"
+									 dateFormat="yy-mm-dd"></p-calendar>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group">
+							<label for="input" class="col-md-5 control-label">End Date</label>
+							<div class="col-md-7">
+								<div class="input-group">
+									<p-calendar [(ngModel)]="eventEndDate" name="eventEnddate" [showIcon]="true" (ngModelChange)="getEventEndDate($event)" dateFormat="yy-mm-dd"></p-calendar>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<button type="button" class="btn btn-light pull-right" (click)="addEventNews();showSuccess()">
+				<b>Add Event / News</b>
+			</button>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,55 @@
+<div >
+  
+</div>
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Membership Name</th>
+      <th>
+        Membership Code </th>
+      <th>Membership Price</th>
+      <th>Category Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of memberships">
+      <td *ngIf="item.membership_id == editRowId">
+        <input type="text" [(ngModel)]="item.membership_name">
+      </td>
+      <td *ngIf="item.membership_id != editRowId" (click)="edit(item.membership_id)">{{item.membership_name}}</td>
+
+      <td *ngIf="item.membership_id == editRowId">
+        <input type="text" [(ngModel)]="item.membership_code">
+      </td>
+      <td *ngIf="item.membership_id != editRowId" (click)="edit(item.membership_id)">{{item.membership_code}}</td>
+
+      <td *ngIf="item.membership_id == editRowId">
+        <input type="text" [(ngModel)]="item.membership_price">
+      </td>
+      <td *ngIf="item.membership_id != editRowId" (click)="edit(item.membership_id)">{{item.membership_price}}</td>
+
+      <td *ngIf="item.membership_id == editRowId">
+
+        <select name="catagroy" class="form-control" (ngModelChange)="set_catagroy($event)" [(ngModel)]="item.cat_id">
+          <option *ngFor="let data2 of this.catagroyData;let i=index" [ngValue]="data2.cat_id">{{data2.category_name}}</option>
+        </select>
+      </td>
+      <td *ngIf="item.membership_id != editRowId" (click)="edit(item.membership_id)">{{item.category_name}}</td>
+
+
+      <td *ngIf="item.membership_id  == editRowId" (click)="UpdateMembership(item)">
+        Save
+      </td>
+      <td *ngIf="item.membership_id  != editRowId" (click)="edit(item.membership_id )">edit</td>
+    </tr>
+  </tbody>
+
+</table>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn" (click)="backToMembership();">Back</button>
+  </div>
+</div>

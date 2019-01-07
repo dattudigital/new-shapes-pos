@@ -1,0 +1,33 @@
+.ms-set-1-right1 {
+    text-align: right;
+}
+.ms-set-1-1 {
+    padding: 10px;
+}
+.panel-heading .accordion-toggle:after {
+    margin-left: -6px;
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: left;
+    color: grey;
+    margin-right: 14px;
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+.panel-default > .panel-heading {
+    color: #333;
+    background: none;
+    border: none !important;
+}
+.panel-default {
+    border: none;
+    margin-top: 10px;
+}
+a.btn1 {
+    padding: 5px 20px;
+    text-decoration: none;
+    background: green;
+    color: #fff;
+}

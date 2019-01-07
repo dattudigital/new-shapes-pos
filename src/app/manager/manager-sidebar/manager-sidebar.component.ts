@@ -371,87 +371,87 @@ export class ManagerSidebarComponent implements OnInit {
   }
 
   showActiveMembershipClick() {
-    this.router.navigate(['management-membership']);
+    this.router.navigate(['manager/management-membership']);
   }
 
   showInactiveMembershipClick() {
-    this.router.navigate(['inactive-membership'])
+    this.router.navigate(['manager/inactive-membership'])
 
   }
 
   staffClockInandOut() {
-    this.router.navigate(['staff-clock-in/out'])
+    this.router.navigate(['manager/staff-clock-in/out'])
   }
 
   VieworEditTimeClock() {
-    this.router.navigate(['staff-view/edit-timeclock'])
+    this.router.navigate(['manager/staff-view/edit-timeclock'])
   }
 
   StaffPermissions() {
-    this.router.navigate(['staff-permissions'])
+    this.router.navigate(['manager/staff-permissions'])
   }
 
   ScheduleView() {
-    this.router.navigate(['staff-schedule-view'])
+    this.router.navigate(['manager/staff-schedule-view'])
   }
 
   StaffMembers() {
-    this.router.navigate(['staff-members'])
+    this.router.navigate(['manager/staff-members'])
   }
 
   ScheduleAddorEdit() {
-    this.router.navigate(['staff-schedule-add/edit'])
+    this.router.navigate(['manager/staff-schedule-add/edit'])
   }
 
   AddPackagesClick() {
-    this.router.navigate(['add-packages'])
+    this.router.navigate(['manager/add-packages'])
   }
 
   EditPackagesClick() {
-    this.router.navigate(['edit-packages'])
+    this.router.navigate(['manager/edit-packages'])
   }
 
   AddPromotionsClick() {
-    this.router.navigate(['add-promotions'])
+    this.router.navigate(['manager/add-promotions'])
   }
 
   EditPromotionsClick() {
-    this.router.navigate(['edit-promotions'])
+    this.router.navigate(['manager/edit-promotions'])
   }
 
   newsAndEventsClick() {
-    this.router.navigate(['news-and-events'])
+    this.router.navigate(['manager/news-and-events'])
   }
 
   autoEmailClick() {
-    this.router.navigate(['auto-emails'])
+    this.router.navigate(['manager/auto-emails'])
   }
   membershipSetupClick() {
-    this.router.navigate(['membership-setup'])
+    this.router.navigate(['manager/membership-setup'])
   }
 
   cancelClick() {
-    this.router.navigate(['cancel-group-lesson'])
+    this.router.navigate(['manager/cancel-group-lesson'])
   }
 
   newGiftClick() {
-    this.router.navigate(['add-new-gift-card'])
+    this.router.navigate(['manager/add-new-gift-card'])
   }
 
   editGiftClick() {
-    this.router.navigate(['edit-gift-card'])
+    this.router.navigate(['manager/edit-gift-card'])
   }
 
   viewGiftClick() {
-    this.router.navigate(['view-active-gift-card'])
+    this.router.navigate(['manager/view-active-gift-card'])
   }
 
   redirectToViewGiftClick() {
-    this.router.navigate(['view-active-gift-card'])
+    this.router.navigate(['manager/view-active-gift-card'])
   }
 
   onlineGiftClick() {
-    this.router.navigate(['online-gift-card'])
+    this.router.navigate(['manager/online-gift-card'])
   }
 
   setSub_catagroy(cat_id: any): void {

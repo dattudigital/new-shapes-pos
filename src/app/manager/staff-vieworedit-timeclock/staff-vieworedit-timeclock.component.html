@@ -1,0 +1,188 @@
+<div >
+	
+
+	<div class="view_edit padding-20">
+
+		<div class="row">
+
+			<div class="col-sm-6">
+				<h3 style="font-weight:600;">View / Edit Time Clock</h3>
+			</div>
+			<div class="col-sm-6">
+				<button type="button" class="btn backBtn pull-right" (click)="backToMembership();">Back</button>
+			</div>
+		</div>
+		<div class="view_edit-1">
+			<div>
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">View</label>
+						<div class="col-md-7">
+							<select class="form-control">
+								<option>View</option>
+								<option>All staff members</option>
+								<option>Abramain Aveta</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">Location</label>
+						<div class="col-md-7">
+							<select class="form-control">
+								<option>View Location</option>
+								<option></option>
+								<option></option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">Time Clock Task </label>
+						<div class="col-md-7">
+							<select class="form-control">
+								<option>All</option>
+								<option></option>
+								<option></option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">Start Date</label>
+						<div class="col-md-7">
+							<div class="input-group">
+								<input type="text" class="form-control" name="date" id="date1" data-select="datepicker" data-locked="25/12/2014;1/1/2015">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-primary" data-toggle="datepicker">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">End Date</label>
+						<div class="col-md-7">
+							<div class="input-group">
+								<input type="text" class="form-control" name="date" id="date2
+								" data-select="datepicker" data-locked="25/12/2014;1/1/2015">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-primary" data-toggle="datepicker">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="inlineFormCheck">
+						<label class="form-check-label" for="inlineFormCheck">
+							Include inactive staff members
+						</label>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+					<div class="generate-cs" style="padding:0;">
+						<span class="generate-cs-button">Generate</span>
+						<span title="Export to PDF">
+							<i class="fas fa-file-pdf"></i>
+						</span>
+						<span title="Tag Add">
+							<i class="fas fa-tag"></i>
+						</span>
+						<span class="tag-new-icon" title="Tag New">
+							<i class="fas fa-tag"></i>
+						</span>
+						<span title="Export to Excel">
+							<i class="far fa-file-excel"></i>
+						</span>
+						<span title="Print this Report">
+							<i class="fas fa-print"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="view_edit-2">
+			<table width="100%">
+				<tr>
+					<th colspan="6" style="text-align:left;">Vimal Patel</th>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>07/03/2018</td>
+					<td>Clocked in 09:58:48 AM</td>
+					<td>Clocked out 03:58:48 PM</td>
+					<td>Hours: 06:25</td>
+					<td>
+						<a href="#">Edit</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>07/03/2018</td>
+					<td>Clocked in 08:58:48 AM</td>
+					<td>Clocked out 02:58:48 PM</td>
+					<td>Hours: 05:25</td>
+					<td>
+						<a href="#">Edit</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>07/03/2018</td>
+					<td>Clocked in 08:58:48 AM</td>
+					<td>Clocked out 02:58:48 PM</td>
+					<td>Hours: 05:25</td>
+					<td>
+						<a href="#">Edit</a>
+					</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>07/03/2018</td>
+					<td>Clocked in 08:58:48 AM</td>
+					<td>Clocked out 02:58:48 PM</td>
+					<td>Hours: 05:25</td>
+					<td>
+						<a href="#">Edit</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align:right;">Total hours: 19:58</td>
+					<td>
+						<b>@$0.00 per hour = $0.00</b>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align:right;">Grand total: 19:58</td>
+					<td>
+						<b>$0.00</b>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</div>
+
