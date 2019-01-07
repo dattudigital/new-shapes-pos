@@ -1,12 +1,11 @@
-<div class="tab-schedule1">
+<div class="tab-schedule1" style="margin: 10px;">
     <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label for="input" class="col-md-5 control-label">Start Date</label>
             <div class="col-md-7">
                 <div class="input-group">
-                    <!-- <p-calendar [(ngModel)]="date1" [(ngModel)]="shedule.startdate" name="shedule.startdate" [showIcon]="true"
-                        (ngModelChange)="getStartDate($event)" dateFormat="yy-mm-dd"></p-calendar> -->
-                    <p-calendar [(ngModel)]="date1" [showIcon]="true"></p-calendar>
+                    <p-calendar [(ngModel)]="date1" [(ngModel)]="schedule.startdate" name="shedule.startdate"
+                        [showIcon]="true" (ngModelChange)="getStartDate($event)" dateFormat="yy-mm-dd"></p-calendar>
                 </div>
             </div>
             <div class="clear"></div>
@@ -17,9 +16,8 @@
             <label for="input" class="col-md-5 control-label">End Date</label>
             <div class="col-md-7">
                 <div class="input-group">
-                    <!-- <p-calendar [(ngModel)]="date2" [(ngModel)]="shedule.enddate" name="shedule.enddate" [showIcon]="true"
-                        (ngModelChange)="getEndDate($event)" dateFormat="yy-mm-dd"></p-calendar> -->
-                    <p-calendar [(ngModel)]="date2" [showIcon]="true"></p-calendar>
+                    <p-calendar [(ngModel)]="date2" [(ngModel)]="schedule.enddate" name="shedule.enddate" [showIcon]="true"
+                        (ngModelChange)="getEndDate($event)" dateFormat="yy-mm-dd"></p-calendar>
                 </div>
             </div>
             <div class="clear"></div>
@@ -29,8 +27,8 @@
         <div class="form-group">
             <label for="input" class="col-md-3 control-label">Staff</label>
             <div class="col-md-9">
-                <select name="shedule.emp_id" class="form-control" (ngModelChange)="setStaff($event)" [(ngModel)]="shedule.employee_id">
-                    <option *ngFor="let data1 of this.empData" [ngValue]="data1.employee_id">{{data1.employee_firstname}}</option>
+                <select name="shedule.emp_id" class="form-control" (ngModelChange)="setemp()" [(ngModel)]="schedule.employee_id">
+                    <option *ngFor="let data of empData" [ngValue]="data.employee_id">{{data.employee_firstname}}</option>
                 </select>
             </div>
             <div class="clear"></div>
@@ -40,8 +38,8 @@
         <div class="form-group">
             <label for="input" class="col-md-3 control-label">Locations</label>
             <div class="col-md-9">
-                <select name="shedule.branchid" class="form-control" (ngModelChange)="setBranch($event)" [(ngModel)]="shedule.branch_id">
-                    <option *ngFor="let data1 of this.locationData" [ngValue]="data1.branch_id">{{data1.branch_name}}</option>
+                <select name="shedule.branchid" class="form-control" [(ngModel)]="schedule.branch_id">
+                    <option *ngFor="let data of locationData" [ngValue]="data.branch_id">{{data.branch_name}}</option>
                 </select>
             </div>
             <div class="clear"></div>
@@ -60,15 +58,42 @@
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="generate-cs" style="padding:0;">
-            <button type="submit" class="btn btn-warning float-right" value="Save">Generate</button>
-            <a *ngIf="showXLandPdf" (click)="pdfDownload();" title="Export to PDF">
+            <button type="submit" class="btn btn-warning float-right" (click)="getShedule()">Generate</button>
+            <a (click)="pdfDownload();" title="Export to PDF">
                 <i class="fas fa-file-pdf"></i>
             </a>
 
-            <a *ngIf="showXLandPdf" (click)="xlDownload();" title="Export to Excel">
+            <a (click)="xlDownload();" title="Export to Excel">
                 <i class="far fa-file-excel"></i>
             </a>
         </div>
     </div>
     <div class="clear"></div>
 </div>
+
+
+<p-table #dt [columns]="cols" [value]="appointmentsData" [paginator]="true" [rows]="4">
+    <ng-template pTemplate="caption">
+        <div style="text-align: right">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                style="width:auto">
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-i="rowIndex" let-data>
+        <tr>
+            <td *ngFor="let col of cols">
+                {{data[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
