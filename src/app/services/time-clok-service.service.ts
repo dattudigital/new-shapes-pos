@@ -8,7 +8,9 @@ import { environment } from '../../environments/environment';
 export class TimeClokServiceService {
 
   constructor(private http: Http) { }
-
+  public timeClockLoginCredentials(loginData: any) {
+    return this.http.post(environment.host + 'time-clocks/login', loginData)
+  }
   public saveInandOutTime(time: any) {
     return this.http.post(environment.host + 'time-clocks', time)
   }

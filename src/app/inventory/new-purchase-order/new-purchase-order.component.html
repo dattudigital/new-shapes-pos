@@ -1,0 +1,33 @@
+<div >
+    
+  </div>
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-2">
+      <button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="new-order">
+<h3>New Purchase Order</h3>
+<div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="input" class="col-md-2 control-label">Suppliers:</label>
+        <div class="col-md-3">
+          <select class="form-control" name="supplier" (ngModelChange)="purchaseSuppliers($event)" [(ngModel)]="supplier.supplier_id">
+            <option *ngFor="let data1 of this.supplierData" [ngValue]="data1.supplier_id">{{data1.supplier_name}}</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+         <button type="submit" class="btn btn-sm" [disabled]="selectDisable" (click)="orderSupplier()">Select</button>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  

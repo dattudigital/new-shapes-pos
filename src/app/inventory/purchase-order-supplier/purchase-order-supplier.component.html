@@ -1,0 +1,156 @@
+<div >
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+  </div>
+  <div class="clear"></div>
+</div>
+<div calss="order-supplier">
+  <div class="row">
+    <div class="container">
+      <div class="col-sm-8">
+        <div class="contract-autopay-1">
+          <img src="../../assets/images/logo-300x70.jpg">
+
+          <div class="clear"></div>
+          <h3>{{supplierName}}</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label>Payment Terms</label>
+            <span>{{paymentTerms}}</span>
+          </div>
+          <div class="col-sm-3">
+            <label>Payment Method</label>
+            <span>{{paymentTerms}}</span>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="input" class="col-md-6 control-label">Delivery Date</label>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <p-calendar [(ngModel)]="date1" [(ngModel)]="deliveryDate" name="deliveryDate" [showIcon]="true" (ngModelChange)="poDeliveryDate($event)"
+                    dateFormat="yy-mm-dd"></p-calendar>
+
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12" style="background-color:gray;color:#fff">
+              <h4>ADD PRODUCTS TO ORDER</h4>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="input" class="col-md-4 control-label">Show</label>
+                <div class="col-md-7">
+                  <select name="shedule.emp_id" class="form-control" [(ngModel)]="showItem">
+                    <option name="source" selected="">Select</option>
+                    <option *ngFor="let data1 of this.productData" [ngValue]="data1.product_name">{{data1.product_name}}</option>
+                  </select>
+
+                  <!-- <select name="show" class="form-control" (ngModelChange)="setStaff($event)" [(ngModel)]="shedule.employee_id">
+                    <option *ngFor="let data1 of this.productData" [ngValue]="data1.product_id">{{data1.product_name}}</option>
+                  </select> -->
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <div class="col-md-9">
+                  <select name="shedule.emp_id" class="form-control">
+                    <option name="source" selected=""> All Categories</option>
+                    <option>option</option>
+                    <option>option 1</option>
+                    <option>option 2</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <label class="form-check-label" for="inlineFormCheck">
+                Keep Results &nbsp;&nbsp;
+              </label>
+              <input class="form-check-input" type="checkbox" id="inlineFormCheck1">
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="input" class="col-md-5 control-label">Search By</label>
+              <div class="col-md-7">
+                <select name="shedule.emp_id" class="form-control">
+                  <option name="source" selected="">All fields</option>
+                  <option>option 1</option>
+                  <option>option 2</option>
+                </select>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" name="city" maxlength="50" class="form-control">
+          </div>
+          <div class="col-sm-2">
+            <button type="submit">Search</button>
+          </div>
+          <div class="col-sm-3">
+
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-sm-2 col-form-label required"> Notes:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" maxlength="1000" [(ngModel)]="poNotes" rows="2" name="notes"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <button type="submit" (click)="savePurchaseOrder()">Auto Generate Po</button>
+        </div>
+        <br>
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-3">
+        <h4>Suppliers:
+          <a href="#" [routerLink]="" (click)="redirectToEditSupplier()">[Edit Supplier]</a>
+        </h4>
+        <span>
+          {{supplierAddress}}
+        </span>
+        <div class="row">
+          <label for="input" class="col-md-5 control-label">Location</label>
+          <div class="col-md-7">
+            <select name="shedule.emp_id" class="form-control">
+              <option name="source" selected="">All fields</option>
+              <option>option 1</option>
+              <option>option 2</option>
+            </select>
+          </div>
+        </div>
+        <h4>Ship To:
+          <a href="#">[Edit Location]</a>
+        </h4>
+        <span>
+          {{supplierAddress}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+

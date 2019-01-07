@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from '../services/login.service'
-
+import { TimeClokServiceService } from '../services/time-clok-service.service'
 declare var $: any;
 
 @Component({
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   errorMessage = false;
   btnDisable = true;
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private service: TimeClokServiceService) {
 
     if (this.router.url == '/sale-dashboard') {
       $(document).ready(function () {
@@ -110,10 +110,11 @@ export class HeaderComponent implements OnInit {
 
   redirectToTimeClocks() {
     this.removeActiveClass();
-    this.router.navigate(['time-clocks'])
     $("#__time-clocks").click(function () {
       $("#__time-clocks").addClass("active");
     });
+    $('#secondaryLoginModal').modal('show')
+    this.redirect = "time-clock";
   }
 
   redirectToSchedule() {
@@ -161,7 +162,7 @@ export class HeaderComponent implements OnInit {
   }
 
   redirectToHome() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['sale']);
   }
 
   errorClear() {
@@ -182,30 +183,39 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('setup');
     sessionStorage.removeItem('inventory');
     sessionStorage.removeItem('manager');
+    sessionStorage.removeItem('time-clock');
+    console.log(this.redirect)
     if (this.mailId && this.password) {
-      this.loginService.loginData(data).subscribe(loginData => {
-        if (loginData.json().status == false) {
-          this.errorMessage = true;
-        } else {
+      if (this.redirect == "time-clock") {
+        this.service.timeClockLoginCredentials(data).subscribe(res => {
+          sessionStorage.setItem('time-clock', JSON.stringify(res.json()));
+          this.router.navigate(['time-clock']);
           $('#secondaryLoginModal').modal('hide');
-          this.password = "";
-          this.mailId = "";
-          if (this.redirect == 'setup') {
-            sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
-            this.router.navigate(['setup'])
-          } else if (this.redirect == 'inventory') {
-            sessionStorage.setItem('inventory', JSON.stringify(loginData.json()));
-            this.router.navigate(['inventory'])
-          } else if (this.redirect == 'manager') {
-            sessionStorage.setItem('manager', JSON.stringify(loginData.json()));
-            this.router.navigate(['manager'])
-          } else if (this.redirect == 'schedule') {
-            sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
-            this.router.navigate(['scheduler'])
-          }
           this.redirect = "";
-        }
-      });
+        })
+      } else {
+        this.loginService.loginData(data).subscribe(loginData => {
+          if (loginData.json().status == false) {
+            this.errorMessage = true;
+          } else {            
+            $('#secondaryLoginModal').modal('hide');
+            if (this.redirect == 'setup') {
+              sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
+              this.router.navigate(['setup'])
+            } else if (this.redirect == 'inventory') {
+              sessionStorage.setItem('inventory', JSON.stringify(loginData.json()));
+              this.router.navigate(['inventory'])
+            } else if (this.redirect == 'manager') {
+              sessionStorage.setItem('manager', JSON.stringify(loginData.json()));
+              this.router.navigate(['manager'])
+            } else if (this.redirect == 'schedule') {
+              sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
+              this.router.navigate(['scheduler'])
+            }
+            this.redirect = "";            
+          }
+        });        
+      }         
     }
   }
 }

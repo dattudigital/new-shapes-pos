@@ -1,0 +1,146 @@
+<div >
+	
+</div>
+
+<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-6"></div>
+	<div class="col-sm-2">
+		<button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="promation-1">
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<h3 style="font-weight:600;">Inventory Tickets - Summary</h3>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-12 ">
+		<div class="dropdown pull-right">
+			<button aria-expanded="true" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1"
+			 type="button"> Tools
+
+			</button>
+			<ul aria-labelledby="dropdownMenu1" class="dropdown-menu menu-tools" id="menu-tools">
+				<li>
+					<a data-page="tools" href="#">Upload Physical Inventory </a>
+				</li>
+				<li>
+					<a data-page="cancelation" href="#" [routerLink]="" (click)="newInventory()"> Create New Inventory Ticket</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="inventory-ticket">
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">Start Date</label>
+			<div class="col-md-7">
+				<div class="input-group">
+					<p-calendar [(ngModel)]="date1"  name="startdate" [showIcon]="true" [(ngModel)]="startDate" (ngModelChange)="getStartDate($event)" dateFormat="yy-mm-dd"></p-calendar>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">End Date</label>
+			<div class="col-md-7">
+				<div class="input-group">
+					<p-calendar  [(ngModel)]="date2" name="enddate" [showIcon]="true" [(ngModel)]="endDate" (ngModelChange)="getEndDate($event)" dateFormat="yy-mm-dd"></p-calendar>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">Source</label>
+			<div class="col-md-7">
+				<select class="form-control" name="supplier"  [(ngModel)]="supplier_id" >
+					<option *ngFor="let data1 of this.supplierData" [ngValue]="data1.supplier_id">{{data1.supplier_name}}</option>
+				  </select>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">Destination</label>
+			<div class="col-md-7">
+				<select name="location.branchid" class="form-control"  [(ngModel)]="branch_id">
+					<option *ngFor="let data1 of this.locationData" [ngValue]="data1.branch_id">{{data1.branch_name}}</option>
+				  </select>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">Type</label>
+			<div class="col-md-7">
+				<select name="shedule.emp_id" class="form-control">
+					<option name="source" selected="">select</option>
+					<option>All </option>
+					<option>option 1</option>
+					<option>option 2</option>
+				</select>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label for="input" class="col-md-3 control-label">Status</label>
+			<div class="col-md-7">
+				<select name="state" class="form-control">
+					<option value="1" disabled selected>Select</option>
+					<option value="2">Logged</option>
+					<option value="3">Pending</option>
+				</select>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12"></div>
+	<div class="col-md-4 col-sm-4 col-xs-12"></div>
+	<div class="col-md-2 col-sm-4 col-xs-12">
+		<button type="submit" class="btn btn-primary" (click)=" filterInventory()">Submit</button>
+	</div>
+	<div class="col-md-2 col-sm-4 col-xs-12">
+		<button type="submit" class="btn btn-warning" (click)="inventoryReset()">Reset</button>
+	</div>
+	<div class="clear"></div>
+</div>
+<table width="100%">
+	<thead>
+		<tr>
+			<th>TicketID</th>
+			<th>
+				Date </th>
+			<th>Source</th>
+			<th>Destination</th>
+			<th>#Products</th>
+			<th>#Item</th>
+			<th>Amount(our cost)</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of inventoryData">
+			<td>{{item.inv_ticket_id}}</td>
+			<td></td>
+			<td>{{item.source}}</td>
+			<td>{{item.branch_name}}</td>
+			<td>{{item.product_id}}</td>
+			<td>{{item.item_qty}}</td>
+			<td>{{item.amt}}</td>
+			<td>{{item.pos_status}}</td>
+		</tr>
+	</tbody>
+
+</table>
+<div class="clear"></div>

@@ -1,0 +1,359 @@
+<router-outlet></router-outlet>
+<div >
+  
+</div>
+
+<div class="modal fade" id="selectedCategory">
+  <div class="modal-dialog">
+    <div class="bosslady-services">
+      <div class="bosslady-button">
+        <a>Threading Services</a>
+      </div>
+      <div class="bosslady-table">
+        <table width="100%">
+          <tr>
+            <th width="200">Code</th>
+            <th width="200">Type of service</th>
+            <th width="200">Price</th>
+            <th width="200">Quantity</th>
+            <th width="200"></th>
+          </tr>
+          <p *ngIf="_service">
+            <tr *ngFor="let commonValue of commonValues ; let i = index">
+              <td>{{commonValue.code}}</td>
+              <td>{{commonValue.service_name}}</td>
+              <td>{{commonValue.service_price}}</td>
+              <td>
+                <input type="text" maxlength="50" name="valueselect" value="" [(ngModel)]="commonValue.selectedVal">
+              </td>
+              <td>
+                <a>
+                  <i data-dismiss="modal" (click)="checkTextBoxValues('s')" [routerLink]="['/new-ticket-next-button-invoice']" class="far fa-arrow-alt-circle-right"></i>
+                </a>
+              </td>
+            </tr>
+          </p>
+          <p *ngIf="_membership">
+            <tr *ngFor="let commonValue of commonValues ; let i = index ">
+              <td>{{commonValue.code}}</td>
+              <td>{{commonValue.membership_name}}</td>
+              <td>{{commonValue.membership_price}}</td>
+              <td>
+                <input type="text" maxlength="50" name="valueselect" value="" [(ngModel)]="commonValue.selectedVal">
+              </td>
+              <td>
+                <a>
+                  <i data-dismiss="modal" (click)="checkTextBoxValues('m')" [routerLink]="['/new-ticket-next-button-invoice']" class="far fa-arrow-alt-circle-right"></i>
+                </a>
+              </td>
+            </tr>
+          </p>
+          <span *ngIf="_package">
+            <tr *ngFor="let commonValue of commonValues ; let i = index ">
+              <td>{{commonValue.code}}</td>
+              <td>{{commonValue.package_name}}</td>
+              <td>{{commonValue.package_price}}</td>
+              <td>
+                <input type="text" maxlength="50" name="valueselect" value="" [(ngModel)]="commonValue.selectedVal">
+              </td>
+              <td>
+                <a>
+                  <i data-dismiss="modal" (click)="checkTextBoxValues('p')" [routerLink]="['/new-ticket-next-button-invoice']" class="far fa-arrow-alt-circle-right"></i>
+                </a>
+              </td>
+            </tr>
+          </span>
+        </table>
+      </div>
+      <div class="">
+        <div class="col-md-6 col-sm-6 bosslady-footer-left">
+          <ul>
+            <!-- wrote here <li data-dismiss="modal" data-toggle="modal" data-target="#serviceCategory"> -->
+            <li data-dismiss="modal" data-toggle="modal" (click)="checkRedirect(commonValues)">
+              <a>
+                <i class="fas fa-arrow-left"></i>
+                <br>Back</a>
+            </li>
+          </ul>
+        </div>
+        <div class=" bosslady-footer-right">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-fast-backward"></i>
+                <br>Previous</a>
+            </li>
+            <li>
+              <a>
+                <i class="fas fa-fast-forward"></i>
+                <br>Next</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="serviceCategory">
+  <div class="modal-dialog">
+    <div class="select-membership">
+      <div class="select-membership-button">Select Service Category</div>
+      <input type="text" maxlength="50" class="form-control" [(ngModel)]="search" name="some" placeholder="Search service Category">
+      <div class="smc" style="height: 352px;overflow-y: scroll;">
+        <div *ngFor="let categorie of categories | filter:search" class="sm-button" data-dismiss="modal" (click)="commonClick(categorie,'c')"
+          data-toggle="modal" href="#selectedCategory">
+          <a>{{categorie.category_name}}</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="bosslady-footer">
+        <div class="col-md-6 col-sm-6 bosslady-footer-left">
+          <ul data-dismiss="modal">
+            <li>
+              <a>
+                <i class="fas fa-arrow-left"></i>
+                <br>Back</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 bosslady-footer-right">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-fast-backward"></i>
+                <br>Previous</a>
+            </li>
+            <li>
+              <a>
+                <i class="fas fa-fast-forward"></i>
+                <br>Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="membershipCategory">
+  <div class="modal-dialog">
+    <div class="select-membership">
+      <div class="select-membership-button">Select Membership Category</div>
+      <input type="text" maxlength="50" class="form-control" [(ngModel)]="search" name="some" placeholder="Search Membership Name">
+      <div class="smc" style="height: 352px;overflow-y: scroll;">
+        <div *ngFor="let membership of memberships | filter:search " class="sm-button" data-dismiss="modal" (click)="commonClick(membership,'m')"
+          data-toggle="modal" href="#selectedCategory">
+          <a>{{membership.membership_name}}</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="bosslady-footer">
+        <div class="col-md-6 col-sm-6 bosslady-footer-left">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-arrow-left"></i>
+                <br>Back</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 bosslady-footer-right">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-fast-backward"></i>
+                <br>Previous</a>
+            </li>
+            <li>
+              <a>
+                <i class="fas fa-fast-forward"></i>
+                <br>Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="packageCategory">
+  <div class="modal-dialog">
+    <div class="select-membership">
+      <div class="select-membership-button">Select Package Category</div>
+      <input type="text" maxlength="50" class="form-control" [(ngModel)]="search" name="some" placeholder="Search Package Name">
+      <div class="smc" style="height: 352px;overflow-y: scroll;">
+        <div *ngFor="let package of packages | filter:search " class="sm-button" data-dismiss="modal" (click)="commonClick(package,'p')"
+          data-toggle="modal" href="#selectedCategory">
+          <a>{{package.package_name}}</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="bosslady-footer">
+        <div class="col-md-6 col-sm-6 bosslady-footer-left">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-arrow-left"></i>
+                <br>Back</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 bosslady-footer-right">
+          <ul>
+            <li>
+              <a>
+                <i class="fas fa-fast-backward"></i>
+                <br>Previous</a>
+            </li>
+            <li>
+              <a>
+                <i class="fas fa-fast-forward"></i>
+                <br>Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="select-stylist">
+  <div class="col-md-6 col-sm-6 col-xs-12 select-stylist-left">
+    <div class="select-stylist-search">
+      <h4>Search</h4>
+      <div class="input-group">
+        <input [(ngModel)]="selectedValue" typeaheadWaitMs="1000" [typeahead]="catProdMemResult" (ngModelChange)='catProdMemSearch($event)'
+          [typeaheadMinLength]="2" typeaheadOptionField="name" (typeaheadOnSelect)="onSelect($event)" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </span>
+      </div>
+      
+    </div>
+    <div class="sss-select">
+      <div class="">
+        <div class="sur-info">
+          <h3 data-toggle="modal" data-target="#serviceCategory" style="padding-top: 16px;margin-left: 42px;margin-right: 51px;height: 53px;">Select Service Category</h3>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="sur-info">
+          <h3 data-toggle="modal" data-target="#membershipCategory" style="padding-top: 16px;margin-left: -11px;margin-right: 1px;height: 53px;">Select Membership</h3>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="sur-info">
+          <h3 data-toggle="modal" data-target="#packageCategory" style="padding-top: 16px;margin-left: -11px;margin-right: 1px;height: 53px;">Select Package Category</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 select-stylist-right">
+    <div class="select-stylist-search1">
+      <h4>Select a Stylist</h4>
+      <div class="input-group">
+        <input [(ngModel)]="selectedStylish" typeaheadWaitMs="1000" [typeahead]="stylishResult" (ngModelChange)='stylishSearch($event)'
+          [typeaheadMinLength]="2" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectStylish($event)" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </span>
+      </div>
+      <!-- /input-group -->
+      <div class="clear"></div>
+    </div>
+    <div class="ssr-button">
+      <a>Next Available</a>
+      <div class="clear"></div>
+    </div>
+    <div class="ssr-table">
+      <table width="100%">
+        <tr>
+          <th>Name of stylist</th>
+          <th>In Service</th>
+          <th>Free</th>
+          <th>Next available time</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <div class="clear"></div>
+    </div>
+    <div class="select-stylist-footer-right">
+      <ul>
+        <li>
+          <a>
+            <i class="fas fa-times"></i>
+            <br>Cancel</a>
+        </li>
+        <li>
+          <a>
+            <i class="fas fa-shopping-cart"></i>
+            <br>Check Out</a>
+        </li>
+        <li>
+          <a>
+            <i class="fas fa-clock"></i>
+            <br>Waiting</a>
+        </li>
+        <li>
+          <a>
+            <i class="fas fa-server"></i>
+            <br>Servicing</a>
+        </li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+</div>

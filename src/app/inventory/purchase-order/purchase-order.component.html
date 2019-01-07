@@ -1,4 +1,245 @@
-<p>
+<!-- <p>
   purchase-order works! hahahahahahah
 </p>
-<input type="button" (click)="redirectToDashboard()" value="dashboard"/>dasboard
+<input type="button" (click)="redirectToDashboard()" value="dashboard"/>dasboard -->
+
+<div >
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn pull-right" (click)="backToInventory();">Back</button>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="purchase-order">
+  <div class="col-md-8 col-sm-8">
+    <h4 style="font-weight:600;">Purchase Order</h4>
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <button type="button" class="btn btn-outline-success pull-right" (click)="newPurchase()">
+      <h4 class="margin0">
+        <i class="fas fa-plus-circle"></i> &nbsp; New Purchase Order</h4>
+    </button>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="purchase">
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="form-group">
+      <label for="input" class="col-md-3 control-label">Show</label>
+      <div class="col-md-7">
+        <select class="form-control" name="purchaseOrder">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="form-group">
+      <label for="input" class="col-md-3 control-label">supplier</label>
+      <div class="col-md-7">
+        <select class="form-control" name="supplier" (ngModelChange)="purchaseSuppliers($event)" [(ngModel)]="supplier.supplier_id">
+          <option *ngFor="let item of this.supplierData" [ngValue]="item.supplier_id">{{item.supplier_name}}</option>
+        </select>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="form-group">
+      <label for="input" class="col-md-4 control-label">Start Date</label>
+      <div class="col-md-6">
+        <div class="input-group">
+          <p-calendar [(ngModel)]="date1" name="startdate" [showIcon]="true" [(ngModel)]="startDate" (ngModelChange)="getStartDate($event)"
+            dateFormat="yy-mm-dd"></p-calendar>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="form-group">
+      <label for="input" class="col-md-4 control-label">End Date</label>
+      <div class="col-md-6">
+        <div class="input-group">
+          <p-calendar [(ngModel)]="date2" name="enddate" [showIcon]="true" [(ngModel)]="endDate" (ngModelChange)="getEndDate($event)"
+            dateFormat="yy-mm-dd"></p-calendar>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12"></div>
+  <div class="col-md-4 col-sm-4 col-xs-12"></div>
+  <div class="col-md-2 col-sm-2 col-xs-12">
+    <button type="submit" class="btn btn-primary" (click)="filterPurchaseOrder()">Submit</button>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-12">
+    <button type="submit" class="btn btn-warning" (click)="resetPurchaseOrder()">Reset</button>
+  </div>
+  <div class="clear"></div>
+</div>
+<table width="100%" id="tablerecords">
+  <thead>
+    <tr>
+      <th>
+        Po</th>
+      <th>
+        Suppliers </th>
+      <th>Location</th>
+      <th>date</th>
+      <th>#Items</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>notes</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of purchaseOrderData let i=index">
+      <td class=" pointer" href="#" (click)="deleteOrder(item.purchase_order_id,i)">
+        <i class="fas fa-times" style="color:red"></i> &nbsp; {{item.po_invoice_no}}</td>
+      <td>{{item.supplier_id}}</td>
+      <td> </td>
+      <td>{{item.po_date | date: 'yyyy/MM/dd'}}</td>
+      <td>{{item.po_items}}</td>
+      <td>{{item.po_amt}}</td>
+      <td>{{item.po_status}}</td>
+      <td>{{item.po_remarks}}</td>
+      <td>
+        <button (click)="PrintRecord()">Print</button> &nbsp;&nbsp;
+        <button data-toggle="modal" data-target="#edit-order"(click)="editPurchaseOrder(item,i)">Edit/receive</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal class-new fade" id="edit-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div calss="order-supplier">
+        <div class="row">
+          <div class="container">
+            <div class="col-sm-5">
+              <div class="contract-autopay-1">
+                <img src="../../assets/images/logo-300x70.jpg">
+
+                <div class="clear"></div>
+
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="input" class="col-md-6 control-label">Delivery Date</label>
+                    <div class="col-md-2">
+                      <div class="input-group">
+                        <p-calendar  name="deliveryDate" [showIcon]="true"  [(ngModel)]="editOrder.po_date" (ngModelChange)="poDeliveryDate($event)"
+                          dateFormat="yy-mm-dd"></p-calendar>
+
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12" style="background-color:gray;color:#fff">
+                  <h4>ADD PRODUCTS TO ORDER</h4>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="input" class="col-md-4 control-label">Show</label>
+                    <div class="col-md-8">
+                      <select name="items" class="form-control" [(ngModel)]="editOrder.po_items" >
+                        <option name="source" selected="" >Select</option>
+                        <option *ngFor="let data1 of this.productData" [ngValue]="data1.product_name">{{data1.product_name}}</option>
+                      </select>
+
+                      <!-- <select name="show" class="form-control" (ngModelChange)="setStaff($event)" [(ngModel)]="shedule.employee_id">
+                                    <option *ngFor="let data1 of this.productData" [ngValue]="data1.product_id">{{data1.product_name}}</option>
+                                  </select> -->
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <div class="col-md-9">
+                      <select name="shedule.emp_id" class="form-control">
+                        <option name="source" selected=""> All Categories</option>
+                        <option>option</option>
+                        <option>option 1</option>
+                        <option>option 2</option>
+                      </select>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label class="form-check-label" for="inlineFormCheck">
+                    Keep Results &nbsp;&nbsp;
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="inlineFormCheck1">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label for="input" class="col-md-5 control-label">Search By</label>
+                    <div class="col-md-7">
+                      <select name="shedule.emp_id" class="form-control">
+                        <option name="source" selected="">All fields</option>
+                        <option>option 1</option>
+                        <option>option 2</option>
+                      </select>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" name="city" maxlength="50" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                  <button type="submit">Search</button>
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label required"> Notes:</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" maxlength="1000" [(ngModel)]="editOrder.po_remarks" rows="2" name="notes"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <button type="submit" data-dismiss="modal" (click)="updatePurchaseOrder(editOrder)">Update</button>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

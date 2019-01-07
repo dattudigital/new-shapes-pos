@@ -5,8 +5,17 @@
       <a class="nav-link purchase-order" id="v-pills-home-tab" (click)="redirectToPurchaseOrder()" data-toggle="pill"
         href="#purchase" role="tab" aria-controls="purchase" aria-selected="true">Purchase Order</a>
       <br>
-      <a class="nav-link supplier-info" id="v-pills-home-tab" (click)="supplierClick();redirectToSupplier()"
+      <a class="nav-link supplier-info" id="v-pills-home-tab" (click)="redirectToSupplier()"
         data-toggle="pill" href="#suppliers" role="tab" aria-controls="suppliers" aria-selected="true">Suppliers</a>
+        <br>
+        <a class="nav-link inventory-info" id="v-pills-home-tab" (click)="redirectToInventory() " data-toggle="pill"
+        href="#inventory" role="tab" aria-controls="inventory" aria-selected="true">Inventory Tickets</a>
+      <br>
+      <a class="nav-link update-info" id="v-pills-home-tab" (click)="redirectToUpdate()" data-toggle="pill"
+        href="#update" role="tab" aria-controls="update" aria-selected="true">Update Physical Inventory</a>
+      <br>
+      <a class="nav-link reports-info" id="v-pills-home-tab" (click)="redirectToReportsInventory()" data-toggle="pill"
+        href="#reports" role="tab" aria-controls="reports" aria-selected="true">Inventory Reports</a>
     </div>
   </div>
 </div>

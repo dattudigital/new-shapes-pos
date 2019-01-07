@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { SchedulerComponent } from './scheduler/scheduler.component'
+import { SchedulerComponent } from './scheduler/scheduler.component';
 import { AuthGuard } from '../common-session/session.check';
+import { TimeClockComponent } from './time-clock/time-clock.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -31,6 +33,11 @@ export const routes: Routes = [
       {
         path: 'scheduler',
         component: SchedulerComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'time-clock',
+        component: TimeClockComponent,
         canActivate: [AuthGuard]
       }
     ]
