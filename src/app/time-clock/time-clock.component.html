@@ -185,17 +185,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let item of memberships">
-                      <td>{{item.name}}</td>
-                      <td>{{item.mobile}}</td>
-                      <td>{{item.servicename}}</td>
-                      <td>{{item.services}}</td>
-                      <td>{{item.difftime}}</td>
-                      <td>{{item.starttime}}</td>
-                      <td>{{item.endtime}}</td>
-                      <td>{{item.payable_amount}}</td>
+                    <tr *ngFor="let appt of apptInfo">
+                      <td>{{appt.name}}</td>
+                      <td>{{appt.mobile}}</td>
+                      <td>{{appt.servicename}}</td>
+                      <td>{{appt.services}}</td>
+                      <td>{{appt.difftime}}</td>
+                      <td>{{appt.starttime}}</td>
+                      <td>{{appt.endtime}}</td>
+                      <td>{{appt.payable_amount}}</td>
                     </tr>
-                    <tr *ngIf="!memberships || memberships.length ==0">
+                    <tr *ngIf="!apptInfo || apptInfo.length ==0">
                       No Records Found
                     </tr>
                   </tbody>

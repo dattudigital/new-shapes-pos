@@ -4,10 +4,12 @@ import { TimeClokServiceService } from '../services/time-clok-service.service';
 import { Location } from '@angular/common';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { ExcelService } from '../services/excel.service';
+declare var jsPDF: any;
 // import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  templateUrl: './time-clock.component.html' ,
+  templateUrl: './time-clock.component.html',
   styleUrls: ['./time-clocks.component.css']
 })
 export class TimeClockComponent {
@@ -16,6 +18,7 @@ export class TimeClockComponent {
   disable_break_out = true;
   disable_break_in = true;
   disable_time_out = true;
+  apptInfo: any = [];
   buttonColorTimeIn: string = '#e4e9ef';
   buttonColorTimeOut: string = '#345465';
   buttonColorBreakIn: string = '#345465';
@@ -53,7 +56,7 @@ export class TimeClockComponent {
   };
   msgs: Message[] = [];
 
-  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private messageService: MessageService) { }
+  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private messageService: MessageService,private excelService: ExcelService) { }
 
   ngOnInit() {
     this.getTimeAndDate();
@@ -214,7 +217,55 @@ export class TimeClockComponent {
     }
   }
 
+  xlDownload() {
+    this.excelService.exportAsExcelFile(this.apptInfo, 'Appointments');
+  }
+  
+  pdfDownload() {
+    var columns = [
+      { title: "Name", dataKey: "name" },
+      { title: "Mobile", dataKey: "mobile" },
+      { title: "Service Name", dataKey: "servicename" },
+      { title: "Duration", dataKey: "difftime" },
+      { title: "starttime", dataKey: "starttime" },
+      { title: "endtime", dataKey: "endtime" },
+      { title: "Price", dataKey: "payable_amount" }
+    ];
+    var rows = this.apptInfo;
+    var doc = new jsPDF('');
+    doc.autoTable(columns, rows, {
+      styles: { fillColor: [100, 255, 255] },
+      columnStyles: {
+        id: { fillColor: [255, 0, 0] }
+      },
+      margin: { top: 50 },
+      addPageContent: function () {
+        doc.text("Appointments", 30, 30);
+      }
+    });
+    doc.save('Appointments.pdf');
+  }
+
   printCommonApp(val) {
+    console.log(val);
     this.printAppModelText = val;
+    var data = {
+      emp_id: this.data.emp_id,
+      val: ''
+    }
+    if (val == "Today") {
+      data.val = 't'
+    } else {
+      if (val == "Next Today") {
+        data.val = 'n'
+      } else {
+        data.val = 'm'
+      }
+    }
+    this.service.getAppiontmentData(data).subscribe(res => {
+      if (res.json().status == true) {
+        this.apptInfo = res.json().result;
+      }
+    })
   }
 }
