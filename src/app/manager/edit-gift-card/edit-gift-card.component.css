@@ -1,0 +1,11 @@
+.form-check {
+    text-align: left;
+}
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #01a100;
+}
+.modal-header h3 {
+    color: #fff;
+}

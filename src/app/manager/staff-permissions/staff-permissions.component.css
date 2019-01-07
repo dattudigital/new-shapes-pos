@@ -1,0 +1,17 @@
+.staff_permission2 h3 {
+    margin-top: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 0;
+}
+.staff_permission3 {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+.btn-secondary {
+    font-weight: 600;
+    font-size: 16px;
+    background: #0fdfa3;
+    padding: 8px 30px;
+}

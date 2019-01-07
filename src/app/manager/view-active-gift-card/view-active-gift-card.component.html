@@ -1,0 +1,214 @@
+<div >
+	
+	<div class="ms-set-1-1">
+		<div class="col-sm-12">
+			<button type="button" class="btn backBtn pull-right" (click)="backToMembership();">Back</button>
+		</div>
+		<div class="ms-set-11">
+			<div class="col-md-8 col-sm-8 ms-set-1-left">
+				<h3 style="font-weight:600;">Gift Cards</h3>
+			</div>
+			<div class="col-md-4 col-sm-4 ms-set-1-right1 pull-right">
+				<br>
+				<br>
+				<button class="btn btn-success" data-toggle="modal" data-target="#add-new-giftcard">
+					<i class="fas fa-plus"></i>&nbsp;&nbsp; Add New</button>
+			</div>
+			<div class="clear"></div>
+			<h4>Attract newcomers by selling up gift cards to sell online or in person.Your cards have a set price,
+				<br> like $75 or $100, or a customizable price, whick lets customers decide how much to put on the card</h4>
+			<div class="clear"></div>
+		</div>
+		<div class="ms-set-12">
+			<table width="100%">
+				<tr>
+					<th width="40%">Gift Card Name</th>
+					<th width="20%">Value</th>
+					<th width="20%">Price</th>
+					<th width="20%">Sold Online</th>
+				</tr>
+				<tr>
+					<td>35$ Gift card ( 1 time extra service free )</td>
+					<td>$35</td>
+					<td>$35</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Gift card (Custome Amount)</td>
+					<td>$35</td>
+					<td>$35</td>
+					<td>
+						<i class="fas fa-check"></i>
+					</td>
+				</tr>
+			</table>
+			<div class="clear"></div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title1">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+						View Inactive gift cards
+					</a>
+				</h4>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse">
+				<div class="panel-body">
+					<table width="100%">
+						<tr>
+							<td>$30 Gift card for $25</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+						<tr>
+							<td>$50.00 Gift Card for $40.00</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+						<tr>
+							<td>$90 gift card for $70</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+						<tr>
+							<td>122.41 Gift card for 0</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+						<tr>
+							<td>139.91 Gift card</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+						<tr>
+							<td>17.49 Gift card for 0</td>
+							<td>
+								<a href="#" class="btn1">Action</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="add-new-giftcard" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" id="myModalLabel">Add a Gift Card</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="input" class="col-md-5 control-label">Gift card is sold at</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="inputEmail1" placeholder="All Location">
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="form-group">
+					<label for="input" class="col-md-5 control-label">Card Value</label>
+					<div class="col-md-7">
+						<select class="form-control" required="">
+							<option value="" selected="">Select Card Value</option>
+							<option value="">2</option>
+							<option value="">3</option>
+							<option value="">4</option>
+							<option value="">5</option>
+						</select>
+						<div class="form-check pull-left">
+							<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+							<label class="form-check-label" for="defaultCheck1">
+								Discount the price of this gift card
+							</label>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form-group">
+					<label for="input" class="col-md-5 control-label">Gift card name</label>
+					<div class="col-md-7">
+						<input type="text" class="form-control" id="inputEmail2" placeholder="All Location">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form-group">
+					<label for="input" class="col-md-5 control-label">Sell online</label>
+					<div class="col-md-7">
+						<div class="form-check pull-left">
+							<input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+							<label class="form-check-label" for="defaultCheck1">
+								Allow customers to purchase this gift card online
+							</label>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<button class="btn btn-primary1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+				 aria-controls="collapseExample">
+					<i class="fas fa-chevron-right"></i>&nbsp;Advanced Options
+				</button>
+
+				<div class="collapse" id="collapseExample">
+					<div class="card card-body">
+						<div class="form-group">
+							<label for="input" class="col-md-5 control-label">Allow staff to set price and value independently
+								<span class="btn1" data-toggle="tooltip" data-placement="auto" title="Tooltip on top">
+									<i class="fas fa-info-circle"></i>
+								</span>
+							</label>
+							<div class="col-md-7">
+								<div class="form-check ">
+									<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
+									<label class="form-check-label" for="exampleRadios1">
+										Yes, staff can set the prce independently of the value at point of sale
+									</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" checked="">
+									<label class="form-check-label" for="exampleRadios1">
+										No, the price should always match the value
+									</label>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="form-group">
+							<label for="input" class="col-md-5 control-label">Can everyone purchase this gift card</label>
+							<div class="col-md-7">
+								<div class="form-check ">
+									<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option1" checked="">
+									<label class="form-check-label" for="exampleRadios1">
+										Yes
+									</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option1" checked="">
+									<label class="form-check-label" for="exampleRadios1">
+										No, only certain members can purchase it
+									</label>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary">Add</button>
+			</div>
+		</div>
+	</div>
+</div>
+

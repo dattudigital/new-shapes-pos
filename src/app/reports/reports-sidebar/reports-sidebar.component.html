@@ -1,6 +1,188 @@
 <div class="sidebar-reports">
-  <div class="col-sm-3">
-  </div>
+    <div class="col-sm-3">
+        <div *ngIf="staffContent">
+          <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" href="#Communications" role="tab" (click)="commissionClick()"
+              aria-controls="Communications" aria-selected="true">Commission</a>
+    
+            <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#Staff" role="tab" (click)="payRollClick()"
+              aria-controls="Staff" aria-selected="false">PayRoll</a>
+    
+            <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#Clients" role="tab" (click)="scheduleAtClick()"
+              aria-controls="Clients" aria-selected="false">Schedule At Glance</a>
+    
+            <a class="nav-link mem-info" id="v-pills-settings-tab" (click)="timeClockClick()" data-toggle="pill" href="#Memberships"
+              role="tab" aria-controls="Memberships" aria-selected="false">Time Clock</a>
+    
+            <a class="nav-link package-info" id="v-pills-settings-tab" (click)="ratingsAndReviews()" data-toggle="pill" href="#Packages"
+              role="tab" aria-controls="Packages" aria-selected="false">Ratings And Reviews</a>
+    
+            <a class="nav-link promotion-info" id="v-pills-settings-tab" (click)="tipsClick()" data-toggle="pill" href="#Promotions"
+              role="tab" aria-controls="Promotions" aria-selected="false">Tips</a>
+    
+            <a class="nav-link gift-card-info" id="v-pills-settings-tab" (click)=" cancellationsClick()" data-toggle="pill" href="#gift-cards"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false"> Cancellations</a>
+    
+            <a class="nav-link product-info" id="v-pills-settings-tab" (click)="scheduleClick()" data-toggle="pill" href="#Products"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Staff Schedule</a>
+    
+            <a class="nav-link dailycheckout-info" id="v-pills-settings-tab" (click)="phoneBookClick()" data-toggle="pill" href="#dailycheckout"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Phone Book</a>
+    
+            <a class="nav-link pricing-info" id="v-pills-settings-tab" (click)="performanceClick()" data-toggle="pill" href="#Pricing"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Staff Performance</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" (click)="clientPerClick()" data-toggle="pill" href="#discounts"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Client Per Stylist</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" (click)="appointmentClick()" href="#discounts"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Appointment Metrics</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" (click)="payRatesClick()" href="#discounts"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Pay Rates</a>
+          </div>
+        </div>
+        <div *ngIf="salesContent">
+          <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" (click)="slaesClick()" href="#Communications" role="tab" aria-controls="Communications"
+              aria-selected="true">Sales</a>
+    
+            <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" (click)="Click2()" href="#Staff" role="tab" aria-controls="Staff"
+              aria-selected="false">Daily Discount</a>
+    
+            <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" (click)="Click3()"  href="#Clients" role="tab" aria-controls="Clients"
+              aria-selected="false">Cash Drawer</a>
+    
+            <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click4()" href="#Memberships" role="tab" aria-controls="Memberships"
+              aria-selected="false">Sales By Service</a>
+    
+            <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click5()" href="#Packages" role="tab" aria-controls="Packages"
+              aria-selected="false">Sales By Category</a>
+    
+            <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click6()" href="#Promotions" role="tab" aria-controls="Promotions"
+              aria-selected="false">Sales By Product</a>
+    
+            <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click7()"  href="#gift-cards" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Sales By Rep</a>
+    
+            <a class="nav-link product-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click8()" href="#Products" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Gift Cards</a>
+    
+            <a class="nav-link dailycheckout-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click9()"  href="#dailycheckout" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Attendence With Revenue</a>
+    
+            <a class="nav-link pricing-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click10()" href="#Pricing" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Sales By Suppliers</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click11()"  href="#discounts" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Manage Online Orders</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click12()"  href="#discounts" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Invoice</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" (click)="Click13()"  href="#discounts" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Earned Revenue</a>
+          </div>
+        </div>
+        <div *ngIf="clientsContent">
+          <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" href="#Communications" (click)="memberships()" role="tab" aria-controls="Communications"
+              aria-selected="true">Memberships</a>
+    
+            <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#Staff" (click)="mailing()" role="tab" aria-controls="Staff"
+              aria-selected="false">Mailing Lists</a>
+    
+            <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#Clients"(click)="ratings()" role="tab" aria-controls="Clients"
+              aria-selected="false">Ratings And Reviews</a>
+    
+            <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#Memberships"(click)="account()" role="tab" aria-controls="Memberships"
+              aria-selected="false">Account Balance</a>
+    
+            <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#Packages"(click)="contact()" role="tab" aria-controls="Packages"
+              aria-selected="false">Contact Logs</a>
+    
+            <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#Promotions"(click)="entry()" role="tab" aria-controls="Promotions"
+              aria-selected="false">Entry Logs</a>
+    
+            <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#gift-cards"(click)="cancellations()" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false"> Cancellations</a>
+    
+            <a class="nav-link product-info" id="v-pills-settings-tab" data-toggle="pill" href="#Products" (click)="first()"role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">First Visit</a>
+    
+            <a class="nav-link dailycheckout-info" id="v-pills-settings-tab" data-toggle="pill" href="#dailycheckout" (click)="unpaid()" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Upaid Visits</a>
+    
+            <a class="nav-link pricing-info" id="v-pills-settings-tab" data-toggle="pill" href="#Pricing" role="tab" (click)="last()" aria-controls="v-pills-settings"
+              aria-selected="false">Last Visit</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" href="#discounts" role="tab" (click)="attendence()" aria-controls="v-pills-settings"
+              aria-selected="false">Attendance Analysis</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" href="#discounts" role="tab" (click)="pricing()" aria-controls="v-pills-settings"
+              aria-selected="false">Pricing Options Expirations</a>
+    
+            <a class="nav-link discount-info" id="v-pills-settings-tab" data-toggle="pill" href="#discounts" role="tab" (click)="new_members()"aria-controls="v-pills-settings"
+              aria-selected="false">New Members</a>
+          </div>
+        </div>
+        <div *ngIf="paymentContent">
+          <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" href="#Communications" role="tab"  (click)="approvedClick()" aria-controls="Communications"
+              aria-selected="true">Approved Transactions</a>
+    
+            <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#Staff" role="tab" aria-controls="Staff"(click)="autopayDetailsClick()"
+              aria-selected="false"> Autopay Detail</a>
+    
+            <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#Clients" role="tab" aria-controls="Clients" (click)="settledClick()"
+              aria-selected="false">Settled Transactions</a>
+    
+            <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#Memberships" role="tab" aria-controls="Memberships" (click)="autopaySummeryClick()"
+              aria-selected="false">Autopay Summary</a>
+    
+            <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#Packages" role="tab" aria-controls="Packages"  (click)="pendingClick()"
+              aria-selected="false">Pending Transactions</a>
+    
+            <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#Promotions" role="tab" aria-controls="Promotions" (click)="rejectedClick()"
+              aria-selected="false">Voided/Rejected Transactions</a>
+    
+            <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#gift-cards" role="tab" aria-controls="v-pills-settings" (click)="expirationClick()"
+              aria-selected="false">Autopay Expirations</a>
+    
+            <a class="nav-link product-info" id="v-pills-settings-tab" data-toggle="pill" href="#Products" role="tab" aria-controls="v-pills-settings" (click)="autopayCcClick()"
+              aria-selected="false">Autopay CC Expirations</a>
+          </div>
+        </div>
+        <div *ngIf="inventoryContent">
+          <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" href="#Communications"(click)="salesByProduct()" role="tab" aria-controls="Communications"
+              aria-selected="true">Sales By Product</a>
+    
+            <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#Staff" (click)="inventoryOnHand()" role="tab" aria-controls="Staff"
+              aria-selected="false"> Inventory On Hand </a>
+    
+            <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#Clients" (click)="cost()" role="tab" aria-controls="Clients"
+              aria-selected="false">Cost Of Goods Sale</a>
+    
+            <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#Memberships"  (click)="salesBySup()" role="tab" aria-controls="Memberships"
+              aria-selected="false">Sales By supplier</a>
+    
+            <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#Packages" (click)="manage()" role="tab" aria-controls="Packages"
+              aria-selected="false">Manage Online Orders</a>
+    
+            <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#Promotions"(click)="inventoryChange()" role="tab" aria-controls="Promotions"
+              aria-selected="false">Inventory Change Log</a>
+    
+            <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#gift-cards"(click)="retail()" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Retail Sales Performance</a>
+    
+            <a class="nav-link product-info" id="v-pills-settings-tab" data-toggle="pill" href="#Products"(click)="inventoryAge()" role="tab" aria-controls="v-pills-settings"
+              aria-selected="false">Inventory Age</a>
+          </div>
+        </div>
+      </div>
+
+
   <div class="col-sm-9">
     <div class="fav-reports">
       <p>FAVORITE REPORTS</p>

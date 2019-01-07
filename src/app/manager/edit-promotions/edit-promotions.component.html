@@ -1,0 +1,243 @@
+<div >
+  
+</div>
+
+<table width="100%">
+  <thead>
+    <th>Promotion Name</th>
+    <th>Promotion Code</th>
+    <th>Discount Amount</th>
+    <th>Discount Type</th>
+    <th>ActivationDate</th>
+    <th>ExpirationDate</th>
+    <th>Max Number of Uses</th>
+    <th>Allow for online sales</th>
+    <th>Valid Day(s)</th>
+    <th>Define promotional items type</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of localData; let i=index">
+      <td>{{item.promotion_name}}</td>
+      <td>{{item.promotion_code}}</td>
+      <td>{{item.promotion_price}}</td>
+      <td>{{item.promotion_discount_type}}</td>
+      <td>{{item.promotion_start_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{item.promotion_end_date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{item.promotion_max_users}}</td>
+      <td>{{item.promotion_allow_online_sale}}</td>
+      <td>{{item.promotion_valid_days}}</td>
+      <!-- <td>{{item.promotion_allow_online_sale | yesorno}}</td>
+      <td>{{item.promotion_valid_days | weekdays}}</td> -->
+      <td>{{item.promotion_item_types }}</td>
+      <td href="#" data-toggle="modal" data-target="#add-promotion" (click)="editPromotion(item,i)">Edit</td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn backBtn" (click)="backToPromotion();">Back</button>
+  </div>
+</div>
+
+<p-growl [(value)]="msgs"></p-growl>
+<div class="modal fade" id="add-promotion" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Add Promotion</h3>
+      </div>
+      <div class="modal-body">
+        <div class="add_promotions padding-20">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 style="font-weight:600;">Promotions</h3>
+            </div>
+          </div>
+
+          <div class="add_promotions-1">
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Promotion Name</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="" [(ngModel)]="editData.promotion_name" name="promotion"
+                  ngModel required #promotion="ngModel">
+                <div *ngIf="promotion.errors?.required && submitted" style="color:red">Promotions Name is required </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Promotion Code</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="editInputEmail2" placeholder="" [(ngModel)]="editData.promotion_code">
+              </div>
+              <div class="col-md-3">
+                <h3 class="margin0">
+                  <a href="#" style="font-weight:600;">Generate Random</a>
+                </h3>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Discount Type</label>
+              <div class="col-md-9">
+                <select class="form-control" [(ngModel)]="editData.promotion_discount_type" name="discount" ngModel required #discount="ngModel">
+                  <option value="persentage" selected="persentage">persentage</option>
+                  <option value="cash">cash</option>
+                </select>
+                <div *ngIf="discount.errors?.required && submitted" style="color:red">Promotions Name is required </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Discount Amount</label>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="editInputEmail3" placeholder="" [(ngModel)]="editData.promotion_price">
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Activation Date</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <!-- <input type="text" class="form-control" name="date" id="date" data-select="datepicker" data-locked="25/12/2014;1/1/2015">
+                <span class="input-group-btn"><button type="button" class="btn btn-primary" data-toggle="datepicker"><i class="fa fa-calendar"></i></button></span> -->
+                  <p-calendar [(ngModel)]="editData.promotion_start_date " name="promotionActivationDate" [showIcon]="true" (ngModelChange)="getActivationDate($event)"
+                    dateFormat="yy-mm-dd"></p-calendar>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Expiration Date</label>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <!-- <input type="text" class="form-control" name="date" id="date" data-select="datepicker" data-locked="25/12/2014;1/1/2015">
+                <span class="input-group-btn"><button type="button" class="btn btn-primary" data-toggle="datepicker"><i class="fa fa-calendar"></i></button></span> -->
+                  <p-calendar [(ngModel)]="editData.promotion_end_date" name="promotionExpirationDate" [showIcon]="true" (ngModelChange)="getExpirationDate($event)"
+                    dateFormat="yy-mm-dd"></p-calendar>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Max Number of Uses</label>
+              <div class="col-md-9">
+                <select class="form-control" [(ngModel)]="editData.promotion_max_users">
+                  <option value="Unlimited" selected="">Unlimited</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Days after close date</label>
+              <div class="col-md-9">
+                <select class="form-control">
+                  <option value="" selected="">Unlimited</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                  <option value="">5</option>
+                </select>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Allow for online sales</label>
+              <div class="col-md-9">
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck1" [(ngModel)]="editData.promotion_allow_online_sale">
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Valid Day(s)</label>
+              <div class="col-md-1">
+                <label>Sun</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck2"
+                  [(ngModel)]="sunday">
+              </div>
+              <div class="col-md-1">
+                <label>Mon</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck3"
+                  [(ngModel)]="monday">
+              </div>
+              <div class="col-md-1">
+                <label>Tue</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck4"
+                  [(ngModel)]="tuesday">
+              </div>
+              <div class="col-md-1">
+                <label>Wed</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck5"
+                  [(ngModel)]="wednesday">
+              </div>
+              <div class="col-md-1">
+                <label>Thu</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck6"
+                  [(ngModel)]="thursday">
+              </div>
+              <div class="col-md-1">
+                <label>Fri</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck7"
+                  [(ngModel)]="friday">
+              </div>
+              <div class="col-md-1">
+                <label>Sat</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" value="" id="promotionDefaultCheck8"
+                  [(ngModel)]="saturday">
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input" class="col-md-3 control-label">Define promotional items type</label>
+              <div class="col-md-9">
+                <select class="form-control" [(ngModel)]="editData.promotion_item_types">
+                  <option value="1" selected="">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+            <!-- <div class="col-md-12" style=" text-align: left;">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="addPromotion()">Add</button>
+                <button type="button" class="btn btn-secondary btn-sm" style="background:#f1f1f1">Cancel</button>
+              </div> -->
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancelPromotions(editData)">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="updatePromotion(editData);showSuccess()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+

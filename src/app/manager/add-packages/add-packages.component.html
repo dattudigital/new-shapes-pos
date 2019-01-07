@@ -1,0 +1,128 @@
+<div >
+	
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-6"></div>
+		<div class="col-sm-2">
+			<button type="button" class="btn backBtn pull-right" (click)="backToMembership();">Back</button>
+		</div>
+	</div>
+	<div class="package-3">
+		<h4>Add a New Package</h4>
+		<div class="col-md-12 col-sm-12 package-3-left">
+			<div class="form-group">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="input" class="col-md-5 control-label">Package name</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" id="packNameId" placeholder="" required="" [(ngModel)]="packageName">
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="package-3">
+		<h4>Add item to package</h4>
+		<div class="col-md-12 col-sm-12 package-3-left">
+			<div class="form-group">
+				<label for="input" class="col-md-2 control-label">Type of item</label>
+				<div class="col-md-10">
+					<p-multiSelect [options]="packs" defaultLabel="All Services" [(ngModel)]="selectedPack" [(ngModel)]="serviceData.service_id"
+					 (ngModelChange)="onChange($event)" [panelStyle]="{minWidth:'12em'}"></p-multiSelect>
+					 <p>Selected Cars: {{selectedPack | json}}</p>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+			<table width="100%">
+				<tr>
+					<th>Remove</th>
+					<th>Package Item</th>
+					<th>Price</th>
+
+				</tr>
+				<tr *ngFor="let item of selectedPack ; let i=index">
+					<td>
+						<i class="fas fa-trash" (click)="deleteService(i)"></i>
+					</td>
+					<td>{{item.service_name}}</td>
+					<td>{{item.service_price}}</td>
+
+
+				</tr>
+
+			</table>
+
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="package-3">
+		<h4>Set Options</h4>
+		<div class="col-md-12 col-sm-12 package-4-left">
+			<div class="form-group">
+				<label for="input" class="col-md-2 control-label">Discount %</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" id="packageDiscountId" placeholder="Discount %">
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="form-check">
+				<label class="form-check-label" for="inlineFormCheck">Sell Online</label>
+				<input class="form-check-input" type="checkbox" id="packageFormCheck1">
+			</div>
+
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+			 aria-controls="collapseExample">
+				Advanced Options
+			</button>
+			<div class="collapse" id="collapseExample">
+				<div class="card card-body">
+					<div class="form-group">
+						<label for="input" class="col-md-3 control-label">Members only</label>
+						<div class="col-md-7">
+							<select multiple class="form-control" id="promotionFormControlSelect1">
+								<option>Unlimited Brow Membership Regular</option>
+								<option>Unlimited Brow Membership Regular</option>
+								<option>Unlimited Brow Membership Regular</option>
+								<option>Unlimited Brow Membership Regular</option>
+								<option>Unlimited Brow Membership Regular</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="form-group">
+						<label for="input" class="col-md-3 control-label">Location</label>
+						<div class="col-md-7">
+							<select multiple class="form-control" id="promotionFormControlSelect2">
+								<option>SBB - Culver city Kiosk</option>
+								<option>SBB - Culver city Kiosk</option>
+								<option>SBB - Culver city Kiosk</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div>
+		<small class="pull-right" style="color:red;">Please add an item to this package</small>
+		<div class="clear"></div>
+	</div>
+	<div class="package-5">
+		<div class="col-md-12 col-sm-12 package-5-left">
+			<input class="btn btn-pl-51" type="reset" value="Cancel">
+			<input class="btn btn-pl-5" type="submit" (click)="addPackage()" value="Save">
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
