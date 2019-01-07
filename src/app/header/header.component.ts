@@ -94,7 +94,7 @@ export class HeaderComponent implements OnInit {
 
   redirectToDashbaord() {
     this.removeActiveClass();
-    this.router.navigate(['sale-dashboard']);
+    this.router.navigate(['sale/dashboard']);
     $("#__sale").click(function () {
       $("#__sale").addClass("active");
     });

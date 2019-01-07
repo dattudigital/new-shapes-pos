@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { TimeClokServiceService } from '../services/time-clok-service.service';
+import { TimeClokServiceService } from '../../services/time-clok-service.service';
 import { Location } from '@angular/common';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { ExcelService } from '../services/excel.service';
+import { ExcelService } from '../../services/excel.service';
 declare var jsPDF: any;
-// import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  templateUrl: './time-clock.component.html',
-  styleUrls: ['./time-clocks.component.css']
+  selector: 'fmyp-emp-time-clocks',
+  templateUrl: './emp-time-clocks.component.html',
+  styleUrls: ['./emp-time-clocks.component.css']
 })
-export class TimeClockComponent {
-
+export class EmpTimeClocksComponent implements OnInit {
   disable_time_in = false;
   disable_break_out = true;
   disable_break_in = true;
@@ -56,7 +55,7 @@ export class TimeClockComponent {
   };
   msgs: Message[] = [];
 
-  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private messageService: MessageService,private excelService: ExcelService) { }
+  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private messageService: MessageService, private excelService: ExcelService) { }
 
   ngOnInit() {
     this.getTimeAndDate();
@@ -220,7 +219,7 @@ export class TimeClockComponent {
   xlDownload() {
     this.excelService.exportAsExcelFile(this.apptInfo, 'Appointments');
   }
-  
+
   pdfDownload() {
     var columns = [
       { title: "Name", dataKey: "name" },
@@ -268,4 +267,5 @@ export class TimeClockComponent {
       }
     })
   }
+
 }

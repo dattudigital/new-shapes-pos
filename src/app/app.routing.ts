@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { AuthGuard } from '../common-session/session.check';
-import { TimeClockComponent } from './time-clock/time-clock.component';
 
 export const routes: Routes = [
   {
@@ -39,15 +38,20 @@ export const routes: Routes = [
         loadChildren: './setup/setup.module#setupModule'
       },
       {
+        path: 'time-clock',
+        loadChildren: './time-clocks/time-clocks.module#EmpTimeClocksModule'
+      },
+
+      {
         path: 'scheduler',
         component: SchedulerComponent,
         canActivate: [AuthGuard]
-      },
-      {
-        path: 'time-clock',
-        component: TimeClockComponent,
-        canActivate: [AuthGuard]
       }
+      // {
+      //   path: 'time-clock',
+      //   component: TimeClockComponent,
+      //   canActivate: [AuthGuard]
+      // }
     ]
   }
 ];

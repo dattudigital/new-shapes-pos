@@ -13,7 +13,6 @@ import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
-import { TimeClockComponent } from './time-clock/time-clock.component';
 import { MessageService } from 'primeng/api';
 
 @NgModule({
@@ -22,9 +21,7 @@ import { MessageService } from 'primeng/api';
     LoginComponent,
     HeaderComponent,
     SchedulerComponent,
-    FooterComponent,
-    TimeClockComponent
-  ],
+    FooterComponent  ],
   imports: [
     BrowserModule,
     HttpClientModule,
