@@ -102,10 +102,11 @@ export class HeaderComponent implements OnInit {
 
   redirectToReport() {
     this.removeActiveClass();
-    this.router.navigate(['reports'])
     $("#__reports").click(function () {
       $("#__reports").addClass("active");
     });
+    $('#secondaryLoginModal').modal('show');
+    this.redirect = "reports";
   }
 
   redirectToTimeClocks() {
@@ -184,6 +185,7 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('inventory');
     sessionStorage.removeItem('manager');
     sessionStorage.removeItem('time-clock');
+    sessionStorage.removeItem('reports');
     console.log(this.redirect)
     if (this.mailId && this.password) {
       if (this.redirect == "time-clock") {
@@ -197,7 +199,8 @@ export class HeaderComponent implements OnInit {
         this.loginService.loginData(data).subscribe(loginData => {
           if (loginData.json().status == false) {
             this.errorMessage = true;
-          } else {            
+          } else {
+            console.log(loginData.json())
             $('#secondaryLoginModal').modal('hide');
             if (this.redirect == 'setup') {
               sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
@@ -211,11 +214,15 @@ export class HeaderComponent implements OnInit {
             } else if (this.redirect == 'schedule') {
               sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
               this.router.navigate(['scheduler'])
+            } else if (this.redirect == 'reports') {
+              console.log("*****************")
+              sessionStorage.setItem('reports', JSON.stringify(loginData.json()));
+              this.router.navigate(['reports'])
             }
-            this.redirect = "";            
+            this.redirect = "";
           }
-        });        
-      }         
+        });
+      }
     }
   }
 }

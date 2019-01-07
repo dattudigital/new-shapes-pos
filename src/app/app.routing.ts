@@ -31,6 +31,10 @@ export const routes: Routes = [
         loadChildren: './manager/manager.module#managerModule'
       },
       {
+        path: 'reports',
+        loadChildren: './reports/reports.module#reportsModule'
+      },
+      {
         path: 'scheduler',
         component: SchedulerComponent,
         canActivate: [AuthGuard]
