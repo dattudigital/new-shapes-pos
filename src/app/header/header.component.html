@@ -1,33 +1,33 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item _sale" id="__sale">
+  <li class="nav-item _sale"  [ngClass]="redirect === 'sale' ? 'active' : 'none'">
     <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="sales" (click)="redirectToDashbaord()"
       aria-selected="true">Sales </a>
   </li>
-  <li class="nav-item _appt" id="__appt">
+  <li class="nav-item _appt" [ngClass]="redirect == 'appt' ? 'active' : 'none'">
     <a class="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="appointments" (click)="redirectToAppointment()"
       aria-selected="false">Appointments</a>
   </li>
-  <li class="nav-item" id="__time-clocks">
+  <li class="nav-item" [ngClass]="redirect == 'time-clock' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="time" aria-selected="false"
       (click)="redirectToTimeClocks()">Time clocks</a>
   </li>
-  <li class="nav-item" id="__schedule">
+  <li class="nav-item"  [ngClass]="redirect == 'schedule' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="schedule" aria-selected="false"
       (click)="redirectToSchedule()">Schedule</a>
   </li>
-  <li class="nav-item" id="__reports">
+  <li class="nav-item" [ngClass]="redirect == 'reports' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="reports" aria-selected="false"
       (click)=" redirectToReport()">Reports</a>
   </li>
-  <li class="nav-item" id="__manager">
+  <li class="nav-item"  [ngClass]="redirect == 'manager' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="manager" (click)="redirectToManager()"
       aria-selected="false">Manager</a>
   </li>
-  <li class="nav-item" id="__inventory">
+  <li class="nav-item"  [ngClass]="redirect == 'inventory' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="inventory" aria-selected="false"
       (click)="redirectToInventory()">Inventory</a>
   </li>
-  <li class="nav-item" id="__setup">
+  <li class="nav-item"  [ngClass]="redirect == 'setup' ? 'active' : 'none'">
     <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="setup" aria-selected="false"
       (click)="redirectToSetup()">Setup</a>
   </li>

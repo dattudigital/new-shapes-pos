@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { LoginService } from '../services/login.service'
+import { LoginService } from '../services/login.service';
+import { Location } from '@angular/common';
 import { TimeClokServiceService } from '../services/time-clok-service.service'
 declare var $: any;
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,153 +13,85 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HeaderComponent implements OnInit {
 
-  redirect: any;
+  redirect: any = "";
   password = "";
   mailId = "";
   errorMessage = false;
   btnDisable = true;
 
-  constructor(private spinner: NgxSpinnerService,private router: Router, private loginService: LoginService, private service: TimeClokServiceService) {
+  constructor(private location: Location, private spinner: NgxSpinnerService, private router: Router, private loginService: LoginService, private service: TimeClokServiceService) {
 
-    if (this.router.url == '/sale-dashboard') {
-      $(document).ready(function () {
-        $("#__sale").addClass("active");
-      });
+    let URL = this.location.path();
+
+    if (URL.search('sale') == 1) {
+      this.redirect = "sale";
     }
 
-    if (this.router.url == '/appointments') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__appt").addClass("active");
-      });
+    if (URL.search('appt') == 1) {
+      this.redirect = "appt";
     }
 
-    if (this.router.url == '/time-clocks') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__time-clocks").addClass("active");
-      });
+    if (URL.search('time-clock') == 1) {
+      this.redirect = "time-clock";
     }
 
-    if (this.router.url == '/schedule') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__schedule").addClass("active");
-      });
+    if (URL.search('schedule') == 1) {
+      this.redirect = "schedule";
     }
 
-    if (this.router.url == '/reports') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__reports").addClass("active");
-      });
+    if (URL.search('report') == 1) {
+      this.redirect = "reports";
     }
-
-    if (this.router.url == '/management') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__manager").addClass("active");
-      });
+    if (URL.search('manager') == 1) {
+      this.redirect = "manager";
     }
-
-    if (this.router.url == '/inventory') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__inventory").addClass("active");
-      });
+    if (URL.search('inventory') == 1) {
+      console.log("inventory")
+      this.redirect = "inventory";
     }
-    if (this.router.url == '/setup') {
-      this.removeActiveClass();
-      $(document).ready(function () {
-        $("#__setup").addClass("active");
-      });
+    if (URL.search('setup')  == 1) {
+      this.redirect = "setup";
     }
-
-
   }
+
   ngOnInit() {
-
-
-  }
-  removeActiveClass() {
-    $(document).ready(function () {
-      $("#__sale").removeClass("active");
-      $("#__appt").removeClass("active");
-      $("#__time-clocks").removeClass("active");
-      $("#__schedule").removeClass("active");
-      $("#__reports").removeClass("active");
-      $("#__manager").removeClass("active");
-      $("#__inventory").removeClass("active");
-      $("#__setup").removeClass("active");
-    });
   }
 
   redirectToDashbaord() {
-    this.removeActiveClass();
     this.router.navigate(['sale/dashboard']);
-    $("#__sale").click(function () {
-      $("#__sale").addClass("active");
-    });
+    this.redirect = "sale";
   }
 
   redirectToReport() {
-    this.removeActiveClass();
-    $("#__reports").click(function () {
-      $("#__reports").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show');
     this.redirect = "reports";
   }
 
   redirectToTimeClocks() {
-    this.removeActiveClass();
-    $("#__time-clocks").click(function () {
-      $("#__time-clocks").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show')
     this.redirect = "time-clock";
   }
 
   redirectToSchedule() {
-    this.removeActiveClass();
-    $("#__schedule").click(function () {
-      $("#__schedule").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show')
     this.redirect = "schedule";
   }
 
   redirectToAppointment() {
-    this.removeActiveClass();
-    this.router.navigate(['appointments'])
-    $("#__appt").click(function () {
-      $("#__appt").addClass("active");
-    });
+    this.redirect = "appt";
   }
 
   redirectToManager() {
-    this.removeActiveClass();
-    $("#__manager").click(function () {
-      $("#__manager").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show');
     this.redirect = "manager";
   }
 
   redirectToInventory() {
-    this.removeActiveClass();
-    $("#__inventory").click(function () {
-      $("#__inventory").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show');
     this.redirect = "inventory";
   }
 
   redirectToSetup() {
-    this.removeActiveClass();
-    $("#__setup").click(function () {
-      $("#__setup").addClass("active");
-    });
     $('#secondaryLoginModal').modal('show');
     this.redirect = "setup";
   }
@@ -187,7 +120,6 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('manager');
     sessionStorage.removeItem('time-clock');
     sessionStorage.removeItem('reports');
-    console.log(this.redirect)
     this.spinner.show();
     if (this.mailId && this.password) {
       if (this.redirect == "time-clock") {
@@ -196,14 +128,12 @@ export class HeaderComponent implements OnInit {
           sessionStorage.setItem('time-clock', JSON.stringify(res.json()));
           this.router.navigate(['time-clock']);
           $('#secondaryLoginModal').modal('hide');
-          this.redirect = "";
         })
       } else {
         this.loginService.loginData(data).subscribe(loginData => {
           if (loginData.json().status == false) {
             this.errorMessage = true;
           } else {
-            console.log(loginData.json())
             $('#secondaryLoginModal').modal('hide');
             if (this.redirect == 'setup') {
               sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
@@ -222,12 +152,10 @@ export class HeaderComponent implements OnInit {
               this.router.navigate(['scheduler'])
               this.spinner.hide()
             } else if (this.redirect == 'reports') {
-              console.log("*****************")
               sessionStorage.setItem('reports', JSON.stringify(loginData.json()));
               this.router.navigate(['reports'])
               this.spinner.hide()
             }
-            this.redirect = "";
           }
         });
       }
