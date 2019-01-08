@@ -49,11 +49,14 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/vendor/css/all.css"
             ],
             "scripts": [
+              "./src/vendor/js/jquery.min.js",
+              "./src/vendor/js/bootstrap.min.js",
               "./node_modules/jspdf/dist/jspdf.min.js",
-              "./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"
+              "./node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"             
             ]
           },
           "configurations": {
