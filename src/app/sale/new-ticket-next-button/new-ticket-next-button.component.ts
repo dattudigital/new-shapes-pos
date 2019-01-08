@@ -10,7 +10,7 @@ declare var $: any;
   selector: 'app-new-ticket-next-button',
   templateUrl: './new-ticket-next-button.component.html',
   styleUrls: ['./new-ticket-next-button.component.css'],
-  providers:[Services]
+  providers: [Services]
 })
 
 export class NewTicketNextButtonComponent implements OnInit {
@@ -18,33 +18,43 @@ export class NewTicketNextButtonComponent implements OnInit {
   selectedOption: any;
   catProdMemResult: any[] = new Array();
   stylishResult: any[] = new Array();
-  commonValues;
-  
+  commonValues: any = [];
+
   temp: any[] = new Array();
-  categories;
-  memberships;
-  packages;
+  categories: any = [];
+  memberships: any = [];
+  packages: any = [];
   _service = false;
   _membership = false;
   _package = false;
 
-  constructor(private http: Http, private router: Router, private services: Services) {
-    this.http.get(environment.host + 'categorys').subscribe(data => {
-      this.categories = data.json().result;
-    });
-
-    this.http.get(environment.host + 'memberships').subscribe(data => {
-      this.memberships = data.json().result;
-    });
-    this.http.get(environment.host + 'packages').subscribe(data => {
-      this.packages = data.json().result;
-    });
-  }
+  constructor(private http: Http, private router: Router, private services: Services) {}
 
   ngOnInit() {
   }
 
   onSelectStylish(event: TypeaheadMatch): void {
+  }
+
+  getServiceList() {
+    console.log("******************")
+    this.http.get(environment.host + 'categorys').subscribe(data => {
+      this.categories = data.json().result;
+    });
+  }
+
+  getPackageList() {
+    console.log("******************")
+    this.http.get(environment.host + 'packages').subscribe(data => {
+      this.packages = data.json().result;
+    });
+  }
+  
+  getMembershipList() {
+    console.log("******************")
+    this.http.get(environment.host + 'memberships').subscribe(data => {
+      this.memberships = data.json().result;
+    });
   }
 
   onSelect(event: TypeaheadMatch): void {
@@ -54,10 +64,10 @@ export class NewTicketNextButtonComponent implements OnInit {
       this._service = true;
       this._membership = false;
       this._package = false;
-      this.http.get(environment.host + 'services/category/' + event.item.cat_id).subscribe(data=> {
-        this.commonValues =data.json().result;
-        
-        
+      this.http.get(environment.host + 'services/category/' + event.item.cat_id).subscribe(data => {
+        this.commonValues = data.json().result;
+
+
       });
     } else {
       var arrayConvert = []
@@ -90,12 +100,12 @@ export class NewTicketNextButtonComponent implements OnInit {
       this._package = false;
       url = 'services/category/' + val.cat_id;
       this.http.get(environment.host + 'services/category/' + val.cat_id).subscribe(data => {
-        this.commonValues =data;
+        this.commonValues = data;
         console.log(this.commonValues);
-        if(this.commonValues.status == 404){
+        if (this.commonValues.status == 404) {
           this.commonValues = Array.of(val);
         }
-        
+
       });
     } else {
       if (type == 'm') {
