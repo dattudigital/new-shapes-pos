@@ -52,19 +52,19 @@
         </div>
         <div class="col-md-3 col-sm-4 clock-in-services2-left">
           <div class="cisl-buttons">
-            <button (click)="clockInTime();" [ngStyle]="{'background-color': buttonColorTimeIn}" [disabled]="disable_time_in ">Clock
+            <button class="btn btn-primary submit-button" (click)="clockInTime();" [disabled]="disable_time_in ">Clock
               In</button>
           </div>
           <div class="cisl-buttons">
-            <button (click)="breakOutTime();" [ngStyle]="{'background-color': buttonColorBreakOut}" [disabled]="disable_break_out">Break
+            <button class="btn btn-primary submit-button" (click)="breakOutTime();" [disabled]="disable_break_out">Break
               Out</button>
           </div>
           <div class="cisl-buttons">
-            <button (click)="breakInTime(); " [ngStyle]="{'background-color': buttonColorBreakIn}" [disabled]="disable_break_in">Break
+            <button class="btn btn-primary submit-button" (click)="breakInTime(); " [disabled]="disable_break_in">Break
               In</button>
           </div>
           <div class="cisl-buttons">
-            <button (click)="clockOutTime();" [ngStyle]="{'background-color': buttonColorTimeOut}" [disabled]="disable_time_out">Clock
+            <button class="btn btn-primary submit-button" (click)="clockOutTime();" [disabled]="disable_time_out">Clock
               Out</button>
           </div>
           <div class="cisl-buttons1">Total Hours Worked Today
