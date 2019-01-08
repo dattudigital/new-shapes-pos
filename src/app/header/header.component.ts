@@ -3,6 +3,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { LoginService } from '../services/login.service'
 import { TimeClokServiceService } from '../services/time-clok-service.service'
 declare var $: any;
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   errorMessage = false;
   btnDisable = true;
 
-  constructor(private router: Router, private loginService: LoginService, private service: TimeClokServiceService) {
+  constructor(private spinner: NgxSpinnerService,private router: Router, private loginService: LoginService, private service: TimeClokServiceService) {
 
     if (this.router.url == '/sale-dashboard') {
       $(document).ready(function () {
@@ -187,9 +188,11 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('time-clock');
     sessionStorage.removeItem('reports');
     console.log(this.redirect)
+    this.spinner.show();
     if (this.mailId && this.password) {
       if (this.redirect == "time-clock") {
         this.service.timeClockLoginCredentials(data).subscribe(res => {
+          this.spinner.hide()
           sessionStorage.setItem('time-clock', JSON.stringify(res.json()));
           this.router.navigate(['time-clock']);
           $('#secondaryLoginModal').modal('hide');
@@ -205,19 +208,24 @@ export class HeaderComponent implements OnInit {
             if (this.redirect == 'setup') {
               sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
               this.router.navigate(['setup'])
+              this.spinner.hide()
             } else if (this.redirect == 'inventory') {
               sessionStorage.setItem('inventory', JSON.stringify(loginData.json()));
               this.router.navigate(['inventory'])
+              this.spinner.hide()
             } else if (this.redirect == 'manager') {
               sessionStorage.setItem('manager', JSON.stringify(loginData.json()));
               this.router.navigate(['manager'])
+              this.spinner.hide()
             } else if (this.redirect == 'schedule') {
               sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
               this.router.navigate(['scheduler'])
+              this.spinner.hide()
             } else if (this.redirect == 'reports') {
               console.log("*****************")
               sessionStorage.setItem('reports', JSON.stringify(loginData.json()));
               this.router.navigate(['reports'])
+              this.spinner.hide()
             }
             this.redirect = "";
           }

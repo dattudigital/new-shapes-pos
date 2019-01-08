@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component'
 import { AuthGuard } from '../common-session/session.check';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MessageService } from 'primeng/api';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [AuthGuard , MessageService],
   bootstrap: [AppComponent],
