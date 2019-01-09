@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { GiftCardServiceService } from '../../services/gift-card-service.service';
 import { HttpClient } from '@angular/common/http';
 // import { Angular5Csv } from 'angular5-csv/Angular5-csv';
@@ -46,107 +46,83 @@ export class ManagerSidebarComponent implements OnInit {
   memValidityDate: string;
   memCode: string;
   memberships: any;
-  private isShowMembership = false;
-  private isShowPackage = false;
   selectedValue: string;
   selectedOption: any;
   states: any[] = [];
-
-  constructor(private service: MembershipServiceService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router) {
+  sidebarActiveName: any = "";
+  constructor(private service: MembershipServiceService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
     let URL = this.location.path();
     console.log(URL);
   }
 
   commMarkClickInfo() {
+    this.sidebarActiveName = "com&mar";
+    let modelClose = document.getElementById("com-and-info-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("com&mar"));
-    $(".com-mark-info").trigger("click");
-  //  document.querySelector('.com-mark-info').click();
-    this.removeClass();
-    $(".com-mark-info").addClass("active");
   }
 
   staffClickInfo() {
+    let modelClose = document.getElementById("staff-tab");
+    modelClose.click();
+    this.sidebarActiveName = "staff";
     sessionStorage.setItem('manager-routing', JSON.stringify("staff"));
-    $(".staff-info").trigger("click");
-    this.removeClass();
-    $(".staff-info").addClass("active");
   }
 
   clientClickInfo() {
+    let modelClose = document.getElementById("client-tab");
+    modelClose.click();
+    this.sidebarActiveName = "client";
     sessionStorage.setItem('manager-routing', JSON.stringify("client"));
-    $(".client-info").trigger("click");
-    this.removeClass();
-    $(".client-info").addClass("active");
   }
 
   membershipClickInfo() {
+    let modelClose = document.getElementById("membership-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("memberhip"));
-    $(".mem-info").trigger("click");
-    this.removeClass();
-    $(".mem-info").addClass("active");
+    this.sidebarActiveName = "membership";
   }
 
   packageClickInfo() {
+    let modelClose = document.getElementById("packages-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("package"));
-    $(".package-info").trigger("click");
-    this.removeClass();
-    $(".package-info").addClass("active");
+    this.sidebarActiveName = "package";
   }
 
   promitionClickInfo() {
+    let modelClose = document.getElementById("promotions-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("promotion"));
-    $(".promotion-info").trigger("click");
-    this.removeClass();
-    $(".promotion-info").addClass("active");
+    this.sidebarActiveName = "promotion";
   }
 
   giftcardClickInfo() {
+    let modelClose = document.getElementById("gift-card-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("giftcard"));
-    $(".gift-card-info").trigger("click");
-    this.removeClass();
-    $(".gift-card-info").addClass("active");
+    this.sidebarActiveName = "giftcard";
   }
 
   productClickInfo() {
+    let modelClose = document.getElementById("product-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("product"));
-    $(".product-info").trigger("click");
-    this.removeClass();
-    $(".product-info").addClass("active");
-  }
-
-  inventoryClickInfo() {
-    sessionStorage.setItem('manager-routing', JSON.stringify("inventory"));
-    $(".inventory-info").trigger("click");
-    this.removeClass();
-    $(".inventory-info").addClass("active");
+    this.sidebarActiveName = "product";
   }
 
   pricingClickInfo() {
+    let modelClose = document.getElementById("pricing-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("pricing"));
-    $(".pricing-info").trigger("click");
-    this.removeClass();
-    $(".pricing-info").addClass("active");
+    this.sidebarActiveName = "pricing";
   }
 
   discountClickInfo() {
+    let modelClose = document.getElementById("discount-tab");
+    modelClose.click();
     sessionStorage.setItem('manager-routing', JSON.stringify("discount"));
-    $(".discount-info").trigger("click");
-    this.removeClass();
-    $(".discount-info").addClass("active");
-  }
-
-  removeClass() {
-    $(".com-mark-info").removeClass("active");
-    $(".staff-info").removeClass("active");
-    $(".client-info").removeClass("active");
-    $(".mem-info").removeClass("active");
-    $(".package-info").removeClass("active");
-    $(".promotion-info").removeClass("active");
-    $(".gift-card-info").removeClass("active");
-    $(".product-info").removeClass("active");
-    $(".inventory-info").removeClass("active");
-    $(".pricing-info").removeClass("active");
-    $(".discount-info").removeClass("active");
+    this.sidebarActiveName = "discount";
   }
 
   changeCategory(event: string): void {
@@ -164,32 +140,33 @@ export class ManagerSidebarComponent implements OnInit {
     this.selectedSubCategoryObject = JSON.parse(event);
   }
 
-  ngOnInit() {
-
+  getCategory() {
     this.service.getCategoryList().subscribe(response => {
       this.catagroyData = response.json().result;
     });
-    if (sessionStorage.getItem('manager-routing') == '"com&mar"') {
+  }
+
+  ngOnInit() {
+    let sessionData = sessionStorage.getItem('manager-routing');
+    if (sessionData == '"com&mar"') {
       this.commMarkClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"staff"') {
+    } else if (sessionData == '"staff"') {
       this.staffClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"client"') {
+    } else if (sessionData == '"client"') {
       this.clientClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"memberhip"') {
+    } else if (sessionData == '"memberhip"') {
       this.membershipClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"package"') {
+    } else if (sessionData == '"package"') {
       this.packageClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"promotion"') {
+    } else if (sessionData == '"promotion"') {
       this.promitionClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"giftcard"') {
+    } else if (sessionData == '"giftcard"') {
       this.giftcardClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"product"') {
+    } else if (sessionData == '"product"') {
       this.productClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"inventory"') {
-      this.inventoryClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"pricing"') {
+    } else if (sessionData == '"pricing"') {
       this.pricingClickInfo();
-    } else if (sessionStorage.getItem('manager-routing') == '"discount"') {
+    } else if (sessionData == '"discount"') {
       this.discountClickInfo();
     }
   }
@@ -253,24 +230,6 @@ export class ManagerSidebarComponent implements OnInit {
     this.addMembership.membership_discount = "";
     this.addMembership.membership_price = "";
     this.addMembership.membership_validity_in_days = "";
-  }
-
-  membershipClick() {
-    this.isShowMembership = true;
-    this.isShowPackage = false;
-  }
-
-  packageClick() {
-    this.isShowMembership = false;
-    this.isShowPackage = true;
-  }
-
-  productsClick() {
-
-  }
-
-  staffClick() {
-
   }
 
   showActiveMembershipClick() {
@@ -369,35 +328,27 @@ export class ManagerSidebarComponent implements OnInit {
   }
 
   saveGiftCard() {
-    let sellOnlineCheckBox;
-    let discountCheckbox;
-    let setPriceRadio;
-    let everyoneRadio;
-    if (this.sellOnline.toString() == 'true') {
-      sellOnlineCheckBox = '1'
-    } else {
-      sellOnlineCheckBox = '0'
-    }
-    if (this.discountPrice.toString() == 'true') {
-      discountCheckbox = '1'
-    } else {
-      discountCheckbox = '0'
-    }
-
-    var data: any = {
+      var data: any = {
       giftcard_sold_at: this.soldAt,
       giftcard_value: this.cardValue,
-      giftcard_discount_price: discountCheckbox,
       giftcard_name: this.cardName,
-      giftcard_sell_online: sellOnlineCheckBox,
       giftcard_allow_staff_set_price: this.setPrice,
       giftcard_everyone_purchase: this.everyonePurchase
     }
 
+    if (this.sellOnline.toString() == 'true') {
+      data.giftcard_sell_online = '1'
+    } else {
+      data.giftcard_sell_online = '0'
+    }
+    if (this.discountPrice.toString() == 'true') {
+      data.giftcard_discount_price = '1'
+    } else {
+      data.giftcard_discount_price = '0'
+    }
+
     this.giftcard.saveGiftCard(data).subscribe(data => {
     });
-
   }
-
 
 }
