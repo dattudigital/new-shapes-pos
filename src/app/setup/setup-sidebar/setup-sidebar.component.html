@@ -1,33 +1,272 @@
-<div class="col-md-3 col-sm-3 col-xs-12 manager-tap-left">
-  <div class="nav flex-column nav-pills rs-1-left-button" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <a class="nav-link com-mark-info" id="v-pills-home-tab" (click)="businessSettingsClick()" data-toggle="pill" href="#business"
-      role="tab" aria-controls="business" aria-selected="true">Business Settings</a>
+<div class="tab-pane " id="manager" role="tabpanel" aria-labelledby="manager-tab">
+  <div class="manager-tap">
+    <div class="col-md-3 col-sm-3 col-xs-12 manager-tap-left">
+      <div class="nav flex-column nav-pills rs-1-left-button" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link com-mark-info" id="v-pills-home-tab" (click)="businessSettingsClick()" data-toggle="pill"
+          href="#business" role="tab" aria-controls="business" aria-selected="true">Business Settings</a>
 
-    <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#general" role="tab" aria-controls="general"
-      aria-selected="false">General Settings</a>
+        <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#general" role="tab"
+          aria-controls="general" aria-selected="false">General Settings</a>
 
-    <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#retail" role="tab"
-      aria-controls="retail" aria-selected="false">Retail Settings</a>
+        <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#retail" role="tab"
+          aria-controls="retail" aria-selected="false">Retail Settings</a>
 
-    <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#inventory" role="tab"
-      aria-controls="inventory" aria-selected="false">Inventory Settings</a>
+        <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#inventory" role="tab"
+          aria-controls="inventory" aria-selected="false">Inventory Settings</a>
 
-    <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#client" role="tab"
-      aria-controls="client" aria-selected="false">Client Settings</a>
+        <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#client" role="tab"
+          aria-controls="client" aria-selected="false">Client Settings</a>
 
-    <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#cardswipe" role="tab"
-      aria-controls="cardswipe" aria-selected="false">Card Swipe Settings</a>
+        <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#cardswipe" role="tab"
+          aria-controls="cardswipe" aria-selected="false">Card Swipe Settings</a>
 
-    <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#payment" role="tab"
-      aria-controls="v-pills-settings" aria-selected="false">Payment Method</a>
+        <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#payment" role="tab"
+          aria-controls="payment" aria-selected="false">Payment Method</a>
 
-    <a class="nav-link product-info" id="v-pills-settings-tab" (click)="cashDrawerSetupClick()" data-toggle="pill" href="#cash"
-      role="tab" aria-controls="v-pills-settings" aria-selected="false">Cash Drawer Setup</a>
+        <a class="nav-link product-info" id="v-pills-settings-tab" (click)="cashDrawerSetupClick()" data-toggle="pill"
+          href="#cash" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cash Drawer Setup</a>
 
-    <a class="nav-link inventory-info" id="v-pills-settings-tab" data-toggle="pill" href="#receipt" role="tab"
-      aria-controls="v-pills-settings" aria-selected="false">Receipt Printer</a>
+        <a class="nav-link inventory-info" id="v-pills-settings-tab" data-toggle="pill" href="#receipt" role="tab"
+          aria-controls="printer" aria-selected="false">Receipt Printer</a>
 
-    <a class="nav-link pricing-info" id="v-pills-settings-tab" data-toggle="pill" href="#software" role="tab"
-      aria-controls="v-pills-settings" aria-selected="false">Software Settings</a>
+        <a class="nav-link pricing-info" id="v-pills-settings-tab" data-toggle="pill" href="#software" role="tab"
+          aria-controls="v-pills-settings" aria-selected="false">Software Settings</a>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-9 col-xs-12 manager-tap-right">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!--general Setting Start-->
+        <div class="tab-pane" id="general" role="tabpanel" aria-labelledby="general">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Appointment Options</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Group Setting Options</a>
+            </h3>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12 staff-box">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Membership Setup</a>
+            </h3>
+          </div>
+        </div>
+        <!--retail Setting Start-->
+        <div class="tab-pane" id="retail" role="tabpanel" aria-labelledby="retail">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Close Out Data</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Payment Methods</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Product Revenue Categories</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Revenue Categories</a>
+            </h3>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12 staff-box">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Membership Setup</a>
+            </h3>
+          </div>
+        </div>
+        <!--Inventory Setting Start-->
+        <div class="tab-pane" id="inventory" role="tabpanel" aria-labelledby="inventory">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Payment Terms</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Product Colors</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp; Product Sizes</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Suppliers</a>
+            </h3>
+          </div>
+        </div>
+        <!--Client Setting Start-->
+        <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Client Alerts</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Add a New Relationship</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Client Index Value</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Client Types</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Client Profile Custom Fields</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Client Status</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Contact Log Types</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Prospect Stages</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Referal types</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Required Fields</a>
+            </h3>
+          </div>
+        </div>
+        <!--Card Swipe Setting Start-->
+        <div class="tab-pane" id="cardswipe" role="tabpanel" aria-labelledby="cardswipe">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;card Swipe Device</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;card Swipe Settings</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Com Port</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Test Communications</a>
+            </h3>
+          </div>
+        </div>
+        <!--payment methods start-->
+        <div class="tab-pane" id="payment" role="tabpanel" aria-labelledby="payment">
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;General</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Ip Charge</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Monetra</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Paid in Out Access Code</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Pc Charge</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;Positions</a>
+            </h3>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#">
+                <img src="">&nbsp;&nbsp;SVS</a>
+            </h3>
+          </div>
+        </div>
+        <!--Receipt Printer-->
+        <div class="tab-pane" id="receipt" role="tabpanel" aria-labelledby="receipt">
+            <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+                <h3 >
+                  <a href="#" id="bor-radius">
+                    <img src="">&nbsp;&nbsp;Additional Footer</a>
+                </h3>
+              </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 </div>
