@@ -5,16 +5,18 @@
         <a class="nav-link com-mark-info" id="v-pills-home-tab" (click)="businessSettingsClick()" data-toggle="pill"
           href="#business" role="tab" aria-controls="business" aria-selected="true">Business Settings</a>
 
-        <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" href="#general" role="tab"
-          aria-controls="general" aria-selected="false">General Settings</a>
+        <a class="nav-link general-info" id="general-tab" [ngClass]="sidebarActiveName == 'general-setting'?'active':'none'"
+          (click)="generalClickInfo()" data-toggle="pill" href="#general" role="tab" aria-controls="general"
+          aria-selected="false">General Settings</a>
 
-        <a class="nav-link client-info" id="v-pills-messages-tab" data-toggle="pill" href="#retail" role="tab"
-          aria-controls="retail" aria-selected="false">Retail Settings</a>
+        <a class="nav-link retail-info" id="retail-tab" [ngClass]="sidebarActiveName == 'retail-setting'?'active':'none'"
+          (click)="retailClickInfo()" data-toggle="pill" href="#retail" role="tab" aria-controls="retail" aria-selected="false">Retail
+          Settings</a>
 
-        <a class="nav-link mem-info" id="v-pills-settings-tab" data-toggle="pill" href="#inventory" role="tab"
+        <a class="nav-link inventory-info" id="inventory-tab" [ngClass]="sidebarActiveName == 'inventory-setting'?'active':'none'" (click)="inventoryClickInfo()" data-toggle="pill" href="#inventory" role="tab"
           aria-controls="inventory" aria-selected="false">Inventory Settings</a>
 
-        <a class="nav-link package-info" id="v-pills-settings-tab" data-toggle="pill" href="#client" role="tab"
+        <a class="nav-link client-info" id="client-tab" [ngClass]="sidebarActiveName == 'client-setting'?'active':'none'" (click)="clientClickInfo()" data-toggle="pill" href="#client" role="tab"
           aria-controls="client" aria-selected="false">Client Settings</a>
 
         <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#cardswipe" role="tab"
@@ -257,12 +259,12 @@
         </div>
         <!--Receipt Printer-->
         <div class="tab-pane" id="receipt" role="tabpanel" aria-labelledby="receipt">
-            <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
-                <h3 >
-                  <a href="#" id="bor-radius">
-                    <img src="">&nbsp;&nbsp;Additional Footer</a>
-                </h3>
-              </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 staff-box">
+            <h3>
+              <a href="#" id="bor-radius">
+                <img src="">&nbsp;&nbsp;Additional Footer</a>
+            </h3>
+          </div>
         </div>
 
 
