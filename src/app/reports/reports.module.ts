@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from '../../common-session/session.check';
 import {reportsRoutingModule} from './reports-routing.module';
 import { ReportsSidebarComponent } from './reports-sidebar/reports-sidebar.component';
+import { SaleComponent } from './sale/sale.component';
+import { DatesFilterComponent } from './dates-filter/dates-filter.component';
 
 @NgModule({
     imports: [
@@ -13,7 +15,9 @@ import { ReportsSidebarComponent } from './reports-sidebar/reports-sidebar.compo
         reportsRoutingModule
     ],
     declarations: [
-        ReportsSidebarComponent
+        ReportsSidebarComponent,
+        SaleComponent,
+        DatesFilterComponent
     ],
     providers: [AuthGuard]
 })

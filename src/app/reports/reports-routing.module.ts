@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../common-session/session.check';
 import { ReportsSidebarComponent } from './reports-sidebar/reports-sidebar.component';
+import { SaleComponent } from './sale/sale.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,11 @@ const routes: Routes = [
           component: ReportsSidebarComponent,
           canActivate: [AuthGuard]
         },
+        {
+          path: 'sale',
+          component: SaleComponent,
+          canActivate: [AuthGuard]
+        }
       ]
     }
   ];

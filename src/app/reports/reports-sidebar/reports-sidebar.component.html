@@ -44,7 +44,7 @@
         </div>
         <div *ngIf="salesContent">
           <div class="nav flex-column nav-pills rs-1-left-button manager-tap-left " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link com-mark-info" id="v-pills-home-tab" data-toggle="pill" (click)="slaesClick()" href="#Communications" role="tab" aria-controls="Communications"
+            <a class="nav-link com-mark-info" id="v-pills-home-tab"  [routerLink]="['../../reports/sale']" 
               aria-selected="true">Sales</a>
     
             <a class="nav-link staff-info" id="v-pills-profile-tab" data-toggle="pill" (click)="Click2()" href="#Staff" role="tab" aria-controls="Staff"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'fmyp-reports-sidebar',
   templateUrl: './reports-sidebar.component.html',
@@ -12,7 +12,7 @@ export class ReportsSidebarComponent implements OnInit {
   paymentContent = false;
   inventoryContent = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
