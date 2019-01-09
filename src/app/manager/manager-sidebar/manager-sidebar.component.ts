@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { SheduleServiceService } from '../../services/shedule-service.service';
 import { GiftCardServiceService } from '../../services/gift-card-service.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Globals } from '../../../global/global-urls';
+import { HttpClient } from '@angular/common/http';
 // import { Angular5Csv } from 'angular5-csv/Angular5-csv';
-
-import { LoginService } from '../../services/login.service';
 import { MembershipServiceService } from '../../services/membership-service.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 declare var $: any;
+
 @Component({
   selector: 'fmyp-manager-sidebar',
   templateUrl: './manager-sidebar.component.html',
@@ -17,13 +14,7 @@ declare var $: any;
 })
 export class ManagerSidebarComponent implements OnInit {
 
-
   model: any = {};
-  errorMessage = false;
-  loginTest: any;
-  titleStyle = "hidden";
-  password = "";
-  mailId = "";
   addMembership: any = {
     'sub_cat_id': '',
     'cat_id': '',
@@ -44,12 +35,7 @@ export class ManagerSidebarComponent implements OnInit {
 
   catagroyData = new Array();
   sub_catagroyData = new Array();
-  categoryArray: any[];
-  temp: any[] = [];
   temp3: any[] = [];
-  subCategoryArray: any[];
-  temp1: any[] = [];
-  temp2: any[] = [];
   selectedCategoryObject: any;
   selectedSubCategoryObject: any;
   memName: string;
@@ -62,81 +48,19 @@ export class ManagerSidebarComponent implements OnInit {
   memberships: any;
   private isShowMembership = false;
   private isShowPackage = false;
-
   selectedValue: string;
   selectedOption: any;
   states: any[] = [];
-  btnDisable = true;
 
-  constructor(private service: MembershipServiceService, private loginService: LoginService, private giftcard: GiftCardServiceService, private schedule: SheduleServiceService, private http: HttpClient, private router: Router) {
-
-    this.http.get(environment.host + 'categorys').subscribe(data => {
-      this.temp.push([
-        {
-          "cat_id": 11,
-          "category_name": "Make Up"
-        },
-        {
-          "cat_id": 12,
-          "category_name": "Facials"
-        }
-      ]);
-      this.categoryArray = this.temp[0];
-    });
-    this.http.get(environment.host + 'sub-categorys').subscribe(data => {
-      this.temp1.push(data);
-      this.subCategoryArray = this.temp1[0];
-    });
-    this.http.get(environment.host + 'memberships').subscribe(memberShipData => {
-      this.temp2.push(memberShipData);
-      this.memberships = this.temp2[0];
-    });
-  }
-
-  // showSuccess() {
-  //   this.msgs = [];
-  //   this.msgs.push({ severity: 'success', summary: 'GiftCard Added Successfully' });
-  // }
-  // onSubmit() {
-  //   if (sessionStorage.secondaryLoginData) {
-  //     window.sessionStorage.removeItem('secondaryLoginData');
-  //     //console.log('secondaryLoginData')
-  //   }
-  //   // this.spinner.show();
-  //   if (this.model.email_id && this.model.password) {
-  //     this.loginService.loginData(this.model).subscribe(loginData => {
-  //       if (loginData.json().status == false) {
-  //         this.errorMessage = true;
-  //         // this.spinner.hide();
-  //       }
-  //       this.loginTest = loginData.json().result[0];
-  //       console.log(this.loginTest);
-  //       console.log(this.loginTest.user_type_id);
-
-  //       if (loginData.json().status == true && this.loginTest.user_type_id !== 4) {
-  //         //console.log(loginData.json().result[0])
-  //         sessionStorage.setItem('secondaryLoginData', JSON.stringify(loginData.json().result[0]));
-  //         sessionStorage.setItem('backBtnManager', 'Y');
-  //         $('#myModal').modal('hide');
-  //         this.titleStyle = "visible";
-  //         // this.spinner.hide();
-  //       } else {
-  //         this.errorMessage = true;
-  //         // this.spinner.hide();
-  //       }
-  //     });
-  //   }
-  // }
-  errorClear() {
-    this.errorMessage = false;
-  }
-  RedirectToHome() {
-    // this.router.navigate(['dashboard']);
+  constructor(private service: MembershipServiceService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router) {
+    let URL = this.location.path();
+    console.log(URL);
   }
 
   commMarkClickInfo() {
     sessionStorage.setItem('manager-routing', JSON.stringify("com&mar"));
     $(".com-mark-info").trigger("click");
+  //  document.querySelector('.com-mark-info').click();
     this.removeClass();
     $(".com-mark-info").addClass("active");
   }
@@ -234,27 +158,14 @@ export class ManagerSidebarComponent implements OnInit {
       this.temp3.push(data.json());
       this.states = this.temp3.pop();
     });
-
   }
-
-  // onSelect(event: TypeaheadMatch): void {
-  //   this.selectedOption = event.item;
-  // }
 
   changeSubCategory(event: string): void {
     this.selectedSubCategoryObject = JSON.parse(event);
   }
 
   ngOnInit() {
-    sessionStorage.removeItem('backBtnInventory');
-    sessionStorage.removeItem('backBtnSetup');
-    sessionStorage.removeItem('backBtnReports');
-    // sessionStorage.removeItem('backBtnManager');     
-    //sessionStorage.removeItem('backBtnSales');     
-    //sessionStorage.removeItem('backBtnAppiontments');     
-    sessionStorage.removeItem('backBtnTimeclocks');
-    sessionStorage.removeItem('backBtnShedule');
-  
+
     this.service.getCategoryList().subscribe(response => {
       this.catagroyData = response.json().result;
     });
@@ -343,14 +254,6 @@ export class ManagerSidebarComponent implements OnInit {
     this.addMembership.membership_price = "";
     this.addMembership.membership_validity_in_days = "";
   }
-  id = 10;
-  key: string = 'name';
-  reverse: boolean = false;
-  sort(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
-  p: number = 1;
 
   membershipClick() {
     this.isShowMembership = true;
