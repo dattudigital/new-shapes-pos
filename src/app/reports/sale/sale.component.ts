@@ -12,4 +12,8 @@ export class SaleComponent implements OnInit {
   ngOnInit() {
   }
 
+  childData(data){
+   console.log("test ******")
+   console.log(data)
+  }
 }
