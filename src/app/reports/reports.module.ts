@@ -7,6 +7,7 @@ import { ReportsSidebarComponent } from './reports-sidebar/reports-sidebar.compo
 import { SaleComponent } from './sale/sale.component';
 import { DatesFilterComponent } from './dates-filter/dates-filter.component';
 import { CalendarModule } from 'primeng/calendar';
+import { GenerateExportComponent } from './generate-export/generate-export.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { CalendarModule } from 'primeng/calendar';
     declarations: [
         ReportsSidebarComponent,
         SaleComponent,
-        DatesFilterComponent
+        DatesFilterComponent,
+        GenerateExportComponent
     ],
     providers: [AuthGuard]
 })
