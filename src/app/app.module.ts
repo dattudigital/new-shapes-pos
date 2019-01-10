@@ -7,10 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing'
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component'
-import { AuthGuard } from '../common-session/session.check';
+import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MessageService } from 'primeng/api';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 
@@ -19,7 +17,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent  ],
+    FooterComponent  
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -30,7 +29,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     NgxSpinnerModule
   ],
-  providers: [AuthGuard , MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

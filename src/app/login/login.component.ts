@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 declare var $: any;
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit {
   alerts: any[] = [];
   errorMessage = false;
 
-  constructor(private spinner: NgxSpinnerService,private http: HttpClient, private router: Router, private loginService:LoginService) { 
+  constructor(private spinner: NgxSpinnerService, private router: Router, private loginService:LoginService) { 
   }
 
   ngOnInit() {
