@@ -28,7 +28,7 @@ import { GrowlModule } from 'primeng/growl';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -39,6 +39,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TableModule,
     GrowlModule,
     MultiSelectModule,
+    NgxSpinnerModule,
     CalendarModule,
     TypeaheadModule.forRoot()
   ],

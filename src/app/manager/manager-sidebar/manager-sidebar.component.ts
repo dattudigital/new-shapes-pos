@@ -6,7 +6,7 @@ import { MembershipServiceService } from '../../services/membership-service.serv
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 declare var $: any;
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'fmyp-manager-sidebar',
   templateUrl: './manager-sidebar.component.html',
@@ -50,8 +50,9 @@ export class ManagerSidebarComponent implements OnInit {
   selectedOption: any;
   states: any[] = [];
   sidebarActiveName: any = "";
-  constructor(private service: MembershipServiceService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
+  constructor(private service: MembershipServiceService,private spinner: NgxSpinnerService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
     let URL = this.location.path();
+    this.spinner.show();
     console.log(URL);
   }
 
@@ -169,6 +170,7 @@ export class ManagerSidebarComponent implements OnInit {
     } else if (sessionData == '"discount"') {
       this.discountClickInfo();
     }
+    this.spinner.hide();
   }
 
   downloadExcel() {
@@ -233,12 +235,8 @@ export class ManagerSidebarComponent implements OnInit {
   }
 
   showActiveMembershipClick() {
-    this.router.navigate(['manager/management-membership']);
-  }
-
-  showInactiveMembershipClick() {
-    this.router.navigate(['manager/inactive-membership'])
-
+    console.log("check latest")
+    // this.router.navigate(['manager/management-membership']);
   }
 
   staffClockInandOut() {
@@ -328,7 +326,7 @@ export class ManagerSidebarComponent implements OnInit {
   }
 
   saveGiftCard() {
-      var data: any = {
+    var data: any = {
       giftcard_sold_at: this.soldAt,
       giftcard_value: this.cardValue,
       giftcard_name: this.cardName,
