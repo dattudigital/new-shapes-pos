@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +11,7 @@ export class FooterComponent implements OnInit {
   product: any[] = [];
   temp: any[] = [];
   states: any[] = new Array();
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }

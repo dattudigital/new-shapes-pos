@@ -12,7 +12,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements OnInit {
   password = "";
   mailId = "";
-  alerts: any[] = [];
   errorMessage = false;
 
   constructor(private spinner: NgxSpinnerService, private router: Router, private loginService:LoginService) { 
