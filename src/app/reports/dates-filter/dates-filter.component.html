@@ -3,11 +3,12 @@
     <span class="badge badge-light">1</span>DATES
   </h5>
   <div class="input-group dates">
-    <label>Start Date: </label> <input type="text" value="" id="datepicker1" name="date1" class="form-control">
+    <label>Start Date: </label> <p-calendar [(ngModel)]="startDate" [(ngModel)]="filter.startdate" name="shedule.startdate" [showIcon]="true"
+    (ngModelChange)="getStartDate($event)" dateFormat="yy-mm-dd"></p-calendar>
   </div>
   <div class="input-group dates">
-    <label>End Date: </label> <input type="text" id="datepicker2" class="form-control" value="" id="datepicker"
-      name="date2">
+    <label>End Date: </label> <p-calendar [(ngModel)]="endDate" [(ngModel)]="filter.enddate" name="shedule.enddate" [showIcon]="true"
+    (ngModelChange)="getEndDate($event)" dateFormat="yy-mm-dd"></p-calendar>
   </div>
   <hr />
   <h5>QUICK DATES</h5>

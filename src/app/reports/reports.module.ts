@@ -6,13 +6,15 @@ import {reportsRoutingModule} from './reports-routing.module';
 import { ReportsSidebarComponent } from './reports-sidebar/reports-sidebar.component';
 import { SaleComponent } from './sale/sale.component';
 import { DatesFilterComponent } from './dates-filter/dates-filter.component';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        reportsRoutingModule
+        reportsRoutingModule,
+        CalendarModule
     ],
     declarations: [
         ReportsSidebarComponent,
