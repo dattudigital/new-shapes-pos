@@ -13,17 +13,21 @@
           (click)="retailClickInfo()" data-toggle="pill" href="#retail" role="tab" aria-controls="retail" aria-selected="false">Retail
           Settings</a>
 
-        <a class="nav-link inventory-info" id="inventory-tab" [ngClass]="sidebarActiveName == 'inventory-setting'?'active':'none'" (click)="inventoryClickInfo()" data-toggle="pill" href="#inventory" role="tab"
-          aria-controls="inventory" aria-selected="false">Inventory Settings</a>
+        <a class="nav-link inventory-info" id="inventory-tab" [ngClass]="sidebarActiveName == 'inventory-setting'?'active':'none'"
+          (click)="inventoryClickInfo()" data-toggle="pill" href="#inventory" role="tab" aria-controls="inventory"
+          aria-selected="false">Inventory Settings</a>
 
-        <a class="nav-link client-info" id="client-tab" [ngClass]="sidebarActiveName == 'client-setting'?'active':'none'" (click)="clientClickInfo()" data-toggle="pill" href="#client" role="tab"
-          aria-controls="client" aria-selected="false">Client Settings</a>
+        <a class="nav-link client-info" id="client-tab" [ngClass]="sidebarActiveName == 'client-setting'?'active':'none'"
+          (click)="clientClickInfo()" data-toggle="pill" href="#client" role="tab" aria-controls="client" aria-selected="false">Client
+          Settings</a>
 
-        <a class="nav-link promotion-info" id="v-pills-settings-tab" data-toggle="pill" href="#cardswipe" role="tab"
-          aria-controls="cardswipe" aria-selected="false">Card Swipe Settings</a>
+        <a class="nav-link card-info" id="card-swipe-tab" [ngClass]="sidebarActiveName == 'card-swipe-setting'?'active':'none'"
+          (click)="cardClickInfo()" data-toggle="pill" href="#cardswipe" role="tab" aria-controls="cardswipe"
+          aria-selected="false">Card Swipe Settings</a>
 
-        <a class="nav-link gift-card-info" id="v-pills-settings-tab" data-toggle="pill" href="#payment" role="tab"
-          aria-controls="payment" aria-selected="false">Payment Method</a>
+        <a class="nav-link payment-info" id="payment-method-tab" [ngClass]="sidebarActiveName == 'payment-method'?'active':'none'"
+          (click)="paymentClickInfo()" data-toggle="pill" href="#payment" role="tab" aria-controls="payment"
+          aria-selected="false">Payment Method</a>
 
         <a class="nav-link product-info" id="v-pills-settings-tab" (click)="cashDrawerSetupClick()" data-toggle="pill"
           href="#cash" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cash Drawer Setup</a>

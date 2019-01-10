@@ -39,6 +39,20 @@ export class SetupSidebarComponent implements OnInit {
     sessionStorage.setItem('setup-routing', JSON.stringify("client-setting"));
   }
 
+  cardClickInfo() {
+    let modelClose = document.getElementById("card-swipe-tab");
+    modelClose.click();
+    this.sidebarActiveName = "card-swipe-setting";
+    sessionStorage.setItem('setup-routing', JSON.stringify("card-swipe-setting"));
+  }
+
+  paymentClickInfo() {
+    let modelClose = document.getElementById("payment-method-tab");
+    modelClose.click();
+    this.sidebarActiveName = "payment-method";
+    sessionStorage.setItem('setup-routing', JSON.stringify("payment-method"));
+  }
+
   ngOnInit() {
     let sessionData = sessionStorage.getItem('setup-routing');
     console.log(sessionData)
@@ -50,6 +64,10 @@ export class SetupSidebarComponent implements OnInit {
       this.inventoryClickInfo()
     } else if (sessionData == '"client-setting"') {
       this.clientClickInfo()
+    } else if (sessionData == '"card-swipe-setting"') {
+      this.cardClickInfo()
+    } else if (sessionData == '"payment-method"') {
+      this.paymentClickInfo();
     }
   }
 
