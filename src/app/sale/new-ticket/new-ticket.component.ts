@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
 // import { setTheme } from 'ngx-bootstrap/utils';
 import { environment } from '../../../environments/environment';
 
@@ -72,14 +71,6 @@ export class NewTicketComponent implements OnInit {
     this.gender="",
     this.DOB=""
 
-  }
-
-  backToDashboard() {
-    this.router.navigate(['dashboard']);
-  }
-
-  nextClick() {
-    this.router.navigate(['sale/new-ticket-next-button']);
   }
 
   selectedValue: string;
