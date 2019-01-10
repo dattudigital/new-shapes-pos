@@ -17,10 +17,6 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
-  newTicket() {
-    this.router.navigate(['sale/new-ticket']);
-  }
-
   customerSearch() {
     //   if(val.length >= 2){
     //   this.service.searchPrice(val).subscribe(data => {
@@ -43,9 +39,6 @@ export class FooterComponent implements OnInit {
 
   logOut() {
     sessionStorage.clear();
-    this.router.navigate(['login']);
   }
-  redirectToTodaySale() {
-    this.router.navigate(['todays-sale']);
-  }
+
 }

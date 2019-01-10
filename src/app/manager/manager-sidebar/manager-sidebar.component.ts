@@ -50,7 +50,7 @@ export class ManagerSidebarComponent implements OnInit {
   selectedOption: any;
   states: any[] = [];
   sidebarActiveName: any = "";
-  constructor(private service: MembershipServiceService,private spinner: NgxSpinnerService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
+  constructor(private service: MembershipServiceService, private spinner: NgxSpinnerService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
     let URL = this.location.path();
     this.spinner.show();
     console.log(URL);
@@ -232,86 +232,6 @@ export class ManagerSidebarComponent implements OnInit {
     this.addMembership.membership_discount = "";
     this.addMembership.membership_price = "";
     this.addMembership.membership_validity_in_days = "";
-  }
-
-  showActiveMembershipClick() {
-    console.log("check latest")
-    // this.router.navigate(['manager/management-membership']);
-  }
-
-  staffClockInandOut() {
-    this.router.navigate(['manager/staff-clock-in/out'])
-  }
-
-  VieworEditTimeClock() {
-    this.router.navigate(['manager/staff-view/edit-timeclock'])
-  }
-
-  StaffPermissions() {
-    this.router.navigate(['manager/staff-permissions'])
-  }
-
-  ScheduleView() {
-    this.router.navigate(['manager/staff-schedule-view'])
-  }
-
-  StaffMembers() {
-    this.router.navigate(['manager/staff-members'])
-  }
-
-  ScheduleAddorEdit() {
-    this.router.navigate(['manager/staff-schedule-add/edit'])
-  }
-
-  AddPackagesClick() {
-    this.router.navigate(['manager/add-packages'])
-  }
-
-  EditPackagesClick() {
-    this.router.navigate(['manager/edit-packages'])
-  }
-
-  AddPromotionsClick() {
-    this.router.navigate(['manager/add-promotions'])
-  }
-
-  EditPromotionsClick() {
-    this.router.navigate(['manager/edit-promotions'])
-  }
-
-  newsAndEventsClick() {
-    this.router.navigate(['manager/news-and-events'])
-  }
-
-  autoEmailClick() {
-    this.router.navigate(['manager/auto-emails'])
-  }
-  membershipSetupClick() {
-    this.router.navigate(['manager/membership-setup'])
-  }
-
-  cancelClick() {
-    this.router.navigate(['manager/cancel-group-lesson'])
-  }
-
-  newGiftClick() {
-    this.router.navigate(['manager/add-new-gift-card'])
-  }
-
-  editGiftClick() {
-    this.router.navigate(['manager/edit-gift-card'])
-  }
-
-  viewGiftClick() {
-    this.router.navigate(['manager/view-active-gift-card'])
-  }
-
-  redirectToViewGiftClick() {
-    this.router.navigate(['manager/view-active-gift-card'])
-  }
-
-  onlineGiftClick() {
-    this.router.navigate(['manager/online-gift-card'])
   }
 
   setSub_catagroy(cat_id: any): void {
