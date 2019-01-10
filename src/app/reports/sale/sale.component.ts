@@ -16,4 +16,8 @@ export class SaleComponent implements OnInit {
    console.log("test ******")
    console.log(data)
   }
+  eventData(val){
+    console.log('generate')
+    console.log(val)
+  }
 }
