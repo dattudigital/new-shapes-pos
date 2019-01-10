@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GiftCardServiceService } from '../../services/gift-card-service.service';
-import { HttpClient } from '@angular/common/http';
 // import { Angular5Csv } from 'angular5-csv/Angular5-csv';
 import { MembershipServiceService } from '../../services/membership-service.service';
 import { Router } from '@angular/router';
@@ -50,7 +49,7 @@ export class ManagerSidebarComponent implements OnInit {
   selectedOption: any;
   states: any[] = [];
   sidebarActiveName: any = "";
-  constructor(private service: MembershipServiceService, private spinner: NgxSpinnerService, private location: Location, private giftcard: GiftCardServiceService, private http: HttpClient, private router: Router, private eleRef: ElementRef) {
+  constructor(private service: MembershipServiceService, private spinner: NgxSpinnerService, private location: Location, private giftcard: GiftCardServiceService, private router: Router, private eleRef: ElementRef) {
     let URL = this.location.path();
     this.spinner.show();
     console.log(URL);

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Membership } from '../../model/membership.model';
 import { Http } from '@angular/http';
 import { Paginator } from 'primeng/paginator';
