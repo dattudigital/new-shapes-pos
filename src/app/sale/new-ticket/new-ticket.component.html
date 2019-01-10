@@ -532,7 +532,7 @@
         <div class="col-md-8 col-md-offset-4">
           <ul>
             <li>
-              <a (click)="backToDashboard()">
+              <a [routerLink]="['../dashboard']">
                 <i class="fas fa-arrow-left"></i>
                 <br>Back</a>
             </li>
@@ -541,7 +541,7 @@
                 <i class="fas fa-times"></i>
                 <br>Cancel</a>
             </li>
-            <li (click)="nextClick()">
+            <li [routerLink]="['../../sale/new-ticket-next-button']">
               <a>
                 <i class="fas fa-arrow-right"></i>
                 <br>Next</a>
