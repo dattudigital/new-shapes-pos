@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Http } from '@angular/http';
+import { Http , RequestOptions, Headers} from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { Services } from '../../services/common-services';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
@@ -38,7 +38,12 @@ export class NewTicketNextButtonComponent implements OnInit {
 
   getServiceList() {
     console.log("******************")
-    this.http.get(environment.host + 'categorys').subscribe(data => {
+    let token =  JSON.parse(localStorage.getItem('test'));
+    console.log("cameeeeeeeeeee")
+    let headers = new Headers({ 'x-access-token':token });
+    let options = new RequestOptions({headers: headers});
+
+    this.http.get(environment.host + 'categorys',options).subscribe(data => {
       this.categories = data.json().result;
     });
   }
