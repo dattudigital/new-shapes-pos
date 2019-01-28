@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
     if (this.mailId && this.password) {    
       this.loginService.loginData(data).subscribe(loginData => {
         this.spinner.hide();
-        if (loginData.json().status == false) {
+        if (loginData["status"] == false) {
           this.errorMessage = true;
         } else {
-          sessionStorage.setItem('userSession', JSON.stringify(loginData.json()));
+          sessionStorage.setItem('userSession', JSON.stringify(loginData));
           this.router.navigate(['sale']);
           $('#loginModal').modal('hide');
         }

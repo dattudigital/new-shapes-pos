@@ -125,34 +125,34 @@ export class HeaderComponent implements OnInit {
       if (this.redirect == "time-clock") {
         this.service.timeClockLoginCredentials(data).subscribe(res => {
           this.spinner.hide()
-          sessionStorage.setItem('time-clock', JSON.stringify(res.json()));
+          sessionStorage.setItem('time-clock', JSON.stringify(res));
           this.router.navigate(['time-clock']);
           $('#secondaryLoginModal').modal('hide');
         })
       } else {
         this.loginService.loginData(data).subscribe(loginData => {
-          if (loginData.json().status == false) {
+          if (loginData["status"] == false) {
             this.errorMessage = true;
           } else {
             $('#secondaryLoginModal').modal('hide');
             if (this.redirect == 'setup') {
-              sessionStorage.setItem('setup', JSON.stringify(loginData.json()));
+              sessionStorage.setItem('setup', JSON.stringify(loginData));
               this.router.navigate(['setup'])
               this.spinner.hide()
             } else if (this.redirect == 'inventory') {
-              sessionStorage.setItem('inventory', JSON.stringify(loginData.json()));
+              sessionStorage.setItem('inventory', JSON.stringify(loginData));
               this.router.navigate(['inventory'])
               this.spinner.hide()
             } else if (this.redirect == 'manager') {
-              sessionStorage.setItem('manager', JSON.stringify(loginData.json()));
+              sessionStorage.setItem('manager', JSON.stringify(loginData));
               this.router.navigate(['manager'])
               this.spinner.hide()
             } else if (this.redirect == 'schedule') {
-              sessionStorage.setItem('schedule', JSON.stringify(loginData.json()));
+              sessionStorage.setItem('schedule', JSON.stringify(loginData));
               this.router.navigate(['scheduler'])
               this.spinner.hide()
             } else if (this.redirect == 'reports') {
-              sessionStorage.setItem('reports', JSON.stringify(loginData.json()));
+              sessionStorage.setItem('reports', JSON.stringify(loginData));
               this.router.navigate(['reports'])
               this.spinner.hide()
             }
