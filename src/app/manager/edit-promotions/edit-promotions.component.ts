@@ -46,7 +46,7 @@ export class EditPromotionsComponent implements OnInit {
 
   editPromotionGet() {
     this.service.editPromotionGet().subscribe(localData => {
-      this.localData = localData.json().result;
+      this.localData = localData["result"];
 
     })
   }
@@ -151,7 +151,7 @@ export class EditPromotionsComponent implements OnInit {
       promotion_item_types: val.promotion_item_types
     }
     this.service.addPromotionPost(data).subscribe(response => {
-      val.promotion_valid_days = response.json().promotion_valid_days;
+      val.promotion_valid_days = response["promotion_valid_days"];
     })
     $("#add-promotion").modal('hide');
   }

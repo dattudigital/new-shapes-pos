@@ -34,7 +34,7 @@ export class EditGiftCardComponent implements OnInit {
 
   getGiftCardData() {
     this.service.getGiftCard().subscribe(giftCardData => {
-      this.giftCardData = giftCardData.json().result;
+      this.giftCardData = giftCardData["result"];
     })
   }
 
@@ -48,7 +48,7 @@ export class EditGiftCardComponent implements OnInit {
 
   customerSearch(val) {
     this.service.searchPlace(val).subscribe(data => {
-      this.temp3.push(data.json().result);
+      this.temp3.push(data["result"]);
       this.states = this.temp3.pop();
     });
   }

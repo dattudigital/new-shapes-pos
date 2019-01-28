@@ -19,7 +19,6 @@ export class FooterComponent implements OnInit {
   customerSearch() {
     //   if(val.length >= 2){
     //   this.service.searchPrice(val).subscribe(data => {
-    //     this.temp.push(data.json());
     //     this.product = this.temp.pop();
     //     console.log(this.product);
     //   });

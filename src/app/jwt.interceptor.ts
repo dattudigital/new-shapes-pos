@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 export class JwtInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
+        console.log(request);
         let currentUser = JSON.parse(sessionStorage.getItem('userSession'));
         console.log("CHE)*EFY*EYF*******************");
         console.log(currentUser);

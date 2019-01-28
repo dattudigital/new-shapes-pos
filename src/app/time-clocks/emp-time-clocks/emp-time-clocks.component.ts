@@ -3,7 +3,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { TimeClokServiceService } from '../../services/time-clok-service.service';
 import { Location } from '@angular/common';
 import { Message } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+// import { MessageService } from 'primeng/components/common/messageservice';
 import { ExcelService } from '../../services/excel.service';
 declare var jsPDF: any;
 
@@ -55,7 +55,7 @@ export class EmpTimeClocksComponent implements OnInit {
   };
   msgs: Message[] = [];
 
-  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private messageService: MessageService, private excelService: ExcelService) { }
+  constructor(private service: TimeClokServiceService, private router: Router, private _location: Location, private excelService: ExcelService) { }
 
   ngOnInit() {
     this.getTimeAndDate();
@@ -102,7 +102,7 @@ export class EmpTimeClocksComponent implements OnInit {
   clockInTime() {
     this.data.check_in_time = Date.now();
     this.service.saveInandOutTime(this.data).subscribe(response => {
-      this.data.time_clock_id = response.json().result.time_clock_id;
+      this.data.time_clock_id = response["result"].time_clock_id;
     });
     this.disable_time_in = true;
     this.disable_break_out = false;
@@ -262,8 +262,8 @@ export class EmpTimeClocksComponent implements OnInit {
       }
     }
     this.service.getAppiontmentData(data).subscribe(res => {
-      if (res.json().status == true) {
-        this.apptInfo = res.json().result;
+      if (res["status"] == true) {
+        this.apptInfo = res["result"];
       }
     })
   }

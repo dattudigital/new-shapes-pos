@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { environment } from '../../../environments/environment';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { PackagesServiceService } from '../../services/packages-service.service';
 @Component({
   selector: 'app-add-packages',
@@ -19,14 +19,14 @@ export class AddPackagesComponent implements OnInit {
   marked = false;
   serviceId = '';
 
-  constructor(private router: Router, private http: Http, private service: PackagesServiceService) {
+  constructor(private router: Router, private http: HttpClient, private service: PackagesServiceService) {
 
   }
 
   ngOnInit() {
     this.http.get(environment.host + 'services').subscribe(data => {
-      console.log(data.json().result);
-      this.serviceData = data.json().result;
+  
+      this.serviceData = data["result"];
       console.log(this.serviceData.length);
       for (let i = 0; i < this.serviceData.length; i++) {
         this.packs.push({ label: this.serviceData[i].service_name, value: { service_id: this.serviceData[i].service_id, service_price: this.serviceData[i].service_price, service_name: this.serviceData[i].service_name } })
@@ -58,7 +58,10 @@ export class AddPackagesComponent implements OnInit {
     console.log(this.packageName);
     console.log(this.serviceId);
     this.service.savePackage(data).subscribe(response => {
-      console.log(response.json);
+      // console.log(response.json);
+
+
+      
     })
   }
 

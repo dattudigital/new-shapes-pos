@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 // import { setTheme } from 'ngx-bootstrap/utils';
@@ -33,7 +33,7 @@ export class NewTicketComponent implements OnInit {
   public userDetails: FormGroup;
   submitted = false;
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     // setTheme('bs3');
     this.userDetails = new FormGroup({
       firstName: new FormControl(this.firstName, [Validators.required, Validators.minLength(6), Validators.maxLength(9)]),
@@ -57,9 +57,9 @@ export class NewTicketComponent implements OnInit {
     }
     this.http.post(environment.host + 'users', data).subscribe(data => {
       console.log(data);
-      if (data.json().status == true) {
-        this.sucussfull=true;
-      }
+      // if (data["status"] == true) {
+      //   this.sucussfull=true;
+      // }
     });
     
   }
@@ -98,7 +98,7 @@ export class NewTicketComponent implements OnInit {
   lastSearch(){
     this.states=[];
     this.http.get(environment.host + 'sales/last-user').subscribe(data => {
-      this.temp.push(data.json().result);
+      this.temp.push(data["result"]);
       this.states = this.temp.pop();
     });
   }
@@ -112,7 +112,7 @@ export class NewTicketComponent implements OnInit {
   visitInfo() {
     if (this.selectedOption) {
       this.http.get(environment.host + 'sales/visit/' + this.selectedOption.user_id).subscribe(data => {
-        this.visits = data.json().result;
+        this.visits = data["result"];
       });
     }
   }
@@ -120,7 +120,7 @@ export class NewTicketComponent implements OnInit {
   allInfo() {
     if (this.selectedOption) {
       this.http.get(environment.host + 'sales/all-history/' + this.selectedOption.user_id).subscribe(data => {
-        this.alls = data.json().result;
+        this.alls = data["result"];
       });
     }
   }
@@ -128,7 +128,7 @@ export class NewTicketComponent implements OnInit {
   productInfo() {
     if (this.selectedOption) {
       this.http.get(environment.host + 'sales/product-history/' + this.selectedOption.user_id).subscribe(data => {
-        this.products = data.json().result;
+        this.products = data["result"];
       });
     }
   }
@@ -136,7 +136,7 @@ export class NewTicketComponent implements OnInit {
   serviceInfo() {
     if (this.selectedOption) {
       this.http.get(environment.host + 'sales/service-history/' + this.selectedOption.user_id).subscribe(data => {
-        this.services = data.json().result;
+        this.services = data["result"];
       });
     }
   }
@@ -144,7 +144,7 @@ export class NewTicketComponent implements OnInit {
   customerSearch(val) {
     if (val.length >= 3) {
       this.http.get(environment.host + 'users/search/' + val).subscribe(data => {
-        this.temp.push(data.json().result);
+        this.temp.push(data["result"]);
         this.states = this.temp.pop();
       });
     } 

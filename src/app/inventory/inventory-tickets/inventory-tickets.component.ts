@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { InventoryServiceService } from '../../services/inventory-service.service';
 import { SheduleServiceService } from '../../services/shedule-service.service';
@@ -23,19 +23,19 @@ export class InventoryTicketsComponent implements OnInit {
   branch_id: "";
   statusId: "";
 
-  constructor(private router: Router, private http: Http, private service: InventoryServiceService, private location: SheduleServiceService) { }
+  constructor(private router: Router, private http: HttpClient, private service: InventoryServiceService, private location: SheduleServiceService) { }
 
   ngOnInit() {
     this.http.get(environment.host + 'inv-tkts').subscribe(res => {
-      this.inventoryData = res.json().result;
+      this.inventoryData = res["result"];
       console.log(this.inventoryData)
     });
     this.service.getSuppliers().subscribe(res => {
-      this.supplierData = res.json().result;
+      this.supplierData = res["result"];
       this.supplier_id = '';
     });
     this.location.getAllLocations().subscribe(response => {
-      this.locationData = response.json().result;
+      this.locationData = response["result"];
     });
   }
 
@@ -64,21 +64,19 @@ export class InventoryTicketsComponent implements OnInit {
       url = url + '&destination=' + this.branch_id
     }
     this.service.getInventoryTicket(url).subscribe(res => {
-      console.log(res.json().result);
-      console.log("*******")
-      console.log(res.json().result.status);
-      if (res.json().result.status == undefined) {
-        this.inventoryData = res.json().result;
+  
+      if (res["result"].result.status == undefined) {
+        this.inventoryData = res["result"].result;
         console.log(this.inventoryData)
       } else {
-        this.inventoryData = res.json().result._body;
+        this.inventoryData = res["result"]._body;
       }
     })
   }
 
   inventoryReset() {
     this.http.get(environment.host + 'inv-tkts').subscribe(res => {
-      this.inventoryData = res.json().result;
+      this.inventoryData = res["result"];
     });
     this.startDate = "";
     this.endDate = "";

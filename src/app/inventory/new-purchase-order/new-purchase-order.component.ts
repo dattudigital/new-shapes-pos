@@ -21,8 +21,7 @@ export class NewPurchaseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.service.getSuppliers().subscribe(res => {
-      console.log(res.json().result)
-      this.supplierData = res.json().result;
+      this.supplierData = res["result"];
     })
   }
   backToInventory() {
@@ -36,8 +35,7 @@ export class NewPurchaseOrderComponent implements OnInit {
     this.selectDisable=false;
     this.supplier.supplierId=supplier_id;
     this.service.getSelectedSupplier(this.supplier.supplierId).subscribe(response => {
-      console.log(response.json());
-      this.supplierSelectedData=response.json();
+      this.supplierSelectedData=response["result"];
       localStorage.setItem('supplierdata',JSON.stringify(this.supplierSelectedData));
     });
   }  

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class GiftCardServiceService {
 
-  constructor(private http: Http) { }
+  constructor(private http:HttpClient) { }
 
   public getGiftCard() {
     return this.http.get(environment.host + 'giftcards');

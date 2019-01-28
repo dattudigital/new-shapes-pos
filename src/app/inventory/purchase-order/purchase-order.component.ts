@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InventoryServiceService } from '../../services/inventory-service.service';
 import * as moment from 'moment/moment';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { environment } from '../../../environments/environment';
 declare var $: any;
@@ -38,19 +38,19 @@ export class PurchaseOrderComponent implements OnInit {
   supplierSelectedData = new Array();
   purchaseOrderSelectedData = new Array()
 
-  constructor(private router: Router,private _location: Location, private http: Http, private service: InventoryServiceService) { }
+  constructor(private router: Router,private _location: Location, private http: HttpClient, private service: InventoryServiceService) { }
 
   ngOnInit() {
     this.http.get(environment.host + 'pur-orders').subscribe(res => {
-      console.log(res.json().result);
-      this.purchaseOrderData = res.json().result;
+      console.log(res["result"]);
+      this.purchaseOrderData = res["result"];
       
     });
     this.service.getSuppliers().subscribe(res => {
-      this.supplierData = res.json().result;
+      this.supplierData = res["result"];
     });
     this.service.getproduct().subscribe(res => {
-      this.productData = res.json().result;
+      this.productData = res["result"];
     });
   }
 
@@ -71,14 +71,14 @@ export class PurchaseOrderComponent implements OnInit {
   purchaseSuppliers(supplier_id: any) {
     this.supplier.supplierId = supplier_id;
     this.service.getSelectedSupplier(this.supplier.supplierId).subscribe(response => {
-      this.supplierSelectedData = response.json();
+      this.supplierSelectedData = response["result"]
       console.log(this.supplierSelectedData);
     });
   }
   selectedPurchaseOrder(purchase_order_id: any) {
     this.purchase.purchaseOrderId = purchase_order_id;
     this.service.getSelectedPurchaseOrder(this.purchase.purchaseOrderId).subscribe(res => {
-      this.purchaseOrderSelectedData = res.json().result;
+      this.purchaseOrderSelectedData = res["result"];
       console.log(this.purchaseOrderSelectedData);
     })
 
@@ -105,21 +105,21 @@ export class PurchaseOrderComponent implements OnInit {
       url = url + '&source=' + this.supplier.supplier_id
     }
     this.service.getPurchaseOrder(url).subscribe(res => {
-      console.log(res.json().result);
+      console.log(res["result"]);
       console.log("*******")
-      console.log(res.json().result.status);
-      if (res.json().result.status == undefined) {
-        this.purchaseOrderData = res.json().result;
+      console.log(res["result"].status);
+      if (res["result"].status == undefined) {
+        this.purchaseOrderData = res["result"];
         console.log(this.purchaseOrderData)
       } else {
-        this.purchaseOrderData =res.json().result._body;
+        this.purchaseOrderData =res["result"]._body;
       }
     })
   }
 
   resetPurchaseOrder() {
     this.http.get(environment.host + 'pur-orders').subscribe(res => {
-      this.purchaseOrderData = res.json().result;
+      this.purchaseOrderData = res["result"];
     });
     this.startDate = "";
     this.endDate = "";
@@ -134,7 +134,7 @@ export class PurchaseOrderComponent implements OnInit {
     }
     console.log(data);
     this.service.postPurchaseOrder(data).subscribe(res => {
-      console.log(res.json().result);
+      console.log(res["result"]);
     })
   }
   editPurchaseOrder(data,index){
@@ -161,7 +161,7 @@ export class PurchaseOrderComponent implements OnInit {
     }
     console.log(data);
     this.service.postPurchaseOrder(data).subscribe(res => {
-      console.log(res.json().result);
+      console.log(res["result"]);
     })
 
   }

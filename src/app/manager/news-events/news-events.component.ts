@@ -28,8 +28,8 @@ export class NewsEventsComponent implements OnInit {
 
   ngOnInit() {
     this.service.getTopMessage().subscribe(response => {
-      if (response.json().status == true) {
-        this.messageData = response.json().result;
+      if (response["status"] == true) {
+        this.messageData = response["result"];
       }
     });
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 // import { Membership } from '../../model/membership.model';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Paginator } from 'primeng/paginator';
 import { MembershipServiceService } from '../../services/membership-service.service';
 
@@ -16,11 +16,11 @@ export class MembershipComponent implements OnInit {
   editRowId: any;
   catagroyData = new Array();
 
-  constructor(private router: Router, private http: Http, private service: MembershipServiceService) { }
+  constructor(private router: Router, private http: HttpClient, private service: MembershipServiceService) { }
 
   ngOnInit() {
     this.service.getMembership().subscribe(memberships => {
-      this.memberships = memberships.json().result;
+      this.memberships = memberships["result"];
       console.log("mem"+this.memberships)
     })
     this.getCategory();
@@ -54,7 +54,7 @@ export class MembershipComponent implements OnInit {
 
   getCategory() {
     this.service.getCategoryList().subscribe(response => {
-      this.catagroyData = response.json().result;
+      this.catagroyData = response["result"];
     })
   }
 

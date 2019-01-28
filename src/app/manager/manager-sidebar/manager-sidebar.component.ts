@@ -131,7 +131,7 @@ export class ManagerSidebarComponent implements OnInit {
 
   customerSearch(val) {
     this.giftcard.searchPlace(val).subscribe(data => {
-      this.temp3.push(data.json());
+      this.temp3.push(data);
       this.states = this.temp3.pop();
     });
   }
@@ -142,7 +142,7 @@ export class ManagerSidebarComponent implements OnInit {
 
   getCategory() {
     this.service.getCategoryList().subscribe(response => {
-      this.catagroyData = response.json().result;
+      this.catagroyData = response["result"];
     });
   }
 
@@ -236,7 +236,7 @@ export class ManagerSidebarComponent implements OnInit {
   setSub_catagroy(cat_id: any): void {
     this.addMembership.cat_id = cat_id;
     this.service.getSub_CategoryList(this.addMembership.cat_id).subscribe(response => {
-      this.sub_catagroyData = response.json().result;
+      this.sub_catagroyData = response["result"];
     });
 
   }

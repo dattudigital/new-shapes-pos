@@ -45,13 +45,13 @@ export class NewInventoryTicketComponent implements OnInit {
 
   ngOnInit() {
     this.locationService.getAllLocations().subscribe(response => {
-      this.locationData = response.json().result;
+      this.locationData = response["result"].result;
     });
     this.inventoryService.getproduct().subscribe(res => {
-      this.productData =res.json().result;
+      this.productData =res["result"].result;
     });
     this.inventoryService.getSuppliers().subscribe(res => {
-      this.supplierData =res.json().result;
+      this.supplierData =res["result"].result;
     })
   }
   backToInventory() {
@@ -74,7 +74,7 @@ export class NewInventoryTicketComponent implements OnInit {
     this.product.product_id = product_id;
     console.log(this.product.product_id);
     this.inventoryService.getSelectedProduct(this.product.product_id).subscribe(data => {
-      this.selectedProductData = data.json();
+      this.selectedProductData = data["result"];
       this.productName = this.selectedProductData[0].product_name;
       this.productPrice = this.selectedProductData[0].product_price;
       console.log(this.productName);
@@ -100,7 +100,7 @@ export class NewInventoryTicketComponent implements OnInit {
     }
     console.log(data);
     this.inventoryService.saveInventoryTicket(data).subscribe(res => {
-      console.log(res.json().result);
+    
     })
   }
   dispalyAmount(val) {

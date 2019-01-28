@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BussinessSettingsService {
   
-  constructor(private http: Http) { }
+  constructor(private http:HttpClient) { }
   public editBussinessAddress(data: any) {
     return this.http.post(environment.host + 'locations', data)
   }

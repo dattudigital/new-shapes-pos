@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Http , RequestOptions, Headers} from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Services } from '../../services/common-services';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
@@ -28,7 +28,7 @@ export class NewTicketNextButtonComponent implements OnInit {
   _membership = false;
   _package = false;
 
-  constructor(private http: Http, private router: Router, private services: Services) {}
+  constructor(private http: HttpClient, private router: Router, private services: Services) {}
 
   ngOnInit() {
   }
@@ -38,27 +38,27 @@ export class NewTicketNextButtonComponent implements OnInit {
 
   getServiceList() {
     console.log("******************")
-    let token =  JSON.parse(localStorage.getItem('test'));
-    console.log("cameeeeeeeeeee")
-    let headers = new Headers({ 'x-access-token':token });
-    let options = new RequestOptions({headers: headers});
+    // let token =  JSON.parse(localStorage.getItem('test'));
+    // console.log("cameeeeeeeeeee")
+    // let headers = new Headers({ 'x-access-token':token });
+    // let options = new RequestOptions({headers: headers});
 
-    this.http.get(environment.host + 'categorys',options).subscribe(data => {
-      this.categories = data.json().result;
+    this.http.get(environment.host + 'categorys').subscribe(data => {
+      this.categories = data["result"];
     });
   }
 
   getPackageList() {
     console.log("******************")
     this.http.get(environment.host + 'packages').subscribe(data => {
-      this.packages = data.json().result;
+      this.packages = data["result"];
     });
   }
   
   getMembershipList() {
     console.log("******************")
     this.http.get(environment.host + 'memberships').subscribe(data => {
-      this.memberships = data.json().result;
+      this.memberships = data["result"];
     });
   }
 
@@ -70,7 +70,7 @@ export class NewTicketNextButtonComponent implements OnInit {
       this._membership = false;
       this._package = false;
       this.http.get(environment.host + 'services/category/' + event.item.cat_id).subscribe(data => {
-        this.commonValues = data.json().result;
+        this.commonValues = data["result"];
 
 
       });
@@ -174,7 +174,7 @@ export class NewTicketNextButtonComponent implements OnInit {
   catProdMemSearch(val) {
     if (val.length >= 3) {
       this.http.get(environment.host + 'sales/cat-mem-product/' + val).subscribe(data => {
-        this.temp.push(data.json().result);
+        this.temp.push(data["result"]);
         this.catProdMemResult = this.temp[0];
       });
     }
@@ -183,7 +183,7 @@ export class NewTicketNextButtonComponent implements OnInit {
   stylishSearch(val) {
     if (val.length >= 3) {
       this.http.get(environment.host + 'sales/stylist/' + val).subscribe(data => {
-        this.temp.push(data.json().result);
+        this.temp.push(data["result"]);
         this.stylishResult = this.temp[0];
       });
     }

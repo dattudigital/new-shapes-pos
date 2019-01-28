@@ -86,7 +86,7 @@ export class AddPromotionsComponent implements OnInit {
       promotion_end_date: this.promotionExpirationDate,
     }
     this.service.addPromotionPost(data).subscribe(response => {
-      console.log(response.json().result);
+      
 
     });
   }

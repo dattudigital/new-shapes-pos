@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SheduleServiceService } from '../../services/shedule-service.service';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment/moment';
 declare var jsPDF: any;
 import { ExcelService } from '../../services/excel.service';
@@ -24,12 +24,12 @@ locationData: any = [];
 appointmentsData: any = [];
 cols: any = [];
 
-constructor(private service: SheduleServiceService, private excelService: ExcelService, private http: Http) { }
+constructor(private service: SheduleServiceService, private excelService: ExcelService, private http: HttpClient) { }
 
 ngOnInit() {
     this.service.getEmployee().subscribe(response => {
-        if (response.json().status == true) {
-            this.empData = response.json().result;
+        if (response["status"] == true) {
+            this.empData = response["result"];
             console.log(this.empData)
         } else {
             this.empData = [];
@@ -37,8 +37,8 @@ ngOnInit() {
     });
 
     this.service.getAllLocations().subscribe(response => {
-        if (response.json().status == true) {
-            this.locationData = response.json().result;
+        if (response["status"] == true) {
+            this.locationData = response["result"];
         } else {
             this.locationData = [];
         }
@@ -81,8 +81,8 @@ getShedule() {
     }
     console.log(url)
     this.service.getEmpAppointments(url).subscribe(response => {
-        if (response.json().status == true) {
-            this.appointmentsData = response.json().result;
+        if (response["status"] == true) {
+            this.appointmentsData = response["result"];
             console.log(this.appointmentsData)
         }
     });

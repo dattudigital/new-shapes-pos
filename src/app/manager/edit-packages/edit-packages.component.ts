@@ -13,7 +13,7 @@ export class EditPackagesComponent implements OnInit {
 
   ngOnInit() {
       this.service.getPackage().subscribe(data=>{
-        this.packageData=data.json().result;
+        this.packageData=data["result"];
         console.log(this.packageData);
       })
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManagerServiceService } from '../../services/manager-service.service';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
@@ -12,11 +12,11 @@ export class InactiveMembershipComponent implements OnInit {
   inactivemembership: any = [];
   cols: any = [];
 
-  constructor(private service: ManagerServiceService, private http: Http, private router: Router) { }
+  constructor(private service: ManagerServiceService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.service.getInactiveMembership().subscribe(inactivemembership => {
-      this.inactivemembership = inactivemembership.json().result;
+      this.inactivemembership = inactivemembership["result"];
       this.cols = [
         { field: 'membership_name', header: 'Membership Name' },
         { field: 'membership_code', header: 'Membership Code' },

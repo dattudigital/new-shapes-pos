@@ -70,7 +70,7 @@ export class SuppliersComponent implements OnInit {
       inactiveCheckbox = '0'
       console.log(inactiveCheckbox)
       this.service.getInactiveSupplier(inactiveCheckbox).subscribe(res => {
-        this.supplierData = res.json();
+        this.supplierData = res["result"]
         this.supplier.supplier_id = ' ';
       })
     }
@@ -82,7 +82,7 @@ export class SuppliersComponent implements OnInit {
 
   getAllSuppliers() {
     this.service.getSuppliers().subscribe(res => {
-      this.supplierData =res.json().result;
+      this.supplierData =res["result"];
     })
   }
   backToInventory() {
@@ -94,8 +94,8 @@ export class SuppliersComponent implements OnInit {
   setSuppliers(supplier_id: any) {
     this.supplier.supplier_id = supplier_id;
     this.service.getSelectedSupplier(this.supplier.supplier_id).subscribe(response => {
-      console.log(response.json());
-      this.selectedSupplierData = response.json();
+      console.log(response);
+      this.selectedSupplierData = response;
       var selectedData = this.selectedSupplierData.pop();
       this.supplier.supplier_id = selectedData.supplier_id;
       this.supplier.supplier_name = selectedData.supplier_name;
@@ -157,7 +157,7 @@ export class SuppliersComponent implements OnInit {
     }
     console.log(data);
     this.service.saveSuppliers(data).subscribe(res => {
-      console.log(res.json().result)
+      console.log(res["result"])
     });
     localStorage.clear();
     this.editStyle = "hidden";

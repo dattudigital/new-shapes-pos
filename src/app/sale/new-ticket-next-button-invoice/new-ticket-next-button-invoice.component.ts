@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Services } from '../../services/common-services';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import * as _ from 'lodash';
 import { Router} from '@angular/router'
@@ -39,11 +39,11 @@ export class NewTicketNextButtonInvoiceComponent implements OnInit {
   refundtextColor='#000';
 
 
-  constructor(private services: Services, private http: Http,private router:Router ) {
+  constructor(private services: Services, private http: HttpClient,private router:Router ) {
     this.selectResult = JSON.parse(sessionStorage.getItem('selectedServices'));
     this.titleName = 'Service';
     this.http.get(environment.host + 'categorys').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
     this.subTotal();
   }
@@ -113,7 +113,7 @@ textColorEnable(){
     this.titleName = 'Service';
     this.edited = true;
     this.http.get(environment.host + 'categorys').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
   productClick() {
@@ -124,7 +124,7 @@ textColorEnable(){
     this.titleName = 'Product';
     this.edited = true;
     this.http.get(environment.host + 'products').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
 
@@ -136,7 +136,7 @@ textColorEnable(){
     this.titleName = 'Package';
     this.edited = true;
     this.http.get(environment.host + 'packages').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
 
@@ -148,7 +148,7 @@ textColorEnable(){
     this.titleName = 'Membership';
     this.edited = true;
     this.http.get(environment.host + 'memberships').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
 
@@ -160,7 +160,7 @@ textColorEnable(){
     this.titleName = 'Promotions';
     this.edited = true;
     this.http.get(environment.host + 'promotions').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
 
@@ -173,7 +173,7 @@ textColorEnable(){
     this.titleName = 'GiftCards';
     this.edited = true;
     this.http.get(environment.host + 'giftcards').subscribe(data => {
-      this.common = data.json().result;
+      this.common = data["result"];
     });
   }
 

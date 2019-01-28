@@ -62,7 +62,7 @@ export class StaffMembersComponent implements OnInit {
 
   getStaffData() {
     this.service.getStaff().subscribe(staffData => {
-      this.staffData = staffData.json().result;
+      this.staffData = staffData["result"];
     })
   }
 }

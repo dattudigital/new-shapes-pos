@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class NewTicketServiceService {
 
-  constructor(private http: Http) { }
+  constructor(private http:HttpClient) { }
   public saveNewCustomer(data: any) {
     return this.http.post(environment.host + 'users', data)
   }

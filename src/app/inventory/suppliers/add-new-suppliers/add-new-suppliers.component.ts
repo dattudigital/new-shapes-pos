@@ -69,7 +69,7 @@ export class AddNewSuppliersComponent implements OnInit {
     }
     console.log(data);
     this.service.saveSuppliers(data).subscribe(data => {
-      console.log(data.json());
+   
     })
   }
 
