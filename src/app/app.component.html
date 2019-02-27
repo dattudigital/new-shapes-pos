@@ -4,6 +4,10 @@
         <app-header ></app-header>
     </div>
     <div id="scrollablePart">
+            <!-- <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+                    <p style="font-size: 20px; color:white">Loading...</p>
+                  </ngx-spinner> -->
+                  <div *ngIf="showLoadingIndicator" class="spinner"></div>
         <router-outlet></router-outlet>
     </div>
     <div id="fixedFooter">
